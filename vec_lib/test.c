@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec3_mul.c                                         :+:      :+:    :+:   */
+/*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xeno <xeno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/16 17:45:11 by xeno              #+#    #+#             */
-/*   Updated: 2018/08/17 14:24:32 by xeno             ###   ########.fr       */
+/*   Created: 2018/08/17 14:16:52 by xeno              #+#    #+#             */
+/*   Updated: 2018/08/17 14:52:15 by xeno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vec_lib.h"
+#include <stdio.h>
 
-void	vec3_mul(t_vec3 *v, double i)
+int main(void)
 {
-	v->x *= i;
-	v->y *= i;
-	v->z *= i;
-}
+	t_vec3 v1;
+	t_vec3 v2;
 
-t_vec3	vec3_add_new(const t_vec3 v1, double i)
-{
-	t_vec3 cpy;
-
-	cpy = vec3_cpy(v1);
-	vec3_mul(&cpy, i);
-	return (cpy);
+	v1 = vec3_new(1, 2, 3);
+	v2 = vec3_cpy(v1);
+	printf("v1.x = [%f] | v2.x = [%f] | v1.y = [%f] | v2.y = [%f] | v1.z = [%f] | v1.z = [%f]\n", v1.x, v2.x, v1.y, v2.y, v1.z, v1.z);
+	return (0);
 }

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+         #
+#    By: xeno <xeno@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/22 13:45:05 by xrhoda            #+#    #+#              #
-#    Updated: 2018/08/17 12:18:15 by xrhoda           ###   ########.fr        #
+#    Updated: 2018/08/17 14:52:41 by xeno             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ FILES		=	vec3_add.c \
 				vec2_lib.c \
 				vec2_mul.c \
 				vec2_sub.c \
+				test.c \
 
 OBJ			= $(FILES:%.c=%.o)
 #FT_INC		= -I ../libft/includes

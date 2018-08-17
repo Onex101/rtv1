@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   vec3_dot.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: xeno <xeno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/16 17:48:43 by xeno              #+#    #+#             */
-/*   Updated: 2018/08/17 12:14:05 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/08/17 14:25:44 by xeno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vec_lib.h"
 
-double	vec3_dot(t_vec3 *v1, t_vec3 *v2)
+double	vec3_dot(t_vec3 v1, t_vec3 v2)
 {
-	return(v1->x * v2->x + v1->y * v2->y + v1->z * v2->z);
+	return(v1.x * v2.x + v1.y * v2.y + v1.z * v2.z);
 }
