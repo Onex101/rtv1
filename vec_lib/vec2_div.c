@@ -1,18 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec3_len.c                                         :+:      :+:    :+:   */
+/*   vec2_div.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xeno <xeno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/16 17:46:12 by xeno              #+#    #+#             */
-/*   Updated: 2018/08/16 18:09:45 by xeno             ###   ########.fr       */
+/*   Created: 2018/08/16 17:45:43 by xeno              #+#    #+#             */
+/*   Updated: 2018/08/17 12:14:31 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vec3_lib.h"
+#include "vec_lib.h"
 
-double	vec3_len(t_vec3 *v)
+void	vec2_div(t_vec2 *v, double i)
 {
-	return(sqrt((v->x * v->x) + (v->y * v->y) + (v->z * v->z)));
+	if (v)
+	{
+		v->x /= i;
+		v->y /= i;
+	}
+}
+
+t_vec2	*vec2_div_new(t_vec2 *v1, double i)
+{
+	t_vec2 *cpy;
+
+	if (!(cpy = vec2_cpy(v1)))
+		return (NULL);
+	vec2_div(cpy, i);
+	return (cpy);	
 }

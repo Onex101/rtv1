@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   vec3_lib.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xeno <xeno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/27 06:26:00 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/16 16:18:50 by xeno             ###   ########.fr       */
+/*   Updated: 2018/08/17 12:13:45 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "vec_lib.h"
 
 t_vec3	*vec3_new(double x, double y, double z)
 {
@@ -20,7 +20,7 @@ t_vec3	*vec3_new(double x, double y, double z)
 	if (!v)
 		return (NULL);
 	vec3_init(v, x, y, z);
-	return (vertex);
+	return (v);
 }
 
 void	vec3_init(t_vec3 *v, double x, double y, double z)
@@ -37,8 +37,12 @@ t_vec3	*vec3_cpy(t_vec3 *v)
 {
 	t_vec3 *cpy;
 
-	cpy = vec3_new(v->x, v->y, v->z);
-	return (cpy);
+	if (v)
+	{
+		cpy = vec3_new(v->x, v->y, v->z);
+		return (cpy);
+	}
+	return (NULL);
 }
 
 void	vec3_del(t_vec3 *v)

@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec3_nor.c                                         :+:      :+:    :+:   */
+/*   vec3_add.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xeno <xeno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/16 17:47:45 by xeno              #+#    #+#             */
-/*   Updated: 2018/08/16 18:02:07 by xeno             ###   ########.fr       */
+/*   Created: 2018/08/16 17:43:47 by xeno              #+#    #+#             */
+/*   Updated: 2018/08/17 12:14:17 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vec3_lib.h"
+#include "vec_lib.h"
 
-void	vec3_nor(t_vec3 *v)
+void	vec3_add(t_vec3 *v1, t_vec3 *v2)
 {
-	if (v)
-		(vec3_div(v, vec3_len(v)));
+	if (v1 && v2)
+	{
+		v1->x += v2->x;
+		v1->y += v2->y;
+		v1->z += v2->z;
+	}
 }
 
-t_vec3 *vec3_nor_cpy(t_vec3 *v)
+t_vec3	*vec3_add_new(t_vec3 *v1, t_vec3 *v2)
 {
 	t_vec3 *cpy;
 
-	if (v)
-	{
-		if(!(cpy = vec3_cpy(v)))
-			return (NULL);
-		vec3_nor(cpy);
-		return(cpy);
-	}
-	return (NULL);
+	if (!(cpy = vec3_cpy(v1)))
+		return (NULL);
+	vec3_add(cpy, v2);
+	return (cpy);	
 }

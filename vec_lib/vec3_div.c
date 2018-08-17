@@ -1,23 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec3_add.c                                         :+:      :+:    :+:   */
+/*   vec3_div.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xeno <xeno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/16 17:43:47 by xeno              #+#    #+#             */
-/*   Updated: 2018/08/16 18:04:27 by xeno             ###   ########.fr       */
+/*   Created: 2018/08/16 17:45:43 by xeno              #+#    #+#             */
+/*   Updated: 2018/08/17 12:14:10 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vec3_lib.h"
+#include "vec_lib.h"
 
-void	vec3_add(t_vec3 *v1, t_vec3 *v2)
+void	vec3_div(t_vec3 *v, double i)
 {
-	if (v1 && v2)
+	if (v)
 	{
-		v1->x += v2->x;
-		v1->y += v2->y;
-		v1->z += v2->z;
+		v->x /= i;
+		v->y /= i;
+		v->z /= i;
 	}
+}
+
+t_vec3	*vec3_div_new(t_vec3 *v1, double i)
+{
+	t_vec3 *cpy;
+
+	if (!(cpy = vec3_cpy(v1)))
+		return (NULL);
+	vec3_div(cpy, i);
+	return (cpy);	
 }

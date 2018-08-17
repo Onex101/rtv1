@@ -1,20 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec3_crs.c                                         :+:      :+:    :+:   */
+/*   vec2_sub.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xeno <xeno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/16 17:49:15 by xeno              #+#    #+#             */
-/*   Updated: 2018/08/16 18:08:00 by xeno             ###   ########.fr       */
+/*   Created: 2018/08/16 17:44:31 by xeno              #+#    #+#             */
+/*   Updated: 2018/08/17 12:14:21 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vec3_lib.h"
+#include "vec_lib.h"
 
-t_vec3	*vec3_crs(t_vec3 *v1, t_vec3 *v2)
+void	vec2_sub(t_vec2 *v1, t_vec2 *v2)
 {
 	if (v1 && v2)
-		return(vec3_new(v1->y * v2->z - v1->z * v2->y, v1->z * v2->x - v1->x * v2->z, v1->x * v2->y - v1->y * v2->x));
+	{
+		v1->x -= v2->x;
+		v1->y -= v2->y;
+	}
+}
+
+t_vec2	*vec2_sub_new(t_vec2 *v1, t_vec2 *v2)
+{
+	t_vec2 *cpy;
+
+	if (v1 && v2)
+	{
+		if (!(cpy = vec2_cpy(v1)))
+			return (NULL);
+		vec2_sub(cpy, v2);
+		return (cpy);	
+	}
 	return (NULL);
 }

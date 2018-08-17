@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: xeno <xeno@student.42.fr>                  +#+  +:+       +#+         #
+#    By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/22 13:45:05 by xrhoda            #+#    #+#              #
-#    Updated: 2018/08/16 18:00:54 by xeno             ###   ########.fr        #
+#    Updated: 2018/08/17 12:18:15 by xrhoda           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= vec3_lib.a
+NAME		= vec_lib.a
 CFLAGS		= -Wall -Werror -Wextra -I includes -c
 FILES		=	vec3_add.c \
 				vec3_crs.c \
@@ -20,6 +20,11 @@ FILES		=	vec3_add.c \
 				vec3_mul.c \
 				vec3_nor.c \
 				vec3_sub.c \
+				vec2_add.c \
+				vec2_div.c \
+				vec2_lib.c \
+				vec2_mul.c \
+				vec2_sub.c \
 
 OBJ			= $(FILES:%.c=%.o)
 #FT_INC		= -I ../libft/includes
