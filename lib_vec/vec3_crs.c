@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec2_div.c                                         :+:      :+:    :+:   */
+/*   vec3_crs.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xeno <xeno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/16 17:45:43 by xeno              #+#    #+#             */
-/*   Updated: 2018/08/17 14:33:29 by xeno             ###   ########.fr       */
+/*   Created: 2018/08/16 17:49:15 by xeno              #+#    #+#             */
+/*   Updated: 2018/08/18 13:14:01 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vec_lib.h"
+#include "lib_vec.h"
 
-void	vec2_div(t_vec2 *v, double i)
+t_vec3	vec3_crs(t_vec3 v1, t_vec3 v2)
 {
-	v->x /= i;
-	v->y /= i;
-}
-
-t_vec2	vec2_div_new(t_vec2 v1, double i)
-{
-	t_vec2 cpy;
-
-	cpy = vec2_cpy(v1);
-	vec2_div(&cpy, i);
-	return (cpy);
+	return(vec3_new(v1.y * v2.z - v1.z * v2.y, v1.z * v2.x - v1.x * v2.z, v1.x * v2.y - v1.y * v2.x));
 }

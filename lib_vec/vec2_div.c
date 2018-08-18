@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec3_add.c                                         :+:      :+:    :+:   */
+/*   vec2_div.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xeno <xeno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/16 17:43:47 by xeno              #+#    #+#             */
-/*   Updated: 2018/08/17 14:48:58 by xeno             ###   ########.fr       */
+/*   Created: 2018/08/16 17:45:43 by xeno              #+#    #+#             */
+/*   Updated: 2018/08/18 13:14:08 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vec_lib.h"
+#include "lib_vec.h"
 
-void	vec3_add(t_vec3 *v1, t_vec3 v2)
+void	vec2_div(t_vec2 *v, double i)
 {
-		v1->x += v2.x;
-		v1->y += v2.y;
-		v1->z += v2.z;
+	v->x /= i;
+	v->y /= i;
 }
 
-t_vec3	vec3_add_new(t_vec3 v1, t_vec3 v2)
+t_vec2	vec2_div_new(t_vec2 v1, double i)
 {
-	t_vec3 cpy;
+	t_vec2 cpy;
 
-	cpy = vec3_cpy(v1);
-	vec3_add(&cpy, v2);
-	return (cpy);	
+	cpy = vec2_cpy(v1);
+	vec2_div(&cpy, i);
+	return (cpy);
 }

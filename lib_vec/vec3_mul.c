@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec3_len.c                                         :+:      :+:    :+:   */
+/*   vec3_mul.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xeno <xeno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/16 17:46:12 by xeno              #+#    #+#             */
-/*   Updated: 2018/08/17 14:25:16 by xeno             ###   ########.fr       */
+/*   Created: 2018/08/16 17:45:11 by xeno              #+#    #+#             */
+/*   Updated: 2018/08/18 14:40:38 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vec_lib.h"
+#include "lib_vec.h"
 
-double	vec3_len(t_vec3 v)
+void	vec3_mul(t_vec3 *v, double i)
 {
-	return ((v.x * v.x) + (v.y * v.y) + (v.z * v.z));
+	v->x *= i;
+	v->y *= i;
+	v->z *= i;
 }
 
-double	vec3_len_sqrt(t_vec3 v)
+t_vec3	vec3_mul_new(const t_vec3 v1, double i)
 {
-	return(sqrt(vec3_len(v)));
+	t_vec3 cpy;
+
+	cpy = vec3_cpy(v1);
+	vec3_mul(&cpy, i);
+	return (cpy);
 }

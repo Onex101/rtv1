@@ -3,15 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: xeno <xeno@student.42.fr>                  +#+  +:+       +#+         #
+#    By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/22 13:45:05 by xrhoda            #+#    #+#              #
-#    Updated: 2018/08/17 14:52:41 by xeno             ###   ########.fr        #
+#    Updated: 2018/08/18 14:29:05 by xrhoda           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= vec_lib.a
-CFLAGS		= -Wall -Werror -Wextra -I includes -c
+NAME		= lib_vec.a
+CFLAGS		= -Wall -Werror -Wextra -I./includes -c
 FILES		=	vec3_add.c \
 				vec3_crs.c \
 				vec3_div.c \
@@ -20,12 +20,12 @@ FILES		=	vec3_add.c \
 				vec3_mul.c \
 				vec3_nor.c \
 				vec3_sub.c \
+				vec3_lib.c \
 				vec2_add.c \
 				vec2_div.c \
 				vec2_lib.c \
 				vec2_mul.c \
 				vec2_sub.c \
-				test.c \
 
 OBJ			= $(FILES:%.c=%.o)
 #FT_INC		= -I ../libft/includes
@@ -39,12 +39,12 @@ $(NAME): $(OBJ)
 $(OBJ): $(FILES)
 	gcc $(CFLAGS) $(FILES)
 
-$(FT_LIB):
-	make -C $(FT)
+# $(FT_LIB):
+# 	make -C $(FT)
 
 so: $(NAME)
 	gcc $(CFLAGS) -fpic $(FILES)
-	gcc -shared -o vec3_lib.so $(OBJ)
+	gcc -shared -o lib_vec.so $(OBJ)
 
 clean:
 	rm -f $(OBJ)

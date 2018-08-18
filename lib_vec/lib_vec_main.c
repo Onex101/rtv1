@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   lib_vec_main.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xeno <xeno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/17 14:16:52 by xeno              #+#    #+#             */
-/*   Updated: 2018/08/17 14:52:15 by xeno             ###   ########.fr       */
+/*   Created: 2018/08/18 13:52:59 by xrhoda            #+#    #+#             */
+/*   Updated: 2018/08/18 14:57:05 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vec_lib.h"
+#include "includes/lib_vec.h"
 #include <stdio.h>
 
 int main(void)
@@ -19,7 +19,9 @@ int main(void)
 	t_vec3 v2;
 
 	v1 = vec3_new(1, 2, 3);
-	v2 = vec3_cpy(v1);
-	printf("v1.x = [%f] | v2.x = [%f] | v1.y = [%f] | v2.y = [%f] | v1.z = [%f] | v1.z = [%f]\n", v1.x, v2.x, v1.y, v2.y, v1.z, v1.z);
+	vec3_init(&v2, 1, 2, 3);
+	vec3_mul(&v1, 2);
+
+	printf("v1.x = [%f] | v2.x = [%f] | v1.y = [%f] | v2.y = [%f] | v1.z = [%f] | v2.z = [%f]\n", v1.x, v2.x, v1.y, v2.y, v1.z, v2.z);
 	return (0);
 }

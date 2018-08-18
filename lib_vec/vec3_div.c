@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec2_sub.c                                         :+:      :+:    :+:   */
+/*   vec3_div.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xeno <xeno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/16 17:44:31 by xeno              #+#    #+#             */
-/*   Updated: 2018/08/17 14:30:14 by xeno             ###   ########.fr       */
+/*   Created: 2018/08/16 17:45:43 by xeno              #+#    #+#             */
+/*   Updated: 2018/08/18 14:39:44 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vec_lib.h"
+#include "lib_vec.h"
 
-void	vec2_sub(t_vec2 *v1, t_vec2 v2)
+void	vec3_div(t_vec3 *v, double i)
 {
-	v1->x -= v2.x;
-	v1->y -= v2.y;
+	if (v)
+	{
+		v->x /= i;
+		v->y /= i;
+		v->z /= i;
+	}
 }
 
-t_vec2	vec2_sub_new(t_vec2 v1, t_vec2 v2)
+t_vec3	vec3_div_new(const t_vec3 v1, double i)
 {
-	t_vec2 cpy;
+	t_vec3 cpy;
 
-	cpy = vec2_cpy(v1);
-	vec2_sub(&cpy, v2);
+	cpy = vec3_cpy(v1);
+	vec3_div(&cpy, i);
 	return (cpy);
 }

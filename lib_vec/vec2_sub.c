@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec2_mul.c                                         :+:      :+:    :+:   */
+/*   vec2_sub.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xeno <xeno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/16 17:45:11 by xeno              #+#    #+#             */
-/*   Updated: 2018/08/17 14:31:10 by xeno             ###   ########.fr       */
+/*   Created: 2018/08/16 17:44:31 by xeno              #+#    #+#             */
+/*   Updated: 2018/08/18 13:14:04 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vec_lib.h"
+#include "lib_vec.h"
 
-void	vec2_mul(t_vec2 *v, double i)
+void	vec2_sub(t_vec2 *v1, t_vec2 v2)
 {
-	v->x *= i;
-	v->y *= i;
+	v1->x -= v2.x;
+	v1->y -= v2.y;
 }
 
-t_vec2	vec2_add_new(t_vec2 v1, double i)
+t_vec2	vec2_sub_new(t_vec2 v1, t_vec2 v2)
 {
 	t_vec2 cpy;
 
 	cpy = vec2_cpy(v1);
-	vec2_mul(&cpy, i);
-	return (cpy);	
+	vec2_sub(&cpy, v2);
+	return (cpy);
 }

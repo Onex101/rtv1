@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec3_mul.c                                         :+:      :+:    :+:   */
+/*   vec2_lib.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xeno <xeno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/16 17:45:11 by xeno              #+#    #+#             */
-/*   Updated: 2018/08/17 14:24:32 by xeno             ###   ########.fr       */
+/*   Created: 2018/06/27 06:26:00 by xrhoda            #+#    #+#             */
+/*   Updated: 2018/08/18 13:14:07 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vec_lib.h"
+#include "lib_vec.h"
 
-void	vec3_mul(t_vec3 *v, double i)
+t_vec2	vec2_new(double x, double y)
 {
-	v->x *= i;
-	v->y *= i;
-	v->z *= i;
+	t_vec2 v;
+
+	vec2_init(&v, x, y);
+	return (v);
 }
 
-t_vec3	vec3_add_new(const t_vec3 v1, double i)
+void	vec2_init(t_vec2 *v, double x, double y)
 {
-	t_vec3 cpy;
+	v->x = x;
+	v->y = y;
+}
 
-	cpy = vec3_cpy(v1);
-	vec3_mul(&cpy, i);
+t_vec2	vec2_cpy(t_vec2 v)
+{
+	t_vec2 cpy;
+
+	cpy = vec2_new(v.x, v.y);
 	return (cpy);
 }

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec3_crs.c                                         :+:      :+:    :+:   */
+/*   vec3_dot.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xeno <xeno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/16 17:49:15 by xeno              #+#    #+#             */
-/*   Updated: 2018/08/17 14:46:34 by xeno             ###   ########.fr       */
+/*   Created: 2018/08/16 17:48:43 by xeno              #+#    #+#             */
+/*   Updated: 2018/08/18 13:13:58 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vec_lib.h"
+#include "lib_vec.h"
 
-t_vec3	vec3_crs(t_vec3 v1, t_vec3 v2)
+double	vec3_dot(t_vec3 v1, t_vec3 v2)
 {
-	return(vec3_new(v1.y * v2.z - v1.z * v2.y, v1.z * v2.x - v1.x * v2.z, v1.x * v2.y - v1.y * v2.x));
+	return(v1.x * v2.x + v1.y * v2.y + v1.z * v2.z);
 }

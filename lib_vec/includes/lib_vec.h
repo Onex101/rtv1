@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec_lib.h                                          :+:      :+:    :+:   */
+/*   lib_vec.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xeno <xeno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/16 17:50:37 by xeno              #+#    #+#             */
-/*   Updated: 2018/08/17 14:48:36 by xeno             ###   ########.fr       */
+/*   Updated: 2018/08/18 14:56:36 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VEC_LIB_H
-# define VEC_LIB_H
+#ifndef LIB_VEC_H
+# define LIB_VEC_H
 # include <math.h>
 # include <stdlib.h>
 # include <string.h>
@@ -31,6 +31,11 @@ void	vec2_sub(t_vec2 *v1, t_vec2 v2);
 void	vec2_mul(t_vec2 *v, double i);
 void	vec2_div(t_vec2 *v, double i);
 
+t_vec2	vec2_add_new(t_vec2 v1, t_vec2 v2);
+t_vec2	vec2_sub_new(t_vec2 v1, t_vec2 v2);
+t_vec2	vec2_mul_new(t_vec2 v, double i);
+t_vec2	vec2_div_new(t_vec2 v, double i);
+
 typedef	struct	s_vec3
 {
 	double		x;
@@ -47,6 +52,12 @@ void	vec3_sub(t_vec3 *v1, t_vec3 v2);
 void	vec3_mul(t_vec3 *v, double i);
 void	vec3_div(t_vec3 *v, double i);
 
+t_vec3	vec3_add_new(const t_vec3 v1, const t_vec3 v2);
+t_vec3	vec3_sub_new(const t_vec3 v1, const t_vec3 v2);
+t_vec3	vec3_mul_new(const t_vec3 v, double i);
+t_vec3	vec3_div_new(const t_vec3 v, double i);
+
+double	vec3_len_sqr(t_vec3 v);
 double	vec3_len(t_vec3 v);
 
 double	vec3_nor(t_vec3 *v);

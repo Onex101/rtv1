@@ -1,35 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec2_lib.c                                         :+:      :+:    :+:   */
+/*   vec3_lib.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xeno <xeno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/27 06:26:00 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/17 14:32:43 by xeno             ###   ########.fr       */
+/*   Updated: 2018/08/18 13:13:55 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vec_lib.h"
+#include "lib_vec.h"
 
-t_vec2	vec2_new(double x, double y)
+t_vec3	vec3_new(double x, double y, double z)
 {
-	t_vec2 v;
+	t_vec3 v;
 
-	vec2_init(&v, x, y);
+	vec3_init(&v, x, y, z);
 	return (v);
 }
 
-void	vec2_init(t_vec2 *v, double x, double y)
+void	vec3_init(t_vec3 *v, double x, double y, double z)
 {
 	v->x = x;
 	v->y = y;
+	v->z = z;
 }
 
-t_vec2	vec2_cpy(t_vec2 v)
+t_vec3	vec3_cpy(const t_vec3 v)
 {
-	t_vec2 cpy;
-
-	cpy = vec2_new(v.x, v.y);
-	return (cpy);
+	return (vec3_new(v.x, v.y, v.z));
 }
