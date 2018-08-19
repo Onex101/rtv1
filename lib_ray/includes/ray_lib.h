@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ray_lib.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: xeno <xeno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/17 12:08:36 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/18 16:55:31 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/08/19 11:25:45 by xeno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RAY_LIB_H
-# define RAY_LIB_H
+#ifndef LIB_RAY_H
+# define LIB_RAY_H
 # include <math.h>
 # include <string.h>
-# include "vec_lib.h"
+# include "lib_vec.h"
 
 # define RAY_T_MIN 0.0001f
 # define RAY_T_MAX 1.0e30f
