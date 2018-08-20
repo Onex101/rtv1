@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lib_ray.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: xeno <xeno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/17 12:08:36 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/20 10:20:33 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/08/20 15:39:04 by xeno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void	inter_init(t_inter *i, t_ray r, t_shape s, double t);
 t_inter	inter_new(t_ray r, t_shape s, double t);
 t_inter inter_cpy(t_inter i);
 int		inter_check(t_inter *i);
+t_vec2	inter_pos(t_inter i, double t);
 
 typedef struct	s_shape
 {
