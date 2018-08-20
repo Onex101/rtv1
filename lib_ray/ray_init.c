@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ray_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xeno <xeno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/19 11:26:05 by xeno              #+#    #+#             */
-/*   Updated: 2018/08/19 11:27:54 by xeno             ###   ########.fr       */
+/*   Updated: 2018/08/20 07:59:58 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_ray.h"
 
-void	ray_init(t_ray *r, t_vec2 org, t_vec3 dis, double max)
+void	ray_init(t_ray *r, t_vec2 org, t_vec3 dir, double max)
 {
 	r->org = org;
-	r->dis = dis;
+	r->dir = dir;
 	r->max = max;
 }

@@ -1,18 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray_cpy.c                                          :+:      :+:    :+:   */
+/*   shape_inter.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/20 07:50:29 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/20 08:00:00 by xrhoda           ###   ########.fr       */
+/*   Created: 2018/08/20 13:08:37 by xrhoda            #+#    #+#             */
+/*   Updated: 2018/08/20 13:18:03 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_ray.h"
+#include "lib_shape.h"
 
-t_ray	ray_cpy(t_ray r)
+int	shape_inter(t_set s, t_inter i)
 {
-	return(ray_new(r.org, r.dir, r.max));
+	int check;
+	int i;
+	int total;
+	t_shape cur_shp;
+
+	total = vector_total(s.shapes);
+	check = 0;
+	i = 0;
+	while (i < total)
+	{
+		cur_shp = vector_get(s.shapes, i);
+		if (inter(cur_shp.inter, i))
+			check = 1;
+		i++;
+	}
+	return (check);
 }

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray_cpy.c                                          :+:      :+:    :+:   */
+/*   vector_total.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: xrhoda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/20 07:50:29 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/20 08:00:00 by xrhoda           ###   ########.fr       */
+/*   Created: 2018/07/17 08:35:19 by xrhoda            #+#    #+#             */
+/*   Updated: 2018/07/17 08:35:20 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_ray.h"
+#include "vector.h"
 
-t_ray	ray_cpy(t_ray r)
+int	vector_total(t_vector *v)
 {
-	return(ray_new(r.org, r.dir, r.max));
+	return (v->total);
 }

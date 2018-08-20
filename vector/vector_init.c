@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray_cpy.c                                          :+:      :+:    :+:   */
+/*   vector_init.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: xrhoda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/20 07:50:29 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/20 08:00:00 by xrhoda           ###   ########.fr       */
+/*   Created: 2018/07/17 08:34:51 by xrhoda            #+#    #+#             */
+/*   Updated: 2018/07/17 08:34:53 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_ray.h"
+#include "vector.h"
 
-t_ray	ray_cpy(t_ray r)
+void	vector_init(t_vector *v)
 {
-	return(ray_new(r.org, r.dir, r.max));
+	v->capacity = 1;
+	v->total = 0;
+	v->items = malloc(sizeof(void *) * v->capacity);
 }

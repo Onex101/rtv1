@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray_cpy.c                                          :+:      :+:    :+:   */
+/*   vector_add.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: xrhoda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/20 07:50:29 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/20 08:00:00 by xrhoda           ###   ########.fr       */
+/*   Created: 2018/07/17 08:34:01 by xrhoda            #+#    #+#             */
+/*   Updated: 2018/07/17 08:34:07 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_ray.h"
+#include "vector.h"
 
-t_ray	ray_cpy(t_ray r)
+void	vector_add(t_vector *v, void *item)
 {
-	return(ray_new(r.org, r.dir, r.max));
+	if (v->capacity == v->total)
+		vector_resize(v, v->capacity * 2);
+	v->items[(int)(v->total)++] = item;
 }

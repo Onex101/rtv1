@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray_cpy.c                                          :+:      :+:    :+:   */
+/*   vector_free.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: xrhoda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/20 07:50:29 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/20 08:00:00 by xrhoda           ###   ########.fr       */
+/*   Created: 2018/07/17 08:34:37 by xrhoda            #+#    #+#             */
+/*   Updated: 2018/07/17 08:34:38 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_ray.h"
+#include "vector.h"
 
-t_ray	ray_cpy(t_ray r)
+void	vector_free(t_vector *v)
 {
-	return(ray_new(r.org, r.dir, r.max));
+	free(v->items);
 }

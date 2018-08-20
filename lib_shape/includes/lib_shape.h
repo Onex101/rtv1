@@ -1,18 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray_cpy.c                                          :+:      :+:    :+:   */
+/*   lib_shape.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/20 07:50:29 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/20 08:00:00 by xrhoda           ###   ########.fr       */
+/*   Created: 2018/08/20 10:58:46 by xrhoda            #+#    #+#             */
+/*   Updated: 2018/08/20 11:07:40 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_ray.h"
+#ifndef LIB_SHAPE_H
+# define LIB_SHAPE_H
 
-t_ray	ray_cpy(t_ray r)
+#include "lib_ray.h"
+#include "vector.h"
+
+typedef struct	s_set
 {
-	return(ray_new(r.org, r.dir, r.max));
-}
+
+}				t_set;
+
+#endif

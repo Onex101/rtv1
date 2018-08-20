@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray_lib.h                                          :+:      :+:    :+:   */
+/*   lib_ray.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xeno <xeno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/17 12:08:36 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/19 11:25:45 by xeno             ###   ########.fr       */
+/*   Updated: 2018/08/20 10:20:33 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,32 @@
 
 typedef	struct	s_ray
 {
-	t_vec2		origin;
-	t_vec3		direction;
+	t_vec2		org;
+	t_vec3		dir;
 	double		max;
 }				t_ray;
 
-void	ray_init(t_ray *ray,  t_vec2 org, t_vec3 dor, double max);
-t_ray	ray_new(t_vec2 org, t_vec3 dor, double max);
-t_ray	ray_cpy(t_ray *v);
-t_vec2	calc_pnt(double t);
+void	ray_init(t_ray *ray,  t_vec2 org, t_vec3 dir, double max);
+t_ray	ray_new(t_vec2 org, t_vec3 dir, double max);
+t_ray	ray_cpy(t_ray v);
+t_vec2	calc_pnt(t_ray r, double t);
 
+typedef struct	s_inter
+{
+	t_ray		ray;
+	t_shape		shape;
+	double		t;
+}				t_inter;
+
+void	inter_init(t_inter *i, t_ray r, t_shape s, double t);
+t_inter	inter_new(t_ray r, t_shape s, double t);
+t_inter inter_cpy(t_inter i);
+int		inter_check(t_inter *i);
+
+typedef struct	s_shape
+{
+
+}				t_shape;
 // void	vec2_add(t_vec2 *v1, t_vec2 *v2);
 // void	vec2_sub(t_vec2 *v1, t_vec2 *v2);
 // void	vec2_mul(t_vec2 *v, double i);

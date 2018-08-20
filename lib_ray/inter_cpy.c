@@ -1,18 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray_cpy.c                                          :+:      :+:    :+:   */
+/*   inter_cpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/20 07:50:29 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/20 08:00:00 by xrhoda           ###   ########.fr       */
+/*   Created: 2018/08/20 09:57:23 by xrhoda            #+#    #+#             */
+/*   Updated: 2018/08/20 10:20:40 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_ray.h"
 
-t_ray	ray_cpy(t_ray r)
+t_inter	inter_cpy(t_inter i);
 {
-	return(ray_new(r.org, r.dir, r.max));
+	t_inter i;
+
+	i = inter_new(i.ray, i.shape, i.t);
+	return(i);
 }
