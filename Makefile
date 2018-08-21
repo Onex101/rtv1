@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+         #
+#    By: xeno <xeno@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/08/21 13:06:01 by xrhoda            #+#    #+#              #
-#    Updated: 2018/08/21 13:50:16 by xrhoda           ###   ########.fr        #
+#    Updated: 2018/08/21 16:03:40 by xeno             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,15 +21,16 @@ FILES = 	main.c \
 
 FILES1	= $(FILES)
 SRC_DIR = ./srcs
-SRCS	= $(addprefix, $(SRC_DIR), $(FILES));
-OBJ2	= $(FILES:%.c=./obj/%.o)
+SRCS	= $(addprefix %, $(SRC_DIR)%, $(FILES));
+OBJ2	= $($(SRCS):%.c=./obj/%.o)
 O_SWAP	= $(patsubst %, ./vector/%, $(OBJ))
 
 CC		= gcc
 CFLAGS	= -Wall -Wextra -Werror -g
 
 MLX_INC	= -I /usr/X11/include -g
-MLX_LNK	= -L /usr/X11/lib -l mlx -framework OpenGL -framework AppKit
+#MLX_LNK	= -L /usr/X11/lib -l mlx -framework OpenGL -framework AppKit
+MLX_LNK = -Wl,--no-as-needed -I /usr/local/include  -lX11 -lXext -L. /usr/local/lib/libmlx_Linux.a
 
 # FT		= ./libft/
 # FT_LIB	= $(addprefix $(FT),libft.a)
@@ -41,7 +42,7 @@ MLX_LNK	= -L /usr/X11/lib -l mlx -framework OpenGL -framework AppKit
 # VECT_INC = -I ./vector/includes
 # VECT_LINK = -L. ./vector/vector.a
 
-RTV1_INC = -I ../includes
+RTV1_INC = -I ./includes
 
 INCLUDES = $(RTV1_INC)
 

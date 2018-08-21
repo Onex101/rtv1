@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vec3_lib.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: xeno <xeno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/27 06:26:00 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/18 13:13:55 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/08/21 17:58:02 by xeno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,11 @@ void	vec3_init(t_vec3 *v, double x, double y, double z)
 	v->x = x;
 	v->y = y;
 	v->z = z;
+}
+
+t_vec3	vec3(void)
+{
+	return((t_vec3){0, 0, 0});
 }
 
 t_vec3	vec3_cpy(const t_vec3 v)
