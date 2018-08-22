@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: xeno <xeno@student.42.fr>                  +#+  +:+       +#+         #
+#    By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/08/21 13:06:01 by xrhoda            #+#    #+#              #
-#    Updated: 2018/08/21 16:03:40 by xeno             ###   ########.fr        #
+#    Updated: 2018/08/22 07:49:16 by xrhoda           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,15 +22,15 @@ FILES = 	main.c \
 FILES1	= $(FILES)
 SRC_DIR = ./srcs
 SRCS	= $(addprefix %, $(SRC_DIR)%, $(FILES));
-OBJ2	= $($(SRCS):%.c=./obj/%.o)
+OBJ		= $($(SRCS):%.c=./obj/%.o)
 O_SWAP	= $(patsubst %, ./vector/%, $(OBJ))
 
 CC		= gcc
 CFLAGS	= -Wall -Wextra -Werror -g
 
 MLX_INC	= -I /usr/X11/include -g
-#MLX_LNK	= -L /usr/X11/lib -l mlx -framework OpenGL -framework AppKit
-MLX_LNK = -Wl,--no-as-needed -I /usr/local/include  -lX11 -lXext -L. /usr/local/lib/libmlx_Linux.a
+MLX_LNK	= -L /usr/X11/lib -l mlx -framework OpenGL -framework AppKit
+#MLX_LNK = -Wl,--no-as-needed -I /usr/local/include  -lX11 -lXext -L. /usr/local/lib/libmlx_Linux.a
 
 # FT		= ./libft/
 # FT_LIB	= $(addprefix $(FT),libft.a)
@@ -44,17 +44,17 @@ MLX_LNK = -Wl,--no-as-needed -I /usr/local/include  -lX11 -lXext -L. /usr/local/
 
 RTV1_INC = -I ./includes
 
-INCLUDES = $(RTV1_INC)
+INCLUDES = $(RTV1_INC) $(MLX_INC)
 
-OBJDIR	= ./obj/
+OBJ_DIR	= ./obj/
 
 # all: obj $(OBJ2) $(FT_LIB) $(VECT_LIB) $(NAME)
-all: obj $(OBJ2) $(NAME)
+all: obj $(OBJ) $(NAME)
 
 obj:
-	mkdir -p $(OBJDIR)
+	mkdir -p $(OBJ_DIR)
 
-$(OBJDIR)%.o: %.c
+$(OBJ_DIR)%.o: %.c
 	$(CC) $(CFLAGS) $(INCLUDES) -o $@ -c $<
 
 # $(FT_LIB):
@@ -64,7 +64,7 @@ $(OBJDIR)%.o: %.c
 # 	make -C $(VECT)
 
 $(NAME):
-	$(CC) $(OBJ2) $(INCLUDES) $(MLX_LNK) -lm -o $(NAME)
+	$(CC) $(OBJ) $(INCLUDES) $(MLX_LNK) -lm -o $(NAME)
 
 clean:
 	rm -rf $(OBJDIR)

@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/16 17:50:37 by xeno              #+#    #+#             */
-/*   Updated: 2018/08/18 14:56:36 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/08/22 18:09:42 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef	struct	s_vec3
 void	vec3_init(t_vec3 *v, double x, double y, double z);
 t_vec3	vec3_new(double x, double y, double z);
 t_vec3	vec3_cpy(t_vec3 v);
+t_vec3	vec3(void);
 
 void	vec3_add(t_vec3 *v1, t_vec3 v2);
 void	vec3_sub(t_vec3 *v1, t_vec3 v2);

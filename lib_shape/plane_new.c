@@ -1,38 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec3_lib.c                                         :+:      :+:    :+:   */
+/*   plane_new.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/27 06:26:00 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/22 18:08:29 by xrhoda           ###   ########.fr       */
+/*   Created: 2018/08/22 08:01:27 by xrhoda            #+#    #+#             */
+/*   Updated: 2018/08/22 13:17:27 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_vec.h"
+#include "lib_shape.h"
 
-t_vec3	vec3_new(double x, double y, double z)
+t_shape		plane_new(t_vec3 pos, t_vec3 norm)
 {
-	t_vec3 v;
+	t_shape plane;
 
-	vec3_init(&v, x, y, z);
-	return (v);
-}
+	plane.inter = plane_inter; 
+	plane.pos = pos;
+	plane.radius = 0;
+	plane.norm = norm;
+	plane.ray = plane_ray;
 
-void	vec3_init(t_vec3 *v, double x, double y, double z)
-{
-	v->x = x;
-	v->y = y;
-	v->z = z;
-}
-
-t_vec3	vec3(void)
-{
-	return((t_vec3){0, 0, 0});
-}
-
-t_vec3	vec3_cpy(const t_vec3 v)
-{
-	return (vec3_new(v.x, v.y, v.z));
+	return(plane);
 }
