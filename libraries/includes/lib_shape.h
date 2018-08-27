@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/20 10:58:46 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/22 17:23:45 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/08/27 18:47:32 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct	s_shape
 
 typedef struct	s_set
 {
-	t_vector	*shapes;
+	t_vector	*shape;
 }				t_set;
 
 t_shape		plane_new(t_vec3 pos, t_vec3 norm);
