@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/21 09:21:31 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/21 12:56:31 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/08/27 15:44:43 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,36 @@
 # include <stdlib.h>
 # include <mlx.h>
 # include <math.h>
+# include "lib_ray.h"
 
 # define WIDTH 1280
 # define HEIGHT 1024
+# define RATIO WIDTH / HEIGHT
 
 typedef struct	s_img
 {
 	void		*add;
 	int			*buf;
+	int			w;
+	int			h;
 }				t_img;
+
+typedef struct	s_cam
+{
+	t_vec3		org;
+	t_vec3		forward;
+	t_vec3		up;
+	t_vec3		right;
+	double		h;
+	double		w;
+}				t_cam;
 
 typedef struct	s_param
 {
 	void		*mlx;
 	void		*win;
 	t_img		*img;
+	t_vector	*set;
 }				t_param;
 
 #endif
