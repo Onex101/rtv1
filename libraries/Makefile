@@ -6,12 +6,13 @@
 #    By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/22 13:45:05 by xrhoda            #+#    #+#              #
-#    Updated: 2018/08/27 18:44:32 by xrhoda           ###   ########.fr        #
+#    Updated: 2018/08/28 13:30:01 by xrhoda           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= lib_mstr.a
-CFLAGS		= -Wall -Werror -Wextra -I./includes -c
+CFLAGS		= -Wall -Werror -Wextra -c
+INCLUDES	= -I includes
 
 LIB_MAT_SRCS =	matrix_lib.c \
 				matrix_util.c
@@ -51,25 +52,29 @@ LIB_VEC_SRCS =	vec3_add.c \
 				vec2_sub.c
 LIB_VEC = $(addprefix lib_vec/, $(LIB_VEC_SRCS))
 
-OBJ_LIST = $(patsubst %.c, %.o, $(LIB_VEC) \
-								$(LIB_SHAPE) \
-								$(LIB_RAY) \
-								$(LIB_MAT)
+SRCS =	$(LIB_VEC) \
+		$(LIB_SHAPE) \
+		$(LIB_RAY) \
+		$(LIB_MAT)
 
-OBJ_DIR = obj
-OBJ = $(addprefix $(OBJ_DIR)/, $(OBJ_LIST))
+OBJ_LIST = $(patsubst %.c, %.o, $(SRCS))
 
-FT_INC		= -I ../libft/includes
-FT_LIB		= -L. ../libft/libft.a
+
+OBJ_DIR = ./obj/
+OBJ = $(addprefix $(OBJ_DIR), $(OBJ_LIST))
+
+FT_INC	= -I ../libft/includes
+FT_LIB	= -L. ../libft/libft.a
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
 	ar rcs $(NAME) $(OBJ)
-	ranlib
+	ranlib $(NAME)
 
-$(OBJ): $(FILES)
-	gcc $(CFLAGS) $(FILES)
+$(OBJ_DIR)%.o: %.c
+	mkdir -p $(OBJ_DIR)
+	gcc $(CFLAGS) $(INCLDUES) $(FILES)
 
 $(FT_LIB):
  	make -C $(FT)
