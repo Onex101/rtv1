@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+         #
+#    By: xeno <xeno@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/22 13:45:05 by xrhoda            #+#    #+#              #
-#    Updated: 2018/08/27 18:44:32 by xrhoda           ###   ########.fr        #
+#    Updated: 2018/08/28 15:53:49 by xeno             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,7 @@ LIB_VEC_SRCS =	vec3_add.c \
 				vec2_lib.c \
 				vec2_mul.c \
 				vec2_sub.c
-LIB_VEC = $(addprefix lib_vec/, $(LIB_VEC_SRCS))
+LIB_VEC = $(addprefix lib_vec/, $(LIB_VEC_SRCS))adverse credit
 
 OBJ_LIST = $(patsubst %.c, %.o, $(LIB_VEC) \
 								$(LIB_SHAPE) \
@@ -73,10 +73,6 @@ $(OBJ): $(FILES)
 
 $(FT_LIB):
  	make -C $(FT)
-
-so: $(NAME)
-	gcc $(CFLAGS) -fpic $(FILES)
-	gcc -shared -o lib_vec.so $(OBJ)
 
 clean:
 	rm -f $(OBJ)

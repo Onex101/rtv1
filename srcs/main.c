@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: xeno <xeno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/21 09:19:59 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/27 16:35:22 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/08/28 17:53:42 by xeno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,24 +20,41 @@ int		init_param(t_param *p)
 		return (-1);	
 	if (!(p->img = new_image(p->mlx, WIDTH, HEIGHT)))
 		return (-1);
-	vector_init(p->set);
+	if (!(p->cam = new_cam((t_vec3){-5, 1, 0}, (t_vec3){0, 1, 0}, vec3(), 3.147 / 4, WIDTH / HEIGHT)))
+		return (-1);
+	if (!(p->set))
+		vector_init(p->set);
 }
 
-int render()
+int ray_trace(t_param *p)
 {
-	int i;
-	int j;
+	int		i;
+	int		j;
+	t_vec3	scrn_cor;
+	t_ray	ray;
+	t_inter	inter;
 
-	j = 0;
-	while(j < HEIGHT)
+	j = -1;
+	while(++j < p->img->h)
 	{
-		i = 0 ;
-		while (i < WIDTH)
+		i = -1 ;
+		while (++i < p->img->w)
 		{
-			
-			i++;
+			scrn_cor = (t_vec3){(2 * j / p->img->w) - 1, (-2 * i / p->img->h)  +1, 0};
+			ray = make_ray(p->cam, scrn_cor);
+/*
+**	Create a ray
+*/
+			inter_init(&inter, ray);
+/*
+**	Inititalizse intercept
+**	Check if intercept intercects with any of the shapes
+*/
+			if(shape_inter(p->set, inter))
+				p->img->buf[p->img->w * j + i] = 1;
+			else
+				p->img->buf[p->img->w * j + i] = 0;
 		}
-		j++;
 	}
 	return (0);
 }
@@ -45,12 +62,21 @@ int render()
 int	main(int argc, char **argv)
 {
 	t_param *p;
+	t_shape sphere;
+	t_shape plane;
 
-	if (init_param(p) == -1)
+	if (init_param(p) != -1)
+	{
+		sphere = sphere_new((t_vec3){0, 1, 0}, 1);
+		plane = plane_new(vec3(), vec3());
+		vector_add(p->set, &sphere);
+		vector_add(p->set, &plane);
+		
+	}
+	else
 	{
 		ft_putendl("Error: Failed to Initialize Parameters");
-		exit_pro(p);
+		exit_program(p);
 	}
-	mlx_loop(p->mlx);
 	return (0);
 }

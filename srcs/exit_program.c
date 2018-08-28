@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit_program.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: xeno <xeno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/27 13:50:53 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/27 16:33:18 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/08/28 16:00:23 by xeno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,7 @@ void	exit_program(t_param *p)
 		free(p->mlx);
 	if (p->set)
 		vector_delete(p->set, 0);
+	if (p->cam)
+		free(p->cam);
 	exit(0);
 }
