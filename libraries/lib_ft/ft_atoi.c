@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "lib_ft.h"
 #include <stdio.h>
 
 static	long	int	ft_getnum(const char *str, int sign)

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "lib_ft.h"
 
 char	**ft_poparr(char **r, char const *s, char c, int size)
 {

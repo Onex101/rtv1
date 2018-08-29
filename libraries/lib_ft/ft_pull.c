@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "lib_ft.h"
 
 char	*ft_pull(char const *s, char c)
 {

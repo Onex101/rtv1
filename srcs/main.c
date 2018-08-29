@@ -44,7 +44,7 @@ int ray_trace(t_param *p)
 			ray = make_ray(p->cam, scrn_cor);
 /*
 **	Create a ray
-*/
+* /
 			inter_init(&inter, ray);
 /*
 **	Inititalizse intercept

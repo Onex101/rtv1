@@ -22,8 +22,7 @@ FILES		=	vector_add.c \
 				vector_total.c \
 
 OBJ			= $(FILES:%.c=%.o)
-FT_INC		= -I ../libft/includes
-FT_LIB		= -L. ../libft/libft.a
+
 
 all: $(NAME)
 
