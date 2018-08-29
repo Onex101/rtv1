@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inter_check.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xeno <xeno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/20 09:59:29 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/21 19:15:15 by xeno             ###   ########.fr       */
+/*   Updated: 2018/08/29 17:57:24 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		inter_check(t_inter *i)
 {
-	if ((t_shape)(i->shape) != NULL)
+	if ((t_shape *)(i->shape) != NULL)
 		return(1);
 	return(0);
 }

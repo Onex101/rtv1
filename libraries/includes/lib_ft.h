@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   lib_ft.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xrhoda <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/17 08:25:31 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/06/15 07:47:03 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/08/29 18:31:59 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#ifndef LIB_FT_H
+# define LIB_FT_H
 # include <unistd.h>
 # include <stdlib.h>
 # include <string.h>

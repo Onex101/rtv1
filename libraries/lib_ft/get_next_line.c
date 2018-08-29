@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xrhoda <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/12 13:11:58 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/06/12 13:12:02 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/08/29 18:31:30 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fcntl.h>
 #include <unistd.h>
-#include "libft.h"
+#include "lib_ft.h"
 #include <stdio.h>
 
 static	t_list	*new_file(t_list **file_list, int fd)

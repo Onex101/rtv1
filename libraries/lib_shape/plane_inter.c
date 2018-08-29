@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/22 08:06:56 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/27 06:26:55 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/08/29 09:20:07 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int		plane_inter(t_shape plane, t_inter i)
 	if (t <= RAY_T_MIN || t >= i.t)
 		return (0);
 	i.t = t;
-	i.shape = plane;
+	i.shape = &plane;
 	return (1);
 }
 

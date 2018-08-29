@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   matrix_util.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xrhoda <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/17 09:23:52 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/07/17 09:23:54 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/08/29 18:04:24 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "lib_mat.h"
 
 void	matrix_cpy(t_mat *source, t_mat *dest)
 {

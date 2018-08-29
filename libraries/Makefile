@@ -1,25 +1,81 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: xeno <xeno@student.42.fr>                  +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2018/05/22 13:45:05 by xrhoda            #+#    #+#              #
-<<<<<<< HEAD
-#    Updated: 2018/08/28 13:30:01 by xrhoda           ###   ########.fr        #
-=======
-#    Updated: 2018/08/28 15:53:49 by xeno             ###   ########.fr        #
->>>>>>> b87652d770bbc9bfd669248adaddfba4a4f58568
-#                                                                              #
-# **************************************************************************** #
 
 NAME		= lib_mstr.a
-CFLAGS		= -Wall -Werror -Wextra -c
-INCLUDES	= -I includes
+CFLAGS		= -Wall -Werror -Wextra
+INC			= -I includes
+
+LIB_FT_SRCS = ft_memset.c \
+				ft_bzero.c	\
+				ft_memcpy.c \
+				ft_memccpy.c \
+				ft_memmove.c \
+				ft_memchr.c \
+				ft_memcmp.c \
+				ft_strlen.c \
+				ft_atoi.c \
+				ft_isalnum.c \
+				ft_isalpha.c \
+				ft_isascii.c \
+				ft_isdigit.c \
+				ft_isprint.c \
+				ft_strcat.c \
+				ft_strchr.c \
+				ft_strcmp.c \
+				ft_strcpy.c \
+				ft_strdup.c \
+				ft_strlcat.c \
+				ft_strncat.c \
+				ft_strncmp.c \
+				ft_strncpy.c \
+				ft_strnstr.c \
+				ft_strrchr.c \
+				ft_strstr.c \
+				ft_tolower.c \
+				ft_toupper.c \
+				ft_memalloc.c \
+				ft_memdel.c \
+				ft_strnew.c \
+				ft_strdel.c \
+				ft_strclr.c \
+				ft_putchar.c \
+				ft_putstr.c \
+				ft_striter.c \
+				ft_striteri.c \
+				ft_strmap.c \
+				ft_strmapi.c \
+				ft_strequ.c \
+				ft_strnequ.c \
+				ft_strsub.c \
+				ft_strjoin.c \
+				ft_strtrim.c \
+				ft_itoa.c \
+				ft_putendl.c \
+				ft_putnbr.c \
+				ft_putchar_fd.c \
+				ft_putstr_fd.c \
+				ft_putendl_fd.c \
+				ft_putnbr_fd.c \
+				ft_strsplit.c \
+				ft_lstnew.c \
+				ft_lstdelone.c \
+				ft_lstdel.c \
+				ft_lstadd.c \
+				ft_lstiter.c \
+				ft_lstmap.c \
+				ft_strctrim.c \
+				ft_strcount.c \
+				ft_zero.c \
+				ft_intlen.c \
+				ft_poparr.c \
+				ft_pull.c \
+				ft_strclen.c \
+				ft_strcdup.c \
+				ft_chrcount.c \
+				get_next_line.c \
+LIB_FT = $(addprefix lib_ft/, $(LIB_FT_SRCS)) 
 
 LIB_MAT_SRCS =	matrix_lib.c \
-				matrix_util.c
+				matrix_util.c 
+
 LIB_MAT = $(addprefix lib_mat/, $(LIB_MAT_SRCS)) 
 
 LIB_RAY_SRCS =	calc_pnt.c \
@@ -30,7 +86,8 @@ LIB_RAY_SRCS =	calc_pnt.c \
 				inter_pos.c \
 				ray_cpy.c \
 				ray_init.c \
-				ray_new.c
+				ray_new.c 
+
 LIB_RAY = $(addprefix lib_ray/, $(LIB_RAY_SRCS))
 
 LIB_SHAPE_SRCS =	plane_inter.c \
@@ -38,6 +95,7 @@ LIB_SHAPE_SRCS =	plane_inter.c \
 					shapes_inter.c \
 					sphere_inter.c \
 					sphere_new.c
+
 LIB_SHAPE = $(addprefix lib_shape/, $(LIB_SHAPE_SRCS))
 
 LIB_VEC_SRCS =	vec3_add.c \
@@ -54,39 +112,53 @@ LIB_VEC_SRCS =	vec3_add.c \
 				vec2_lib.c \
 				vec2_mul.c \
 				vec2_sub.c
-LIB_VEC = $(addprefix lib_vec/, $(LIB_VEC_SRCS))adverse credit
+
+LIB_VEC = $(addprefix lib_vec/, $(LIB_VEC_SRCS))
+
+LIB_VECLST_SRCS =	vector_add.c \
+					vector_delete.c \
+					vector_free.c \
+					vector_get.c \
+					vector_init.c \
+					vector_resize.c \
+					vector_set.c \
+					vector_total.c
+LIB_VECLST = $(addprefix lib_veclst/, $(LIB_VECLST_SRCS)) 
 
 SRCS =	$(LIB_VEC) \
 		$(LIB_SHAPE) \
 		$(LIB_RAY) \
-		$(LIB_MAT)
+		$(LIB_MAT) \
+		$(LIB_VECLST) \
+		$(LIB_FT)
 
 OBJ_LIST = $(patsubst %.c, %.o, $(SRCS))
 
+OBJ_DIR = obj
+OBJ = $(addprefix $(OBJ_DIR)/, $(OBJ_LIST))
+DEP := $(OBJ:%.o=%.d)
 
-OBJ_DIR = ./obj/
-OBJ = $(addprefix $(OBJ_DIR), $(OBJ_LIST))
+# debug:
+	# @echo $(DEP)
 
-FT_INC	= -I ../libft/includes
-FT_LIB	= -L. ../libft/libft.a
+all : $(NAME)
+	@echo $(NAME)
 
-all: $(NAME)
+$(NAME) : $(OBJ)
+	ar rc $@ $?
+	ranlib $@
 
-$(NAME): $(OBJ)
-	ar rcs $(NAME) $(OBJ)
-	ranlib $(NAME)
+$(OBJ_DIR)/%.o : %.c
+	@mkdir -p $(OBJ_DIR)
+	@mkdir -p $(addprefix $(OBJ_DIR)/, $(dir $<))
+	gcc $(CFLAGS) $(INC) $(FT_INC) -MMD -c $< -o $@
 
-$(OBJ_DIR)%.o: %.c
-	mkdir -p $(OBJ_DIR)
-	gcc $(CFLAGS) $(INCLDUES) $(FILES)
+-include $(DEP)
 
-$(FT_LIB):
- 	make -C $(FT)
+clean :
+	rm -rf $(OBJ_DIR)
 
-clean:
-	rm -f $(OBJ)
-
-fclean: clean
+fclean : clean
 	rm -f $(NAME)
 
-re: fclean all
+re : fclean all

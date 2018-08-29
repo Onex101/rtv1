@@ -6,11 +6,11 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/22 13:12:06 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/27 18:47:08 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/08/29 17:55:33 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_shapes.h"
+#include "lib_shape.h"
 
 int sphere_inter(t_shape s, t_inter i)
 {
@@ -24,7 +24,7 @@ int sphere_inter(t_shape s, t_inter i)
 /*
 **	Change ray location to be at origin, makes math easier
 */
-	vec3_sub(l_ray, s.pos)
+	vec3_sub(&l_ray.org, s.pos);
 	ce.x = vec3_len_sqr(l_ray.dir);
 	ce.y = 2 * vec3_dot(l_ray.dir, l_ray.org);
 	ce.z = vec3_len_sqr(l_ray.org) - (s.radius * s.radius);
@@ -39,19 +39,23 @@ int sphere_inter(t_shape s, t_inter i)
 	if (t1 < RAY_T_MIN && t1 < i.t)
 		i.t = t1;
 	else if (t2 > RAY_T_MAX && t2 < i.t)
-		i.r = t2
+		i.t = t2;
 	else
 		return (0);
-	i.shape = s;
+	i.shape = &s;
 	return (1);
 }
 
 int sphere_ray(t_shape s, t_ray r)
 {
 	t_ray l_ray;
+	t_vec3 ce;
+	double dis;
+	double t1;
+	double t2;
 
 	l_ray = ray_cpy(r);
-	vec3_sub(l_ray.org, s.pos);
+	vec3_sub(&l_ray.org, s.pos);
 	ce.x = vec3_len_sqr(l_ray.dir);
 	ce.y = 2 * vec3_dot(l_ray.dir, l_ray.org);
 	ce.z = vec3_len_sqr(l_ray.org) - (s.radius * s.radius);

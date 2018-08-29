@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shapes_inter.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xeno <xeno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/20 13:08:37 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/28 17:45:39 by xeno             ###   ########.fr       */
+/*   Updated: 2018/08/29 17:51:24 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	shape_inter(t_vector *s, t_inter i)
 	while (j < total)
 	{
 		cur_shp = (t_shape *)vector_get(s, j);
-		if (cur_shp->inter(cur_shp, i))
+		if (cur_shp->inter(*cur_shp, i))
 			check = 1;
 		j++;
 	}
@@ -43,7 +43,7 @@ int shape_ray_inter(t_vector *s, t_ray ray)
 	while (j < total)
 	{
 		cur_shp = (t_shape *)vector_get(s, j);
-		if (cur_shp->ray(cur_shp, ray))
+		if (cur_shp->ray(*cur_shp, ray))
 			return (1);
 		j++;
 	}

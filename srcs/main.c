@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xeno <xeno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/21 09:19:59 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/28 17:53:42 by xeno             ###   ########.fr       */
+/*   Updated: 2018/08/29 09:38:51 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int ray_trace(t_param *p)
 		i = -1 ;
 		while (++i < p->img->w)
 		{
-			scrn_cor = (t_vec3){(2 * j / p->img->w) - 1, (-2 * i / p->img->h)  +1, 0};
+			scrn_cor = (t_vec3){(2 * j / p->img->w) - 1, (-2 * i / p->img->h) + 1, 0};
 			ray = make_ray(p->cam, scrn_cor);
 /*
 **	Create a ray
@@ -71,7 +71,6 @@ int	main(int argc, char **argv)
 		plane = plane_new(vec3(), vec3());
 		vector_add(p->set, &sphere);
 		vector_add(p->set, &plane);
-		
 	}
 	else
 	{

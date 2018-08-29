@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   matrix_lib.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xeno <xeno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/25 06:10:31 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/16 18:12:16 by xeno             ###   ########.fr       */
+/*   Updated: 2018/08/29 18:04:39 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mat_lib.h"
-#include "vec3_lib.h"
+#include "lib_mat.h"
+#include "lib_vec.h"
 
 t_mat	*matrix_translate(t_vec3 *trans)
 {
