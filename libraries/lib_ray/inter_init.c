@@ -6,17 +6,17 @@
 /*   By: xeno <xeno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/20 09:52:04 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/21 19:12:13 by xeno             ###   ########.fr       */
+/*   Updated: 2018/08/28 16:32:22 by xeno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_ray.h"
 
-void	inter_init(t_inter *i, t_ray r, t_shape s, double t)
+void	inter_init(t_inter *i, t_ray r)
 {
 	i->ray = r;
-	i->shape = s;
-	i->t = t;
+	i->shape = NULL;
+	i->t = r.max;
 }
 
 t_inter	inter(void)

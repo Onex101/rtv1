@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lib_ray.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: xeno <xeno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/17 12:08:36 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/27 18:15:34 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/08/28 16:32:19 by xeno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_vec2	calc_pnt(t_ray r, double t);
 typedef struct	s_inter
 {
 	t_ray		ray;
-	t_shape		shape;
+	t_shape		*shape;
 	double		t;
 }				t_inter;
 
