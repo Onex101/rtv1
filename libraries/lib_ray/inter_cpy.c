@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inter_cpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: xeno <xeno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/20 09:57:23 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/29 18:03:48 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/08/30 17:10:53 by xeno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,5 @@ t_inter	inter_cpy(t_inter i)
 	j.ray = i.ray;
 	j.shape = i.shape;
 	j.t = i.t;
-	return(i);
+	return(j);
 }

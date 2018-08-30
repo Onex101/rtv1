@@ -70,7 +70,8 @@ LIB_FT_SRCS = ft_memset.c \
 				ft_strclen.c \
 				ft_strcdup.c \
 				ft_chrcount.c \
-				get_next_line.c \
+				get_next_line.c
+
 LIB_FT = $(addprefix lib_ft/, $(LIB_FT_SRCS)) 
 
 LIB_MAT_SRCS =	matrix_lib.c \
@@ -151,7 +152,7 @@ $(NAME) : $(OBJ)
 $(OBJ_DIR)/%.o : %.c
 	@mkdir -p $(OBJ_DIR)
 	@mkdir -p $(addprefix $(OBJ_DIR)/, $(dir $<))
-	gcc $(CFLAGS) $(INC) $(FT_INC) -MMD -c $< -o $@
+	gcc $(CFLAGS) $(INC) -MMD -c $< -o $@
 
 -include $(DEP)
 
