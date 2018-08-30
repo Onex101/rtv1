@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rtv1.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xeno <xeno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/21 09:21:31 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/28 17:54:30 by xeno             ###   ########.fr       */
+/*   Updated: 2018/08/30 14:13:41 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,11 @@ typedef struct	s_param
 	t_cam		*cam;
 	t_vector	*set;
 }				t_param;
+
+typedef struct	s_ray
+{
+	t_vec3		s_point; //starting point
+	t_vec3		dir; //direction
+}				t_ray;
 
 #endif

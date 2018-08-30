@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/21 09:19:59 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/29 09:38:51 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/08/30 14:13:39 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,59 @@ int ray_trace(t_param *p)
 			else
 				p->img->buf[p->img->w * j + i] = 0;
 		}
+	}
+	return (0);
+}
+/*
+** for each pixel of the screen
+** {
+** 		Final color = 0;
+** 		Ray = { starting point, direction };
+** 		Repeat
+** 		{
+** 			for each object in the scene
+** 			{
+** 				determine closest ray object/intersection;
+** 			}
+** 			if intersection exists 
+** 			{
+** 				for each light in the scene
+** 				{
+** 					if the light is not in shadow of another object
+** 					{
+** 						add this light contribution to computed color;
+** 					}
+** 				}
+** 			}
+** 			Final color = Final color + computed color * previous reflection factor;
+** 			reflection factor = reflection factor * surface reflection property; 
+** 			increment depth;
+** 		} until reflection factor is 0 or maximum depth is reached;
+** }
+*/
+
+int		cast_rays()
+{
+	int		y;
+	int		x;
+	t_ray	ray;
+
+	y = 0;
+	while (y < HEIGHT)
+	{
+		x = 0;
+		while (x < WIDTH)
+		{
+			ray.s_point = (t_vec3){(double)x, (double)y, -1000};
+			ray.dir =  (t_vec3){0, 0, 1};
+			/*
+			** single direction in the z defines our projection
+			** perpendicular projection (orthographic projection)
+			*/
+			
+			x++;
+		}
+		y++;
 	}
 	return (0);
 }
