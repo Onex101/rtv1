@@ -6,15 +6,14 @@
 #    By: xeno <xeno@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/08/21 13:06:01 by xrhoda            #+#    #+#              #
-#    Updated: 2018/08/30 18:20:59 by xeno             ###   ########.fr        #
+#    Updated: 2018/09/02 11:04:15 by xeno             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= rtv1
-FILES	= main.c \
 CC		= gcc
 CFLAGS	= -Wall -Wextra -Werror -g
-INC		= -I includes
+RTV1_INC = -I includes
 
 FILES =	camera.c \
 		exit_programc. \
@@ -32,9 +31,8 @@ MLX_INC	= -I /usr/X11/include -g
 MLX_LNK = -Wl,--no-as-needed -I /usr/local/include  -lX11 -lXext -L. /usr/local/lib/libmlx_Linux.a
 
 LIB_DIR = libraries
-LIB		= libraries/lib_mstr.a
+LIB		= -L libraries/lib_mstr.a
 LIB_INC = -I libraries/includes
-LIB_LNK = -L ./libraries -lraries
 
 INC = $(RTV1_INC) $(MLX_INC) $(LIB_INC)
 
@@ -44,7 +42,8 @@ $(NAME): $(LIB) $(OBJ)
 	$(CC) $(CFLAGS) $(INC) -lm -o $@ $^ $(LIB) $(MLX_LNK)
 
 obj: 
-	mkdir -p $(OBJ_DIR)
+	mkdir -p $(OBJ_DIR)LIB_LNK = -L ./libraries/lib_mstr.a
+
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(OBJ_DIR)
