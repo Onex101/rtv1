@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/27 06:26:00 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/29 18:34:44 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/03 12:21:57 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,6 @@ void			vector_set(t_vector *v, int i, void *ont);
 void			*vector_get(t_vector *v, int i);
 void			vector_delete(t_vector *v, int i);
 void			vector_free(t_vector *v);
+t_vector 		*vector_new(void);
 
 #endif

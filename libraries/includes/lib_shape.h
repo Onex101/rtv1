@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/20 10:58:46 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/29 17:56:46 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/03 06:26:13 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,11 @@ struct	s_shape
 t_shape		plane_new(t_vec3 pos, t_vec3 norm);
 t_shape		sphere_new(t_vec3 pos, double radius);
 
-int		plane_inter(t_shape plane, t_inter i);
-int		plane_ray(t_shape plane, t_ray ray);
-int		sphere_inter(t_shape sphere, t_inter i);
-int		sphere_ray(t_shape sphere, t_ray r);
+int			set_inter(t_vector *s, t_inter i);
+int 		set_ray_inter(t_vector *s, t_ray ray);
+int			plane_inter(t_shape plane, t_inter i);
+int			plane_ray(t_shape plane, t_ray ray);
+int			sphere_inter(t_shape sphere, t_inter i);
+int			sphere_ray(t_shape sphere, t_ray r);
 
 #endif

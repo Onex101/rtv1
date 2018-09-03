@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec3_nor.c                                         :+:      :+:    :+:   */
+/*   clear_image.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/16 17:47:45 by xeno              #+#    #+#             */
-/*   Updated: 2018/09/03 16:39:54 by xrhoda           ###   ########.fr       */
+/*   Created: 2018/09/03 13:59:42 by xrhoda            #+#    #+#             */
+/*   Updated: 2018/09/03 14:00:29 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_vec.h"
+#include "rtv1.h"
 
-double	vec3_nor(t_vec3 *v)
+void	clear_image(t_img *p)
 {
-	double l;
+	int i;
+	int j;
 
-	l = vec3_len(*v);
-	vec3_div(v, l);
-	return (l);
-}
-
-t_vec3	vec3_nor_cpy(t_vec3 v)
-{
-	t_vec3 cpy;
-
-	cpy = vec3_cpy(v); 
-	vec3_nor(&cpy);
-	return(cpy);
+	j = 0;
+	while (j < HEIGHT)
+	{
+		i = 0;
+		while (i < WIDTH)
+		{
+			if (p->buf[j * WIDTH + i] != 0x000000)
+				p->buf[j * WIDTH + i] = 0x000000;
+			i++;
+		}
+		j++;
+	}
 }

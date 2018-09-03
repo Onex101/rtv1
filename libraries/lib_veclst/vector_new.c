@@ -1,31 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec3_nor.c                                         :+:      :+:    :+:   */
+/*   vector_new.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/16 17:47:45 by xeno              #+#    #+#             */
-/*   Updated: 2018/09/03 16:39:54 by xrhoda           ###   ########.fr       */
+/*   Created: 2018/09/03 12:15:44 by xrhoda            #+#    #+#             */
+/*   Updated: 2018/09/03 12:19:13 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_vec.h"
+#include "vector.h"
 
-double	vec3_nor(t_vec3 *v)
+t_vector *vector_new(void)
 {
-	double l;
+	t_vector *v;
 
-	l = vec3_len(*v);
-	vec3_div(v, l);
-	return (l);
-}
-
-t_vec3	vec3_nor_cpy(t_vec3 v)
-{
-	t_vec3 cpy;
-
-	cpy = vec3_cpy(v); 
-	vec3_nor(&cpy);
-	return(cpy);
+	v = (t_vector *)malloc(sizeof(t_vector));
+	vector_init(v);
+	return(v);
 }

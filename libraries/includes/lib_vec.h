@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/16 17:50:37 by xeno              #+#    #+#             */
-/*   Updated: 2018/08/22 18:09:42 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/03 17:38:49 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,7 @@ t_vec3	vec3_nor_cpy(t_vec3 v);
 
 double	vec3_dot(t_vec3 v1, t_vec3 v2);
 t_vec3	vec3_crs(t_vec3 v1, t_vec3 v2);
+
+void	vec3_prnt(t_vec3 v);
 
 #endif

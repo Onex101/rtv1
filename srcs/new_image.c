@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   image.c                                            :+:      :+:    :+:   */
+/*   new_image.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/27 15:28:49 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/27 15:49:06 by xrhoda           ###   ########.fr       */
+/*   Created: 2018/09/03 09:07:53 by xrhoda            #+#    #+#             */
+/*   Updated: 2018/09/03 17:47:30 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,8 @@ t_img	*new_image(void *mlx, int w, int h)
 		return (NULL);
 	if (!(img->add = mlx_new_image(mlx, w, h)))
 		return (NULL);
-	img->buf = mlx_get_data_addr(img->add, &bpp, &size_line, &end);
+	img->buf = (int *)mlx_get_data_addr(img->add, &bpp, &size_line, &end);
 	img->w = w;
 	img->h = h;
 	return (img);
-}
-
-void	destroy_image(t_img *img, void *mlx)
-{
-	if (img)
-	{
-		if (img->add)
-			mlx_destroy_image(mlx, img->add);
-		if (img->buf)
-			free(img->buf);
-		free(img);
-	}
 }

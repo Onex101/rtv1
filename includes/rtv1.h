@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rtv1.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xeno <xeno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/21 09:21:31 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/28 17:54:30 by xeno             ###   ########.fr       */
+/*   Updated: 2018/09/03 13:35:54 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,16 @@ typedef struct	s_param
 	t_cam		*cam;
 	t_vector	*set;
 }				t_param;
+
+
+void			init_cam(t_cam *cam, t_vec3 org, t_vec3 target, t_vec3 up, double fov, double aspect_ratio);
+t_cam			*new_cam(t_vec3 org, t_vec3 target, t_vec3 up, double fov, double aspect_ratio);
+t_ray			make_ray(t_cam *cam, t_vec3 pnt);
+void			exit_program(t_param *p);
+t_img			*new_image(void *mlx, int w, int h);
+void			destroy_image(t_img *img, void *mlx);
+int				init_param(t_param *p);
+int 			ray_trace(t_param *p);
+int				render(t_param *p);
 
 #endif

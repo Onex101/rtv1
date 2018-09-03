@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec3_nor.c                                         :+:      :+:    :+:   */
+/*   pixel_put_image.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/16 17:47:45 by xeno              #+#    #+#             */
-/*   Updated: 2018/09/03 16:39:54 by xrhoda           ###   ########.fr       */
+/*   Created: 2018/09/03 13:59:29 by xrhoda            #+#    #+#             */
+/*   Updated: 2018/09/03 14:01:37 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_vec.h"
+#include "rtv1.h"
 
-double	vec3_nor(t_vec3 *v)
+void	pixel_put_image(t_img *img, int x, int y, int c)
 {
-	double l;
-
-	l = vec3_len(*v);
-	vec3_div(v, l);
-	return (l);
-}
-
-t_vec3	vec3_nor_cpy(t_vec3 v)
-{
-	t_vec3 cpy;
-
-	cpy = vec3_cpy(v); 
-	vec3_nor(&cpy);
-	return(cpy);
+	if (x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT)
+	{
+		if (WIDTH * y + x < WIDTH * HEIGHT && WIDTH * y + x >= 0)
+			img->buf[WIDTH * y + x] = c;
+	}
+	else
+		return ;
 }

@@ -1,31 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec3_nor.c                                         :+:      :+:    :+:   */
+/*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/16 17:47:45 by xeno              #+#    #+#             */
-/*   Updated: 2018/09/03 16:39:54 by xrhoda           ###   ########.fr       */
+/*   Created: 2018/09/03 13:19:45 by xrhoda            #+#    #+#             */
+/*   Updated: 2018/09/03 14:21:35 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_vec.h"
+#include "rtv1.h"
 
-double	vec3_nor(t_vec3 *v)
+int		render(t_param *p)
 {
-	double l;
-
-	l = vec3_len(*v);
-	vec3_div(v, l);
-	return (l);
-}
-
-t_vec3	vec3_nor_cpy(t_vec3 v)
-{
-	t_vec3 cpy;
-
-	cpy = vec3_cpy(v); 
-	vec3_nor(&cpy);
-	return(cpy);
+	ray_trace(p);
+	mlx_put_image_to_window(p->mlx, p->win, p->img->add, 0, 0);
+	return (0);
 }

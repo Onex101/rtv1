@@ -93,7 +93,7 @@ LIB_RAY = $(addprefix lib_ray/, $(LIB_RAY_SRCS))
 
 LIB_SHAPE_SRCS =	plane_inter.c \
 					plane_new.c \
-					shapes_inter.c \
+					set_inter.c \
 					sphere_inter.c \
 					sphere_new.c
 
@@ -112,7 +112,8 @@ LIB_VEC_SRCS =	vec3_add.c \
 				vec2_div.c \
 				vec2_lib.c \
 				vec2_mul.c \
-				vec2_sub.c
+				vec2_sub.c \
+				vec3_prnt.c
 
 LIB_VEC = $(addprefix lib_vec/, $(LIB_VEC_SRCS))
 
@@ -123,7 +124,8 @@ LIB_VECLST_SRCS =	vector_add.c \
 					vector_init.c \
 					vector_resize.c \
 					vector_set.c \
-					vector_total.c
+					vector_total.c \
+					vector_new.c
 LIB_VECLST = $(addprefix lib_veclst/, $(LIB_VECLST_SRCS)) 
 
 SRCS =	$(LIB_VEC) \
