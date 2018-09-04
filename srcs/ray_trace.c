@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/03 09:12:04 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/03 18:19:46 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/04 06:12:34 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,15 @@ int ray_trace(t_param *p)
 		i = -1 ;
 		while (++i < p->img->w)
 		{
-			float a = (2 * j) / p->img->w - 1;
-			float b = (-2 * i) / p->img->h + 1;
-			float c = 0;
 			//printf("a = [%f] b = [%f] c = [%f]\n", a, b, c);
-			vec3_init(&scrn_cor, a, b, c);
-			ft_putnbr(c);
-			ft_putendl("");
-			vec3_prnt(scrn_cor);
+			// ft_putstr("Cam org = ");
+			// vec3_prnt(p->cam->org);
+			vec3_init(&scrn_cor, (2 * j) / p->img->w - 1, (-2 * i) / p->img->h + 1, 0);
 			ray = make_ray(p->cam, scrn_cor);
+			// ft_putstr("Ray origin =    ");
+			// vec3_prnt(ray.org);
+			// ft_putstr("Ray direction = ");
+			// vec3_prnt(ray.dir);
 /*
 **	Create a ray
 */

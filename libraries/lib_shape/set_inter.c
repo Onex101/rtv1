@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/20 13:08:37 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/03 17:36:25 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/04 06:08:55 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int	set_inter(t_vector *s, t_inter i)
 	int total;
 	t_shape *cur_shp;
 
-	//vec3_prnt(i.ray.dir);
 	total = vector_total(s);
 	check = 0;
 	j = -1;

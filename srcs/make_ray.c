@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/03 09:08:57 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/03 09:09:37 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/04 06:11:04 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ t_ray	make_ray(t_cam *cam, t_vec3 pnt)
 	t_vec3 tmp1;
 	t_vec3 tmp2;
 
+	// ft_putstr("Cam org = ");
+	// vec3_prnt(cam->org);
 	tmp1 = vec3_mul_new(cam->right, cam->w * pnt.x);
 	tmp2 = vec3_mul_new(cam->up, cam->h * pnt.y);
 	vec3_add(&tmp1, tmp2); 
