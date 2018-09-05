@@ -3,18 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   lib_shape.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/20 10:58:46 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/05 15:30:55 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/05 19:46:59 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIB_SHAPE_H
 # define LIB_SHAPE_H
 
-#include "lib_ray.h"
-#include "vector.h"
+# include "lib_ray.h"
+# include "vector.h"
+# include "lib_col.h"
 
 typedef struct s_ray	t_ray;
 typedef struct s_inter	t_inter;
@@ -31,6 +32,7 @@ struct	s_shape
 	double		radius;
 	inter_c		inter;
 	ray_check	ray;
+	t_colour	col;
 };
 
 t_shape		plane_new(t_vec3 pos, t_vec3 norm);

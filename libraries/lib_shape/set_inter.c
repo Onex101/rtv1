@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_inter.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/20 13:08:37 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/05 15:30:42 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/05 19:49:54 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,10 @@ int	set_inter(t_vector *s, t_inter *i)
 	{
 		cur_shp = (t_shape *)vector_get(s, j);
 		if (cur_shp->inter(cur_shp, i))
+		{
 			check = 1;
+			i->col = cur_shp->col;
+		}
 	}
 	return (check);
 }

@@ -79,6 +79,14 @@ LIB_MAT_SRCS =	matrix_lib.c \
 
 LIB_MAT = $(addprefix lib_mat/, $(LIB_MAT_SRCS)) 
 
+LIB_COLOUR_SRCS =	clamp_colour.c \
+					colour_operations_new.c \
+					colour_operations.c \
+					gamma_correction.c \
+					rgb_to_hex.c
+
+LIB_COLOUR = $(addprefix lib_colour/, $(LIB_COLOUR_SRCS))
+
 LIB_RAY_SRCS =	calc_pnt.c \
 				inter_check.c \
 				inter_cpy.c \
@@ -133,6 +141,7 @@ SRCS =	$(LIB_VEC) \
 		$(LIB_RAY) \
 		$(LIB_MAT) \
 		$(LIB_VECLST) \
+		$(LIB_COLOUR) \
 		$(LIB_FT)
 
 OBJ_LIST = $(patsubst %.c, %.o, $(SRCS))

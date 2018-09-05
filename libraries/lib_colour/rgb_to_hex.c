@@ -1,26 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   plane_new.c                                        :+:      :+:    :+:   */
+/*   rgb_to_hex.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/22 08:01:27 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/05 20:07:06 by shillebr         ###   ########.fr       */
+/*   Created: 2018/09/05 20:00:32 by shillebr          #+#    #+#             */
+/*   Updated: 2018/09/05 20:01:02 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_shape.h"
+# include "lib_col.h"
 
-t_shape		plane_new(t_vec3 pos, t_vec3 norm)
+unsigned long	rgb_to_hex(int r, int g, int b)
 {
-	t_shape plane;
-
-	plane.inter = plane_inter; 
-	plane.pos = pos;
-	plane.radius = 0;
-	plane.norm = vec3_nor_cpy(norm);
-	plane.ray = plane_ray;
-	plane.col = (t_colour){255, 255, 0};
-	return(plane);
+	return ((r & 0xff) << 16) + ((g & 0xff) << 8) + (b & 0xff);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_trace.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/03 09:12:04 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/05 15:31:24 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/05 20:04:30 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int ray_trace(t_param *p)
 	t_vec3	scrn_cor;
 	t_ray	ray;
 	t_inter	inter;
+	unsigned long	col;
 
 	j = -1;
 	while(++j < p->img->w)
@@ -52,8 +53,12 @@ int ray_trace(t_param *p)
 			//p->img->buf[p->img->w * j + i] = mlx_get_color_value(p->mlx, 0xFFFFFF);
 			if(set_inter(p->set, &inter))
 			{
+				gamma_correct(&(inter.col), 1, 2.2);
+				clamp(&(inter.col), 255, 0);
+				col = rgb_to_hex(inter.col.r, inter.col.g, inter.col.b);
 				//printf("ray.dir.x = [%f] | ray.dir.y= [%f] | ray.dir.z = [%f]\n", ray.dir.x, ray.dir.y, ray.dir.z);
-				p->img->buf[p->img->w * j + i] = mlx_get_color_value(p->mlx, 0xFFFFFF);
+				// p->img->buf[p->img->w * j + i] = mlx_get_color_value(p->mlx, 0xFFFFFF);
+				p->img->buf[p->img->w * j + i] = mlx_get_color_value(p->mlx, col);
 			}
 			else
 				p->img->buf[p->img->w * j + i] = mlx_get_color_value(p->mlx, 0x000000);

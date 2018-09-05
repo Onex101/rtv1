@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sphere_new.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/22 12:00:48 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/29 10:38:02 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/05 20:06:29 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,6 @@ t_shape	sphere_new(t_vec3 pos, double radius)
 	s.norm = vec3();
 	s.inter = sphere_inter;
 	s.ray = sphere_ray;
+	s.col = (t_colour){255, 0, 255};
 	return (s); 
 }

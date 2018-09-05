@@ -6,12 +6,13 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/05 14:18:13 by shillebr          #+#    #+#             */
-/*   Updated: 2018/09/05 17:43:30 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/09/05 20:14:30 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIB_COL_H
 # define LIB_COL_H
+# include <math.h>
 
 typedef struct	s_colour
 {
@@ -38,5 +39,9 @@ t_colour		col_f_mult_new(t_colour a, double f);
 ** clamp_colour
 */
 void			clamp(t_colour *c, double max, double min);
+
+void	gamma_correct(t_colour *c, double exp, double gamma);
+
+unsigned long	rgb_to_hex(int r, int g, int b);
 
 #endif
