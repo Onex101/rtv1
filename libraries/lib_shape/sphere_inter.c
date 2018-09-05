@@ -6,13 +6,13 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/22 13:12:06 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/03 18:21:37 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/05 10:41:53 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_shape.h"
 
-int sphere_inter(t_shape s, t_inter i)
+int sphere_inter(t_shape *s, t_inter i)
 {
 	t_ray l_ray;
 	t_vec3 ce;
@@ -20,14 +20,15 @@ int sphere_inter(t_shape s, t_inter i)
 	double t1;
 	double t2;
 
+	//ft_putendl("INTER This shape is a sphere");
 	l_ray = ray_cpy(i.ray);
 /*
 **	Change ray location to be at origin, makes math easier
 */
-	vec3_sub(&l_ray.org, s.pos);
+	vec3_sub(&l_ray.org, s->pos);
 	ce.x = vec3_len_sqr(l_ray.dir);
 	ce.y = 2 * vec3_dot(l_ray.dir, l_ray.org);
-	ce.z = vec3_len_sqr(l_ray.org) - (s.radius * s.radius);
+	ce.z = vec3_len_sqr(l_ray.org) - (s->radius * s->radius);
 /*
 ** discriminant tells whether we intersect or not
 */
@@ -42,11 +43,11 @@ int sphere_inter(t_shape s, t_inter i)
 		i.t = t2;
 	else
 		return (0);
-	i.shape = &s;
+	i.shape = s;
 	return (1);
 }
 
-int sphere_ray(t_shape s, t_ray r)
+int sphere_ray(t_shape *s, t_ray r)
 {
 	t_ray l_ray;
 	t_vec3 ce;
@@ -54,11 +55,12 @@ int sphere_ray(t_shape s, t_ray r)
 	double t1;
 	double t2;
 
+	//ft_putendl("RAY This shape is a sphere");
 	l_ray = ray_cpy(r);
-	vec3_sub(&l_ray.org, s.pos);
+	vec3_sub(&l_ray.org, s->pos);
 	ce.x = vec3_len_sqr(l_ray.dir);
 	ce.y = 2 * vec3_dot(l_ray.dir, l_ray.org);
-	ce.z = vec3_len_sqr(l_ray.org) - (s.radius * s.radius);
+	ce.z = vec3_len_sqr(l_ray.org) - (s->radius * s->radius);
 	dis = (ce.y * ce.y) - (4 * ce.x * ce.z);
 	if (dis < 0)
 		return (0);
