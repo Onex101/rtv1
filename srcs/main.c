@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/21 09:19:59 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/05 11:58:41 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/05 14:54:27 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ int	main(int argc, char **argv)
 		if (init_param(p))
 		{
 			name  = argv[0];
-			sphere = sphere_new((t_vec3){0, 1, 0}, 1);
-			plane = plane_new(vec3(), vec3());
+			sphere = sphere_new((t_vec3){0, -1, 0}, 1);
+			plane = plane_new((t_vec3){0, 0, 0}, (t_vec3){0, 1, 0});
 			vector_add(p->set, &sphere);
-			//vector_add(p->set, &plane);
+			vector_add(p->set, &plane);
 			mlx_loop_hook(p->mlx, render, p);
 			mlx_loop(p->mlx);
 		}

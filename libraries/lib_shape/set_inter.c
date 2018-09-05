@@ -6,13 +6,13 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/20 13:08:37 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/05 10:41:54 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/05 15:30:42 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_shape.h"
 
-int	set_inter(t_vector *s, t_inter i)
+int	set_inter(t_vector *s, t_inter *i)
 {
 	int check;
 	int j;
