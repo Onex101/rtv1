@@ -18,8 +18,10 @@ double	vec3_nor(t_vec3 *v)
 	double l;
 
 	l = vec3_len(*v);
-	if (l == 0)
-		ft_putendl("DIVISION BY ZERO!!!");
+/*	
+**	if (l == 0)
+**		ft_putendl("DIVISION BY ZERO!!!");
+*/
 	vec3_div(v, l);
 	return (l);
 }

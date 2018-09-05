@@ -6,14 +6,14 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/22 13:12:06 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/05 14:04:17 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/05 15:23:27 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_shape.h"
 #include <stdio.h>
 
-int sphere_inter(t_shape *s, t_inter i)
+int sphere_inter(t_shape *s, t_inter *i)
 {
 	t_ray l_ray;
 	t_vec3 ce;
@@ -22,7 +22,7 @@ int sphere_inter(t_shape *s, t_inter i)
 	double t2;
 
 	//ft_putendl("INTER This shape is a sphere");
-	l_ray = ray_cpy(i.ray);
+	l_ray = ray_cpy(i->ray);
 /*
 **	Change ray location to be at origin, makes math easier
 */
@@ -44,14 +44,14 @@ int sphere_inter(t_shape *s, t_inter i)
 	//printf("ray.dir.x = [%f] | ray.dir.y= [%f] | ray.dir.z = [%f]\n", l_ray.dir.x, l_ray.dir.y, l_ray.dir.z);
 	t1 = (-ce.y - sqrt(dis)) / (2 * ce.x);
 	t2 = (-ce.y + sqrt(dis)) / (2 * ce.x);
-	if (t1 > RAY_T_MIN && t1 < i.t)
-		i.t = t1;
-	else if (t2 > RAY_T_MIN && t2 < i.t)
-		i.t = t2;
+	if (t1 > RAY_T_MIN && t1 < i->t)
+		i->t = t1;
+	else if (t2 > RAY_T_MIN && t2 < i->t)
+		i->t = t2;
 	else
 		return (0);
 	//printf("i.t = [%f] t1 = [%f] t2 = [%f]\n", i.t, t1, t2);
-	i.shape = s;
+	i->shape = s;
 	return (1);
 }
 
