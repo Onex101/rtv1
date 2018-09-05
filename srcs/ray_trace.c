@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/03 09:12:04 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/05 12:03:02 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/05 13:19:58 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int ray_trace(t_param *p)
 			//p->img->buf[p->img->w * j + i] = mlx_get_color_value(p->mlx, 0xFFFFFF);
 			if(set_inter(p->set, inter))
 			{
-				printf("ray.org.x = [%f] | ray.org.y= [%f]\n", ray.dir.x, ray.dir.y);
+				//printf("ray.dir.x = [%f] | ray.dir.y= [%f] | ray.dir.z = [%f]\n", ray.dir.x, ray.dir.y, ray.dir.z);
 				p->img->buf[p->img->w * j + i] = mlx_get_color_value(p->mlx, 0xFFFFFF);
 			}
 			else

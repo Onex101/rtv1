@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/21 09:21:31 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/03 13:35:54 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/05 14:04:58 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # include <math.h>
 # include "lib_ray.h"
 
-# define WIDTH 1280
-# define HEIGHT 1024
+# define WIDTH 640
+# define HEIGHT 640
 # define RATIO WIDTH / HEIGHT
 
 typedef struct	s_img
