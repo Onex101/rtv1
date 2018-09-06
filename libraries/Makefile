@@ -70,7 +70,8 @@ LIB_FT_SRCS = ft_memset.c \
 				ft_strclen.c \
 				ft_strcdup.c \
 				ft_chrcount.c \
-				get_next_line.c
+				get_next_line.c \
+				ft_sqr.c
 
 LIB_FT = $(addprefix lib_ft/, $(LIB_FT_SRCS)) 
 
