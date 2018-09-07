@@ -104,7 +104,9 @@ LIB_SHAPE_SRCS =	plane_inter.c \
 					plane_new.c \
 					set_inter.c \
 					sphere_inter.c \
-					sphere_new.c
+					sphere_new.c \
+					cyl_inter.c \
+					cyl_new.c
 
 LIB_SHAPE = $(addprefix lib_shape/, $(LIB_SHAPE_SRCS))
 

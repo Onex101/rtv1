@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/21 09:19:59 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/05 14:54:27 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/07 12:40:35 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	main(int argc, char **argv)
 	t_param *p;
 	t_shape sphere;
 	t_shape plane;
+	t_shape cyl;
 	char	*name;
 
 	if (argc == 1)
@@ -25,9 +26,11 @@ int	main(int argc, char **argv)
 		if (init_param(p))
 		{
 			name  = argv[0];
-			sphere = sphere_new((t_vec3){0, -1, 0}, 1);
-			plane = plane_new((t_vec3){0, 0, 0}, (t_vec3){0, 1, 0});
-			vector_add(p->set, &sphere);
+			sphere = sphere_new((t_vec3){0, -1, 0}, 1, (t_colour){0, 255, 0});
+			cyl = cyl_new((t_vec3){4, -1, 0}, (t_vec3){0, 0, 0}, (t_colour){0, 0, 255}, 1);
+			plane = plane_new((t_vec3){0, 0, 0}, (t_vec3){0, 1, 0}, (t_colour){255, 0, 0});
+			vector_add(p->set, &cyl);
+			//vector_add(p->set, &sphere);
 			vector_add(p->set, &plane);
 			mlx_loop_hook(p->mlx, render, p);
 			mlx_loop(p->mlx);
