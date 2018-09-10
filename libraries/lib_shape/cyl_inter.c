@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/07 10:51:36 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/07 12:46:29 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/10 13:51:55 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int cyl_inter(t_shape *s, t_inter *i)
 {
 	t_ray l_ray;
 	t_vec3 ce;
+	t_vec3 tmp;
 	double dis;
 	double t1;
 	double t2;
@@ -53,50 +54,58 @@ int cyl_inter(t_shape *s, t_inter *i)
 	}
 	double y1;
 	double y2;
-	i->t = t1;
+	//i->t = t1;
 	y1 = l_ray.org.y + t1 * l_ray.dir.y;
 	y2 = l_ray.org.y + t2 * l_ray.dir.y;
 
-	if (y1 < -1)
+	// if (y1 < -1)
+	// {
+	// 	if (y2 < -1)
+	// 		return (0);
+	// 	else
+	// 	{
+	// 		// hit the cap at +1
+	// 		double th = t1 + (t2 - t1) * (y1 - 1) / (y1 - y2);
+	// 		if (th <= 0)
+	// 			return (0);
+	// 		tmp = vec3_add_new(l_ray.org ,vec3_mul_new(l_ray.dir, th));
+	// 		tmp = vec3_nor_cpy((t_vec3){0, -1, 0});
+	// 		s->norm = tmp;
+	// 		i->t = vec3_len(tmp);
+	// 		i->shape = s;
+	// 		return (1);
+	// 	}
+	// }
+	if (y2 >= -1 && y1 <= 1)
 	{
-		if (y2 < -1)
-			return (0);
-		else
-		{
-			// hit the cap at -1
-			double th = t1 + (t2 - t1) * (y1 + 1) / (y1 - y2);
-			if (th <= 0) 
-				return (0);
-			i->t = vec3_len(vec3_mul_new(l_ray.dir, th));
-			// i->t = y1;
-			i->shape = s;
-			return (1);
-		}
-	}
-	else if (y1 > 1)
-	{
-		if (y2 > 1)
-			return (0);
-		else
-		{
-			// hit the cap at +1
-			double th = t1 + (t2 - t1) * (y1 - 1) / (y1 - y2);
-			if (th <= 0)
-				return (0);
-			i->t = vec3_len(vec3_mul_new(l_ray.dir, th));
-			// i->t = y2;
-			i->shape = s;
-			return (1);
-		}
-	}
-	else if (y2 >= -1 && y1 <= 1)
-	{
-		// hit the cylinder
+		tmp = vec3_add_new(l_ray.org ,vec3_mul_new(l_ray.dir, t1));
+		tmp = vec3_nor_cpy((t_vec3){tmp.x, 0, tmp.z});
+		s->norm = tmp;
+		//printf("y1 == [%f] | y2 == [%f]\n", y1, y2);
 		if (t1 <= 0) 
 			return (0);
-		i->t = t1;
+		i->t = vec3_len(tmp);
 		i->shape = s;
 		return (1);
 	}
+	// else if (y1 > 1)
+	// {
+	// 	if (y2 > 1)
+	// 		return (0);
+	// 	else
+	// 	{
+	// 		// hit the cap at +1
+	// 		double th = t1 + (t2 - t1) * (y1 - 1) / (y1 - y2);
+	// 		if (th <= 0)
+	// 			return (0);
+	// 		tmp = vec3_add_new(l_ray.org ,vec3_mul_new(l_ray.dir, th));
+	// 		tmp = vec3_nor_cpy((t_vec3){0, 1, 0});
+	// 		s->norm = tmp;
+	// 		i->t = vec3_len(tmp);
+	// 		i->shape = s;
+	// 		return (1);
+	// 	}
+	// }
 	return (0);
 }
+http://www.irisa.fr/prive/kadi/Master_Recherche/cours_CTR/RayTracing.pdf
