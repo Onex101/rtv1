@@ -1,31 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sphere_new.c                                       :+:      :+:    :+:   */
+/*   matrix_mult.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/22 12:00:48 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/11 18:16:47 by xrhoda           ###   ########.fr       */
+/*   Created: 2018/09/11 17:00:00 by xrhoda            #+#    #+#             */
+/*   Updated: 2018/09/11 17:00:16 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_shape.h"
+#include "lib_mat.h"
 
-t_shape	sphere_new(t_vec3 pos, double radius, t_colour col)
+t_mat	matrix_mult(t_mat mat1, t_mat mat2)
 {
-	t_shape s;
+	int		i;
+	int		j;
+	t_mat	ret;
 
-	s.pos = pos;
-	s.radius = radius;
-	s.height = 0;
-	s.norm = vec3();
-	s.inter = sphere_inter;
-	s.ray = sphere_ray;
-	s.hit_nor = sphere_hit_norm;
-	s.col = col;
-	matrix_identity(&(s.mat));
-	s.imat = matrix_inverse(&(s.mat));
-	s.tmat = matrix_transpose(&(s.mat));
-	return (s); 
+	i = 0;
+	while (i < 4)
+	{
+		j = 0;
+		while (j < 4)
+		{
+			ret.mat[i][j] = mat1.mat[i][0] * mat2.mat[0][j] +
+							mat1.mat[i][1] * mat2.mat[1][j] +
+							mat1.mat[i][2] * mat2.mat[2][j] +
+							mat1.mat[i][3] * mat2.mat[3][j];
+			j++;
+		}
+		i++;
+	}
+	return (ret);
 }

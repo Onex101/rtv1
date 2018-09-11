@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sphere_new.c                                       :+:      :+:    :+:   */
+/*   matrix_master.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/22 12:00:48 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/11 18:16:47 by xrhoda           ###   ########.fr       */
+/*   Created: 2018/09/11 16:57:53 by xrhoda            #+#    #+#             */
+/*   Updated: 2018/09/11 16:58:05 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_shape.h"
+#include "lib_mat.h"
 
-t_shape	sphere_new(t_vec3 pos, double radius, t_colour col)
+t_mat	matrix_master(t_vec3 scale, t_vec3 translate, t_vec3 rotate)
 {
-	t_shape s;
+	t_mat		s;
+	t_mat		t;
+	t_mat		r;
+	t_mat		m;
+	t_mat		tmp;
 
-	s.pos = pos;
-	s.radius = radius;
-	s.height = 0;
-	s.norm = vec3();
-	s.inter = sphere_inter;
-	s.ray = sphere_ray;
-	s.hit_nor = sphere_hit_norm;
-	s.col = col;
-	matrix_identity(&(s.mat));
-	s.imat = matrix_inverse(&(s.mat));
-	s.tmat = matrix_transpose(&(s.mat));
-	return (s); 
+	s = matrix_scale(scale);
+	t = matrix_translate(translate);
+	r = matrix_rotate(rotate);
+	tmp = matrix_mult(r, t);
+	m = matrix_mult(tmp, s);
+	return (m);
 }

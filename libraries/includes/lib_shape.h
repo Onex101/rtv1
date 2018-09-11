@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/20 10:58:46 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/11 10:41:17 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/11 15:44:19 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ struct	s_shape
 	ray_check	ray;
 	hit_normal	hit_nor;
 	t_colour	col;
-	t_mat		*mat;
-	t_mat		*imat;
-	t_mat		*tmat;
+	t_mat		mat;
+	t_mat		imat;
+	t_mat		tmat;
 };
 
 t_shape		plane_new(t_vec3 pos, t_vec3 norm, t_colour col);
