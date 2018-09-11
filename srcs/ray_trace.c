@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_trace.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/03 09:12:04 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/05 20:04:30 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/09/11 08:24:23 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int ray_trace(t_param *p)
 	t_vec3	scrn_cor;
 	t_ray	ray;
 	t_inter	inter;
+	t_vec3 hit_pnt;
 	unsigned long	col;
 
 	j = -1;
@@ -53,6 +54,8 @@ int ray_trace(t_param *p)
 			//p->img->buf[p->img->w * j + i] = mlx_get_color_value(p->mlx, 0xFFFFFF);
 			if(set_inter(p->set, &inter))
 			{
+				hit_pnt = vec3_add_new(inter.ray.org, vec3_mul_new(inter.ray.dir, inter.t));
+				vec3_nor(&hit_pnt);
 				gamma_correct(&(inter.col), 1, 2.2);
 				clamp(&(inter.col), 255, 0);
 				col = rgb_to_hex(inter.col.r, inter.col.g, inter.col.b);

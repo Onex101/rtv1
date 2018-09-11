@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/20 10:58:46 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/07 11:02:55 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/11 07:28:50 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "lib_ray.h"
 # include "vector.h"
 # include "lib_col.h"
+# include "lib_mat.h"
 
 typedef struct s_ray	t_ray;
 typedef struct s_inter	t_inter;
@@ -30,9 +31,13 @@ struct	s_shape
 	t_vec3		pos;
 	t_vec3		norm;
 	double		radius;
+	double		height;
 	inter_c		inter;
 	ray_check	ray;
 	t_colour	col;
+	t_mat		*mat;
+	t_mat		*imat;
+	t_mat		*tmat;
 };
 
 t_shape		plane_new(t_vec3 pos, t_vec3 norm, t_colour col);
