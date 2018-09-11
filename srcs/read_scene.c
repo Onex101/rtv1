@@ -99,22 +99,27 @@ int		ft_make_sphere(int fd, t_vector *set)
 	int		i;
 	int		j;
 	char	*line;
+	t_shape sphere;
 
+	sphere = sphere_new((t_vec3){0, 0, 0}, 0, (t_colour){0, 0, 0});
 	i = 1;
 	while (i != 0)
 	{
 		i = get_next_line(fd, &line);
-		if (i != 0 && !(ft_strequ(line, "}")))
+		if (i != 0)
 		{
-			j = read_spere();
+			j = read_sphere(&sphere, line);
 			if (j == 0)
 				ft_exit();
-			
+			else if (j == 2)
+				return (1);
 		}
 		else
 			break ;
 	}
 }
+
+#include <unistd.h>
 
 int		ft_readfile(char *av, t_vector *set)
 {
