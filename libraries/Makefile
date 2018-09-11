@@ -75,8 +75,21 @@ LIB_FT_SRCS = ft_memset.c \
 
 LIB_FT = $(addprefix lib_ft/, $(LIB_FT_SRCS)) 
 
-LIB_MAT_SRCS =	matrix_lib.c \
-				matrix_util.c 
+LIB_MAT_SRCS =	matrix_vec_mult.c \
+				matrix_mult.c \
+				matrix_master.c \
+				matrix_identity.c \
+				matrix_cpy.c \
+				matrix_rotate.c \
+				matrix_scale.c \
+				matrix_translate.c \
+				matrix_print.c \
+				matrix_divide_row.c \
+				matrix_get_row.c \
+				matrix_inverse.c \
+				matrix_sub_row.c \
+				matrix_swap_row.c \
+				matrix_transpose.c
 
 LIB_MAT = $(addprefix lib_mat/, $(LIB_MAT_SRCS)) 
 
@@ -104,9 +117,10 @@ LIB_SHAPE_SRCS =	plane_inter.c \
 					plane_new.c \
 					set_inter.c \
 					sphere_inter.c \
+					sphere_hit_norm.c \
 					sphere_new.c \
 					cyl_inter.c \
-					cyl_new.c
+					cyl_new.c \
 
 LIB_SHAPE = $(addprefix lib_shape/, $(LIB_SHAPE_SRCS))
 

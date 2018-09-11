@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sphere_new.c                                       :+:      :+:    :+:   */
+/*   matrix_transpose.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/22 12:00:48 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/11 18:16:47 by xrhoda           ###   ########.fr       */
+/*   Created: 2018/09/11 17:02:21 by xrhoda            #+#    #+#             */
+/*   Updated: 2018/09/11 17:06:05 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_shape.h"
+#include "lib_mat.h"
 
-t_shape	sphere_new(t_vec3 pos, double radius, t_colour col)
+t_mat	matrix_transpose(t_mat *m)
 {
-	t_shape s;
+	int i;
+	int j;
+	t_mat new;
 
-	s.pos = pos;
-	s.radius = radius;
-	s.height = 0;
-	s.norm = vec3();
-	s.inter = sphere_inter;
-	s.ray = sphere_ray;
-	s.hit_nor = sphere_hit_norm;
-	s.col = col;
-	matrix_identity(&(s.mat));
-	s.imat = matrix_inverse(&(s.mat));
-	s.tmat = matrix_transpose(&(s.mat));
-	return (s); 
+	i = -1;
+	while (++i < 4)
+	{
+		j = -1;
+		while (++j < 4)
+			new.mat[i][j] = m->mat[j][i];
+	}
+	return (new);
 }

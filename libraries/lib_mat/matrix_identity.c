@@ -1,31 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sphere_new.c                                       :+:      :+:    :+:   */
+/*   matrix_identity.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/22 12:00:48 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/11 18:16:47 by xrhoda           ###   ########.fr       */
+/*   Created: 2018/09/11 16:58:29 by xrhoda            #+#    #+#             */
+/*   Updated: 2018/09/11 16:58:52 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_shape.h"
+#include "lib_mat.h"
 
-t_shape	sphere_new(t_vec3 pos, double radius, t_colour col)
+void	matrix_identity(t_mat *mat)
 {
-	t_shape s;
+	int i;
+	int j;
 
-	s.pos = pos;
-	s.radius = radius;
-	s.height = 0;
-	s.norm = vec3();
-	s.inter = sphere_inter;
-	s.ray = sphere_ray;
-	s.hit_nor = sphere_hit_norm;
-	s.col = col;
-	matrix_identity(&(s.mat));
-	s.imat = matrix_inverse(&(s.mat));
-	s.tmat = matrix_transpose(&(s.mat));
-	return (s); 
+	i = 0;
+	while (i < 4)
+	{
+		j = 0;
+		while (j < 4)
+		{
+			if (i == j)
+				mat->mat[i][j] = 1;
+			else
+				mat->mat[i][j] = 0;
+			j++;
+		}
+		i++;
+	}
 }

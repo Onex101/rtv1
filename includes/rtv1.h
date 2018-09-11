@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/21 09:21:31 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/05 14:04:58 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/11 13:23:55 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct	s_img
 typedef struct	s_cam
 {
 	t_vec3		org;
+	t_vec3		tar;
 	t_vec3		forward;
 	t_vec3		up;
 	t_vec3		right;

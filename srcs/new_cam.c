@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/27 10:14:42 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/04 13:36:06 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/11 12:44:38 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ t_cam	*new_cam(t_vec3 org, t_vec3 target, t_vec3 upguide, double fov, double asp
 	cam->w = cam->h * aspect_ratio;
 	ft_putendl("Done with cam");
 	return (cam);
-
 }
 
 /*

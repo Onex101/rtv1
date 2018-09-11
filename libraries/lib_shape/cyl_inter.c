@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/07 10:51:36 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/10 13:51:55 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/11 10:28:34 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,4 +108,3 @@ int cyl_inter(t_shape *s, t_inter *i)
 	// }
 	return (0);
 }
-http://www.irisa.fr/prive/kadi/Master_Recherche/cours_CTR/RayTracing.pdf

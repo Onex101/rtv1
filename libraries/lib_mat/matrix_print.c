@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sphere_new.c                                       :+:      :+:    :+:   */
+/*   matrix_print.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/22 12:00:48 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/11 18:16:47 by xrhoda           ###   ########.fr       */
+/*   Created: 2018/09/11 10:52:52 by xrhoda            #+#    #+#             */
+/*   Updated: 2018/09/11 11:06:03 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_shape.h"
+#include <stdio.h>
+#include "lib_mat.h"
 
-t_shape	sphere_new(t_vec3 pos, double radius, t_colour col)
+void	matrix_print(t_mat *m)
 {
-	t_shape s;
+	int i;
+	int j;
 
-	s.pos = pos;
-	s.radius = radius;
-	s.height = 0;
-	s.norm = vec3();
-	s.inter = sphere_inter;
-	s.ray = sphere_ray;
-	s.hit_nor = sphere_hit_norm;
-	s.col = col;
-	matrix_identity(&(s.mat));
-	s.imat = matrix_inverse(&(s.mat));
-	s.tmat = matrix_transpose(&(s.mat));
-	return (s); 
+	if (m)
+	{
+		i = -1;
+		while(++i < 4)
+		{
+			j = -1;
+			while(++j < 4)
+				printf("[%f] ", m->mat[i][j]);
+			printf("\n");
+		} 
+	}
 }
