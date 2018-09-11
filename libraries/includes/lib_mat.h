@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/16 18:12:42 by xeno              #+#    #+#             */
-/*   Updated: 2018/09/11 08:08:34 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/11 10:48:14 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ typedef struct	s_mat
 	double		mat[4][4];
 }				t_mat;
 
-void			matrix_cpy(t_mat source, t_mat dest);
+void			matrix_cpy(t_mat *source, t_mat *dest);
 t_mat			matrix_mult(t_mat mat1, t_mat mat2);
 t_vec3			matrix_vec_mult(t_vec3 source, t_mat mat);
 void			matrix_identity(t_mat *mat);
