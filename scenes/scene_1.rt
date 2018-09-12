@@ -7,7 +7,7 @@ Sphere
 	pos[0, 1, 2];
 	colour[0, 0, 255];
 	texture[0];
-	trans[0, 0, 0]; //vector
 	rot[0, 0, 0];
-	scale[0, 0, 0];
+	scale[0];
 }
+#
