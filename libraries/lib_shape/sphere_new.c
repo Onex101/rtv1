@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/22 12:00:48 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/11 18:16:47 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/12 06:13:27 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,5 @@ t_shape	sphere_new(t_vec3 pos, double radius, t_colour col)
 	s.col = col;
 	matrix_identity(&(s.mat));
 	s.imat = matrix_inverse(&(s.mat));
-	s.tmat = matrix_transpose(&(s.mat));
 	return (s); 
 }

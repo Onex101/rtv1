@@ -6,7 +6,7 @@
 #    By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/08/21 13:06:01 by xrhoda            #+#    #+#              #
-#    Updated: 2018/09/03 13:35:40 by xrhoda           ###   ########.fr        #
+#    Updated: 2018/09/12 12:27:27 by xrhoda           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,7 +74,7 @@ fclean : clean
 	rm -f $(NAME)
 	make fclean -C $(LIB_DIR)
 
-re : clean all
+re : fclean all
 
 debug: 
 	@echo $(OBJ_LIST)

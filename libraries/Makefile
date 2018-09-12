@@ -89,7 +89,8 @@ LIB_MAT_SRCS =	matrix_vec_mult.c \
 				matrix_inverse.c \
 				matrix_sub_row.c \
 				matrix_swap_row.c \
-				matrix_transpose.c
+				matrix_transpose.c \
+				matrix_axis_rot.c
 
 LIB_MAT = $(addprefix lib_mat/, $(LIB_MAT_SRCS)) 
 

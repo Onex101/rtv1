@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/11 17:22:15 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/11 17:25:32 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/12 18:16:55 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,5 @@ void	matrix_sub_row(t_mat *m, int i, int j, double sub)
 
 	k = -1;
 	while (++k < 4)
-		m->mat[i][k] -= m->mat[j][k]*sub;
-
+		m->mat[i][k] -= m->mat[j][k] * sub;
 }

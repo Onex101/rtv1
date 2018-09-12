@@ -6,13 +6,14 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/16 18:12:42 by xeno              #+#    #+#             */
-/*   Updated: 2018/09/11 18:14:18 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/12 10:54:37 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MAT_LIB_H
 # define MAT_LIB_H
 #include "lib_vec.h"
+#include "lib_ft.h"
 
 typedef struct	s_mat
 {
@@ -37,5 +38,6 @@ void			matrix_swap_row(t_mat *m, int i, int j);
 void			matrix_sub_row(t_mat *m, int i, int j, double sub);
 t_mat			matrix_inverse(t_mat *m);
 int				matrix_get_row(t_mat *m, int i);
+t_mat			matrix_axis_rot(t_vec3 axis, double angle);
 
 #endif

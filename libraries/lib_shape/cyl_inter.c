@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/07 10:51:36 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/11 10:28:34 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/12 13:57:47 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ int cyl_inter(t_shape *s, t_inter *i)
 /*
 **	Change ray location to be at origin, makes math easier
 */
+	l_ray.org = matrix_vec_mult(vec3_sub_new(l_ray.org, s->pos), s->imat);
+	l_ray.dir = matrix_vec_mult(l_ray.dir, s->imat);
 	vec3_sub(&l_ray.org, s->pos);
 	ce.x = ft_sqr(l_ray.dir.x) + ft_sqr(l_ray.dir.y);
 	ce.y = 2 * l_ray.dir.x * l_ray.org.x + 2 * l_ray.dir.y * l_ray.org.y;
@@ -76,8 +78,8 @@ int cyl_inter(t_shape *s, t_inter *i)
 	// 		return (1);
 	// 	}
 	// }
-	if (y2 >= -1 && y1 <= 1)
-	{
+	// if (y2 >= -1 && y1 <= 1)
+	// {
 		tmp = vec3_add_new(l_ray.org ,vec3_mul_new(l_ray.dir, t1));
 		tmp = vec3_nor_cpy((t_vec3){tmp.x, 0, tmp.z});
 		s->norm = tmp;
@@ -87,7 +89,10 @@ int cyl_inter(t_shape *s, t_inter *i)
 		i->t = vec3_len(tmp);
 		i->shape = s;
 		return (1);
-	}
+	// }
+	vec3_add(&l_ray.org, vec3_mul_new(l_ray.dir, i->t));
+	l_ray.org = vec3_nor_cpy((t_vec3){l_ray.org.x, 0, l_ray.org.z});
+	i->normal = matrix_vec_mult(l_ray.org, s->mat);
 	// else if (y1 > 1)
 	// {
 	// 	if (y2 > 1)

@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/22 08:06:56 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/05 15:23:52 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/12 17:47:52 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int		plane_inter(t_shape *plane, t_inter *i)
 		return (0);
 	//ft_putendl("INtercept plane");
 	i->t = t;
+	i->normal = plane->norm;
 	i->shape = plane;
 	return (1);
 }
