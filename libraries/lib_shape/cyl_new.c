@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/06 07:27:36 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/12 12:35:16 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/13 06:19:32 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_shape	cyl_new(t_vec3 pos, t_vec3 axis, t_colour col, double rad)
 	cyl.inter = cyl_inter;
 	cyl.ray = NULL;
 	cyl.col = col;
-	angle = acos(vec3_dot((t_vec3){0, 1, 0}, axis) / vec3_len(axis));
+	angle = acos(vec3_dot(axis, (t_vec3){0, 1, 0}) / vec3_len(axis));
 	cyl.imat = matrix_axis_rot(vec3_crs(axis, (t_vec3){0, 1, 0}), angle);
 	cyl.mat = matrix_inverse(&(cyl.imat));
 	return (cyl);
