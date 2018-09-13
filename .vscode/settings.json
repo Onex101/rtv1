@@ -2,6 +2,7 @@
 	"files.associations": {
 		"rtv1.h": "c",
 		"__bit_reference": "c",
-		"bitset": "c"
+		"bitset": "c",
+		"typeinfo": "c"
 	}
 }

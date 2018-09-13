@@ -20,7 +20,7 @@ void	get_colour(t_param *p, t_inter *in, t_ray r, t_vec3 hitpoint)
 	l = (t_light *)vector_get(p->lis, 0);
 	printf("___________________________\n");
 	printf("l->dir [%f, %f, %f]\n", l->dir.x, l->dir.y, l->dir.z);
-	printf("intersect = [%f, %f, %f]    normal = [%f, %f, %f]\n", in->normal.x, in->normal.y, in->normal.z);
+	printf("intersect = [%f, %f, %f]    normal = [%f, %f, %f]\n", hitpoint.x, hitpoint.y, hitpoint.z, in->normal.x, in->normal.y, in->normal.z);
 	if (p && in)
 		return ;
 	else if (r.org.x > 0)
@@ -70,6 +70,8 @@ int 	ray_trace(t_param *p)
 				hit_pnt = vec3_add_new(inter.ray.org, vec3_mul_new(inter.ray.dir, inter.t));
 				vec3_nor(&hit_pnt);
 				//lighting
+				get_colour(p, &inter, ray, hit_pnt);
+				//
 				gamma_correct(&(inter.col), 1, 2.2);
 				clamp(&(inter.col), 255, 0);
 				col = rgb_to_hex(inter.col.r, inter.col.g, inter.col.b);
@@ -79,5 +81,6 @@ int 	ray_trace(t_param *p)
 				p->img->buf[p->img->w * j + i] = mlx_get_color_value(p->mlx, 0x000000);
 		}
 	}
+	exit (0);
 	return (0);
 }

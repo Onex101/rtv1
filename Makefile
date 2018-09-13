@@ -38,7 +38,7 @@ MLX_INC = -I /usr/X11/include -g
 uname_S := $(shell sh -c 'uname -s 2>/dev/null || echo not')
 
 ifeq ($(uname_S),Linux)
-    MLX_LNK = -Wl,--no-as-needed -I /usr/local/include  -lX11 -lXext -L. /usr/local/lib/libmlx_Linux.a
+    MLX_LNK = -Wl,--no-as-needed -I /usr/local/include  -lm -lX11 -lXext -L. /usr/local/lib/libmlx_Linux.a
 endif
 ifeq ($(uname_S),Darwin)
     MLX_LNK	= -L /usr/X11/lib -l mlx -framework OpenGL -framework AppKit
