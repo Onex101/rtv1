@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/07 10:51:36 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/13 06:29:46 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/13 07:30:03 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,15 +84,19 @@ int cyl_inter(t_shape *s, t_inter *i)
 		//printf("y1 == [%f] | y2 == [%f]\n", y1, y2);
 	if (t1 >= RAY_T_MAX || t1 >= i->t) 
 		return (0);
-	tmp = vec3_add_new(l_ray.org ,vec3_mul_new(l_ray.dir, t1));
-	tmp = vec3_nor_cpy((t_vec3){tmp.x, 0, tmp.z});
-	s->norm = tmp;
-	i->t = vec3_len(tmp);
-	i->shape = s;
-	// }
-	vec3_add(&l_ray.org, vec3_mul_new(l_ray.dir, i->t));
-	l_ray.org = vec3_nor_cpy((t_vec3){l_ray.org.x, 0, l_ray.org.z});
-	i->normal = matrix_vec_mult(l_ray.org, s->mat);
+	if (y2 >= -1 && y1 <= 1)
+	{
+		tmp = vec3_add_new(l_ray.org ,vec3_mul_new(l_ray.dir, t1));
+		tmp = vec3_nor_cpy((t_vec3){tmp.x, 0, tmp.z});
+		s->norm = tmp;
+		i->t = vec3_len(tmp);
+		i->shape = s;
+		// }
+		vec3_add(&l_ray.org, vec3_mul_new(l_ray.dir, i->t));
+		l_ray.org = vec3_nor_cpy((t_vec3){l_ray.org.x, 0, l_ray.org.z});
+		i->normal = matrix_vec_mult(l_ray.org, s->mat);
+		return (1);
+	}
 	// else if (y1 > 1)
 	// {
 	// 	if (y2 > 1)
@@ -111,5 +115,5 @@ int cyl_inter(t_shape *s, t_inter *i)
 	// 		return (1);
 	// 	}
 	// }
-	return (1);
+	return (0);
 }

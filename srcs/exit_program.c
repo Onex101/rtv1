@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/27 13:50:53 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/03 13:13:17 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/13 08:03:31 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,7 @@ void	exit_program(t_param *p)
 	ft_putendl("ep test 5");
 	if (p->cam)
 		free(p->cam);
+	if (p->lis)
+		vector_delete(p->lis, 0);
 	exit(0);
 }

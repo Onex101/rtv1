@@ -152,7 +152,11 @@ LIB_VECLST_SRCS =	vector_add.c \
 					vector_set.c \
 					vector_total.c \
 					vector_new.c
-LIB_VECLST = $(addprefix lib_veclst/, $(LIB_VECLST_SRCS)) 
+LIB_VECLST = $(addprefix lib_veclst/, $(LIB_VECLST_SRCS))
+
+LIB_LIGHT_SRCS =	light_new.c
+
+LIB_LIGHT = $(addprefix lib_light/, $(LIB_LIGHT_SRCS)) 
 
 SRCS =	$(LIB_VEC) \
 		$(LIB_SHAPE) \
@@ -160,7 +164,8 @@ SRCS =	$(LIB_VEC) \
 		$(LIB_MAT) \
 		$(LIB_VECLST) \
 		$(LIB_COLOUR) \
-		$(LIB_FT)
+		$(LIB_FT) \
+		$(LIB_LIGHT)
 
 OBJ_LIST = $(patsubst %.c, %.o, $(SRCS))
 
