@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rtv1.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/21 09:21:31 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/13 08:02:13 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/13 09:48:39 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <math.h>
 # include <fcntl.h>
 # include "lib_ray.h"
+# include "lib_light.h"
 
 # define WIDTH 640
 # define HEIGHT 640

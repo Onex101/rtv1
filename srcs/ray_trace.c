@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/03 09:12:04 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/13 08:14:58 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/09/13 14:03:21 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,27 @@
 
 void	get_colour(t_param *p, t_inter *in, t_ray r, t_vec3 hitpoint)
 {
-	t_vec3	dir_to_light;
+	t_light		*l;
 
-	dir_to_light = -vec3_nor(p->light->dir);
-	light_power = (fmax(0, vec3_dot(in->n, dir_to_light))) * p->lis.light.intensity;
-	light_reflected = in->shape.text / 
+	l = (t_light *)vector_get(p->lis, 0);
+	printf("___________________________\n");
+	printf("l->dir [%f, %f, %f]\n", l->dir.x, l->dir.y, l->dir.z);
+	printf("intersect = [%f, %f, %f]    normal = [%f, %f, %f]\n", in->normal.x, in->normal.y, in->normal.z);
+	if (p && in)
+		return ;
+	else if (r.org.x > 0)
+		return ;
+	else if(hitpoint.x > 0)
+		return ;
+	else
+		return ;
+
+	// t_vec3	dir_to_light;
+
+	// dir_to_light = -vec3_nor(p->lis->dir);
+	// light_power = (fmax(0, vec3_dot(in->n, dir_to_light))) * p->lis.light.intensity;
+	// light_reflected = in->shape.text / M_PI;
+	// color = int->shp.col * p->lis->light->col * light_power * light_reflected;
 
 }
 
