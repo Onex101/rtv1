@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/22 13:12:06 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/05 15:23:27 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/13 08:04:03 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ int sphere_inter(t_shape *s, t_inter *i)
 	else
 		return (0);
 	//printf("i.t = [%f] t1 = [%f] t2 = [%f]\n", i.t, t1, t2);
+	i->normal = vec3_nor_cpy(vec3_add_new(l_ray.org, vec3_mul_new(l_ray.dir, i->t)));
 	i->shape = s;
 	return (1);
 }

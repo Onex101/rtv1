@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/03 09:11:25 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/13 06:50:46 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/13 08:02:51 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@ int		init_param(t_param *p)
 	ft_putendl("init param 5");
 	vector_init(p->set = vector_new());
 	ft_putendl("init param 6");
+	vector_init(p->lis = vector_new());
 	return (1);
 }
