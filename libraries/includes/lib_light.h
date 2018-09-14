@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lib_light.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/13 07:41:00 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/13 08:06:06 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/13 14:04:10 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,7 @@ typedef struct	s_light
 	t_colour	col;
 	double		intensity;
 }				t_light;
+
+t_light		light_new(t_vec3 pos, double radius, t_colour col);
 
 #endif
