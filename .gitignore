@@ -1,0 +1,4 @@
+*.o
+*.d
+rtv1
+lib_mstr.a
