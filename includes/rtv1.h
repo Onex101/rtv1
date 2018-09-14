@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/21 09:21:31 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/13 09:48:39 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/09/14 13:58:58 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <fcntl.h>
 # include "lib_ray.h"
 # include "lib_light.h"
+# include "os.h"
 
 # define WIDTH 640
 # define HEIGHT 640
@@ -54,7 +55,7 @@ typedef struct	s_param
 	t_vector	*lis;
 }				t_param;
 
-
+int				key_press(int keycode, t_param *p);
 void			init_cam(t_cam *cam, t_vec3 org, t_vec3 target, t_vec3 up, double fov, double aspect_ratio);
 t_cam			*new_cam(t_vec3 org, t_vec3 target, t_vec3 up, double fov, double aspect_ratio);
 t_ray			make_ray(t_cam *cam, t_vec3 pnt);

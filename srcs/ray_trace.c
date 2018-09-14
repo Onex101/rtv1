@@ -6,37 +6,44 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/03 09:12:04 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/13 14:03:21 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/09/14 14:05:08 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 #include <stdio.h>
 
-void	get_colour(t_param *p, t_inter *in, t_ray r, t_vec3 hitpoint)
+void	get_colour(t_param *p, t_inter *in, t_ray r, t_vec3 hit_pnt)
 {
 	t_light		*l;
+	t_vec3		dir_to_light;
+	double		light_power;
+	double		light_reflected;
+	t_colour	clr;
 
 	l = (t_light *)vector_get(p->lis, 0);
 	printf("___________________________\n");
 	printf("l->dir [%f, %f, %f]\n", l->dir.x, l->dir.y, l->dir.z);
-	printf("intersect = [%f, %f, %f]    normal = [%f, %f, %f]\n", hitpoint.x, hitpoint.y, hitpoint.z, in->normal.x, in->normal.y, in->normal.z);
+	printf("intersect = [%f, %f, %f]    normal = [%f, %f, %f]\n", hit_pnt.x, hit_pnt.y, hit_pnt.z, in->normal.x, in->normal.y, in->normal.z);
+	dir_to_light = vec3_nor_cpy(l->dir);
+	dir_to_light = (t_vec3){-dir_to_light.x, -dir_to_light.y, -dir_to_light.z};
+	printf("dir_to_light [%f, %f, %f]\n", dir_to_light.x, dir_to_light.y, dir_to_light.z);
+	light_power = (fmax(0, vec3_dot(in->normal, dir_to_light))) * l->intensity;
+	// printf("light power = [%f]\n", light_power);
+	light_reflected = in->tex / M_PI;
+	// printf("light reflected = [%f]\n", light_reflected);
+	clr = (t_colour){(in->col.r * l->col.r * light_power * light_reflected), (in->col.g * l->col.g * light_power * light_reflected), (in->col.b * l->col.b * light_power * light_reflected)};
+	printf("colour [%f, %f, %f] = in->col [%f, %f, %f] * l->col [%f, %f, %f] * light_power [%f] * light_reflected [%f]\n", clr.r, clr.g, clr.b, in->col.r, in->col.g, in->col.b, l->col.r, l->col.g, l->col.b, light_power, light_reflected);
+	// clr = (t_colour){clr.r * 255, clr.g * 255, clr.b * 255};
+	// printf("colour [%f, %f, %f]\n", clr.r, clr.g, clr.b);
 	if (p && in)
 		return ;
 	else if (r.org.x > 0)
 		return ;
-	else if(hitpoint.x > 0)
+	else if(hit_pnt.x > 0)
 		return ;
 	else
 		return ;
-
-	// t_vec3	dir_to_light;
-
-	// dir_to_light = -vec3_nor(p->lis->dir);
-	// light_power = (fmax(0, vec3_dot(in->n, dir_to_light))) * p->lis.light.intensity;
-	// light_reflected = in->shape.text / M_PI;
-	// color = int->shp.col * p->lis->light->col * light_power * light_reflected;
-
 }
 
 int 	ray_trace(t_param *p)
@@ -65,7 +72,7 @@ int 	ray_trace(t_param *p)
 **	Inititalizse intercept
 **	Check if intercept intercects with any of the shapes
 */			
-			if(set_inter(p->set, &inter))
+			if (set_inter(p->set, &inter))
 			{
 				hit_pnt = vec3_add_new(inter.ray.org, vec3_mul_new(inter.ray.dir, inter.t));
 				vec3_nor(&hit_pnt);
@@ -81,6 +88,6 @@ int 	ray_trace(t_param *p)
 				p->img->buf[p->img->w * j + i] = mlx_get_color_value(p->mlx, 0x000000);
 		}
 	}
-	exit (0);
+	// exit (0);
 	return (0);
 }

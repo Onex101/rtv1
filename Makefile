@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+         #
+#    By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/08/21 13:06:01 by xrhoda            #+#    #+#              #
-#    Updated: 2018/09/12 12:27:27 by xrhoda           ###   ########.fr        #
+#    Updated: 2018/09/14 13:55:58 by shillebr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,8 @@ FILES = main.c \
 		destroy_image.c \
 		new_image.c \
 		ray_trace.c \
-		render.c
+		render.c	\
+		input.c
 SRC_DIR = srcs
 SRCS = $(FILES:$(SRC_DIR)/%=%)
 

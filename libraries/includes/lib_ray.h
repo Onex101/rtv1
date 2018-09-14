@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lib_ray.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/17 12:08:36 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/12 08:30:39 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/14 13:05:10 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct	s_inter
 	double		t;
 	t_vec3		normal;
 	t_colour	col;
+	double		tex;
 }				t_inter;
 
 t_inter	inter(void);

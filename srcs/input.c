@@ -1,27 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   inter_init.c                                       :+:      :+:    :+:   */
+/*   input.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/20 09:52:04 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/14 13:12:50 by shillebr         ###   ########.fr       */
+/*   Created: 2018/09/14 13:54:00 by shillebr          #+#    #+#             */
+/*   Updated: 2018/09/14 14:03:05 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_ray.h"
+#include "rtv1.h"
 
-void	inter_init(t_inter *i, t_ray r)
+void	mac_key_press(int keycode)
 {
-	i->ray = r;
-	i->shape = NULL;
-	i->t = r.max;
-	i->col = (t_colour){0, 0 ,0};
-	i->normal = vec3();
+	if (keycode == 53)
+		exit (0);
 }
 
-t_inter	inter(void)
+void	linux_key_press(int keycode)
 {
-	return((t_inter){ray(), NULL, RAY_T_MAX, vec3(), (t_colour){0, 0, 0}, 0});
+	if (keycode == 65307)
+		exit (0);
+}
+
+int		key_press(int keycode, t_param *p)
+{
+	if (!p)
+		return (0);
+	if (OS)
+		mac_key_press(keycode);
+	else
+		linux_key_press(keycode);
+	return (1);
 }

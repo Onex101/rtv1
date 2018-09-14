@@ -3,6 +3,9 @@
 		"rtv1.h": "c",
 		"__bit_reference": "c",
 		"bitset": "c",
-		"typeinfo": "c"
+		"typeinfo": "c",
+		"ios": "c",
+		"__functional_03": "c",
+		"functional": "c"
 	}
 }

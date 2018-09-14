@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lib_shape.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/20 10:58:46 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/12 06:13:15 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/14 13:09:25 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,14 @@ struct	s_shape
 	ray_check	ray;
 	hit_normal	hit_nor;
 	t_colour	col;
+	double		tex;
 	t_mat		mat;
 	t_mat		imat;
 };
 
 t_shape		plane_new(t_vec3 pos, t_vec3 norm, t_colour col);
-t_shape		sphere_new(t_vec3 pos, double radius, t_colour col);
+// t_shape		sphere_new(t_vec3 pos, double radius, t_colour col);
+t_shape		sphere_new(t_vec3 pos, double radius, t_colour col, double tex);
 t_shape		cyl_new(t_vec3 pos, t_vec3 norm, t_colour col, double rad);
 
 int			set_inter(t_vector *s, t_inter *i);

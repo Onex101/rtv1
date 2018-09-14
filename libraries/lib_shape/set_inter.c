@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/20 13:08:37 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/05 19:49:54 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/09/14 13:10:13 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	set_inter(t_vector *s, t_inter *i)
 		{
 			check = 1;
 			i->col = cur_shp->col;
+			i->tex = cur_shp->tex;
 		}
 	}
 	return (check);

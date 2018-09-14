@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   inter_init.c                                       :+:      :+:    :+:   */
+/*   os.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/20 09:52:04 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/14 13:12:50 by shillebr         ###   ########.fr       */
+/*   Created: 2018/09/14 13:53:23 by shillebr          #+#    #+#             */
+/*   Updated: 2018/09/14 13:53:26 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_ray.h"
+#ifndef OS_H
+# define OS_H
 
-void	inter_init(t_inter *i, t_ray r)
-{
-	i->ray = r;
-	i->shape = NULL;
-	i->t = r.max;
-	i->col = (t_colour){0, 0 ,0};
-	i->normal = vec3();
-}
+# if defined(__APPLE__) && defined(__MACH__)
+#  define OS 1
+# elif defined(__linux__)
+#  define OS 0
+# endif
 
-t_inter	inter(void)
-{
-	return((t_inter){ray(), NULL, RAY_T_MAX, vec3(), (t_colour){0, 0, 0}, 0});
-}
+#endif
