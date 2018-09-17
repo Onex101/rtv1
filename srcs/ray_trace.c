@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/03 09:12:04 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/17 12:33:34 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/09/17 13:39:50 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,14 @@ t_colour	get_colour(t_param *p, t_inter *in, t_ray r, t_vec3 hit_pnt)
 
 	l = (t_light *)vector_get(p->lis, 0);
 	// printf("___________________________\n");
-	printf("l->dir [%f, %f, %f]\n", l->dir.x, l->dir.y, l->dir.z);
+	// printf("l->dir [%f, %f, %f]\n", l->dir.x, l->dir.y, l->dir.z);
 	// printf("intersect = [%f, %f, %f]    normal = [%f, %f, %f]\n", hit_pnt.x, hit_pnt.y, hit_pnt.z, in->normal.x, in->normal.y, in->normal.z);
 	dir_to_light = vec3_nor_cpy(l->dir);
 	dir_to_light = (t_vec3){-dir_to_light.x, -dir_to_light.y, -dir_to_light.z};
 	// printf("dir_to_light [%f, %f, %f]\n", dir_to_light.x, dir_to_light.y, dir_to_light.z);
 	
 	shadow_ray = (t_ray){hit_pnt, dir_to_light, RAY_T_MAX};
-	printf("shadowray pos = [%f, %f, %f] dir = [%f, %f, %f]\n", shadow_ray.org.x, shadow_ray.org.y, shadow_ray.org.z, shadow_ray.dir.x, shadow_ray.dir.y, shadow_ray.dir.z);
+	// printf("shadowray pos = [%f, %f, %f] dir = [%f, %f, %f]\n", shadow_ray.org.x, shadow_ray.org.y, shadow_ray.org.z, shadow_ray.dir.x, shadow_ray.dir.y, shadow_ray.dir.z);
 	if ((cast_ray(p->set, shadow_ray)))
 		light_power = 0;
 	else
