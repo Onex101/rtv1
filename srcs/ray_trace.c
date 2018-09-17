@@ -6,14 +6,14 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/03 09:12:04 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/14 14:05:08 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/09/17 08:27:16 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 #include <stdio.h>
 
-void	get_colour(t_param *p, t_inter *in, t_ray r, t_vec3 hit_pnt)
+t_colour	get_colour(t_param *p, t_inter *in, t_ray r, t_vec3 hit_pnt)
 {
 	t_light		*l;
 	t_vec3		dir_to_light;
@@ -22,28 +22,23 @@ void	get_colour(t_param *p, t_inter *in, t_ray r, t_vec3 hit_pnt)
 	t_colour	clr;
 
 	l = (t_light *)vector_get(p->lis, 0);
-	printf("___________________________\n");
-	printf("l->dir [%f, %f, %f]\n", l->dir.x, l->dir.y, l->dir.z);
-	printf("intersect = [%f, %f, %f]    normal = [%f, %f, %f]\n", hit_pnt.x, hit_pnt.y, hit_pnt.z, in->normal.x, in->normal.y, in->normal.z);
+	// printf("___________________________\n");
+	// printf("l->dir [%f, %f, %f]\n", l->dir.x, l->dir.y, l->dir.z);
+	// printf("intersect = [%f, %f, %f]    normal = [%f, %f, %f]\n", hit_pnt.x, hit_pnt.y, hit_pnt.z, in->normal.x, in->normal.y, in->normal.z);
 	dir_to_light = vec3_nor_cpy(l->dir);
 	dir_to_light = (t_vec3){-dir_to_light.x, -dir_to_light.y, -dir_to_light.z};
-	printf("dir_to_light [%f, %f, %f]\n", dir_to_light.x, dir_to_light.y, dir_to_light.z);
+	// printf("dir_to_light [%f, %f, %f]\n", dir_to_light.x, dir_to_light.y, dir_to_light.z);
 	light_power = (fmax(0, vec3_dot(in->normal, dir_to_light))) * l->intensity;
 	// printf("light power = [%f]\n", light_power);
 	light_reflected = in->tex / M_PI;
 	// printf("light reflected = [%f]\n", light_reflected);
 	clr = (t_colour){(in->col.r * l->col.r * light_power * light_reflected), (in->col.g * l->col.g * light_power * light_reflected), (in->col.b * l->col.b * light_power * light_reflected)};
-	printf("colour [%f, %f, %f] = in->col [%f, %f, %f] * l->col [%f, %f, %f] * light_power [%f] * light_reflected [%f]\n", clr.r, clr.g, clr.b, in->col.r, in->col.g, in->col.b, l->col.r, l->col.g, l->col.b, light_power, light_reflected);
+	// printf("colour [%f, %f, %f] = in->col [%f, %f, %f] * l->col [%f, %f, %f] * light_power [%f] * light_reflected [%f]\n", clr.r, clr.g, clr.b, in->col.r, in->col.g, in->col.b, l->col.r, l->col.g, l->col.b, light_power, light_reflected);
 	// clr = (t_colour){clr.r * 255, clr.g * 255, clr.b * 255};
 	// printf("colour [%f, %f, %f]\n", clr.r, clr.g, clr.b);
-	if (p && in)
-		return ;
-	else if (r.org.x > 0)
-		return ;
-	else if(hit_pnt.x > 0)
-		return ;
-	else
-		return ;
+	return (clr);
+	if (r.max > 0 && hit_pnt.x > 0)
+		return (clr);
 }
 
 int 	ray_trace(t_param *p)
@@ -77,7 +72,7 @@ int 	ray_trace(t_param *p)
 				hit_pnt = vec3_add_new(inter.ray.org, vec3_mul_new(inter.ray.dir, inter.t));
 				vec3_nor(&hit_pnt);
 				//lighting
-				get_colour(p, &inter, ray, hit_pnt);
+				inter.col = get_colour(p, &inter, ray, hit_pnt);
 				//
 				gamma_correct(&(inter.col), 1, 2.2);
 				clamp(&(inter.col), 255, 0);

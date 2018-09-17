@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   plane_inter.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/22 08:06:56 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/14 10:49:26 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/17 08:24:43 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ int		plane_inter(t_shape *plane, t_inter *i)
 		return (0);
 	//ft_putendl("INtercept plane");
 	i->t = t;
-	i->normal = plane->norm;
+	// i->normal = plane->norm;
+	i->normal = (t_vec3){-plane->norm.x, -plane->norm.y, -plane->norm.z};
 	i->shape = plane;
 	return (1);
 }
