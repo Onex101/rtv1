@@ -6,12 +6,30 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/03 09:12:04 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/17 08:27:16 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/09/17 09:44:52 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 #include <stdio.h>
+
+int 	cast_ray(t_vector *s, t_ray r)
+{
+	int		j;
+	t_shape	*cur_shp;
+
+	j = -1;
+	while (++j < s->total)
+	{
+		cur_shp = (t_shape *)vector_get(s, j);
+		if (cur_shp->inter(cur_shp, i))
+		{
+			return (1);
+		}
+	}
+	// exit (0);
+	return (0);
+}
 
 t_colour	get_colour(t_param *p, t_inter *in, t_ray r, t_vec3 hit_pnt)
 {
@@ -20,6 +38,7 @@ t_colour	get_colour(t_param *p, t_inter *in, t_ray r, t_vec3 hit_pnt)
 	double		light_power;
 	double		light_reflected;
 	t_colour	clr;
+	t_ray		shadow_ray;
 
 	l = (t_light *)vector_get(p->lis, 0);
 	// printf("___________________________\n");
@@ -28,7 +47,12 @@ t_colour	get_colour(t_param *p, t_inter *in, t_ray r, t_vec3 hit_pnt)
 	dir_to_light = vec3_nor_cpy(l->dir);
 	dir_to_light = (t_vec3){-dir_to_light.x, -dir_to_light.y, -dir_to_light.z};
 	// printf("dir_to_light [%f, %f, %f]\n", dir_to_light.x, dir_to_light.y, dir_to_light.z);
-	light_power = (fmax(0, vec3_dot(in->normal, dir_to_light))) * l->intensity;
+	
+	shadow_ray = (t_ray){hit_pnt, dir_to_light, RAY_T_MAX};
+	if (!(cast_ray(p->set, shadow_ray)))
+		light_power = 0;
+	else
+		light_power = (fmax(0, vec3_dot(in->normal, dir_to_light))) * l->intensity;
 	// printf("light power = [%f]\n", light_power);
 	light_reflected = in->tex / M_PI;
 	// printf("light reflected = [%f]\n", light_reflected);
