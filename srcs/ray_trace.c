@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/03 09:12:04 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/17 09:44:52 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/09/17 11:55:14 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ int 	cast_ray(t_vector *s, t_ray r)
 	while (++j < s->total)
 	{
 		cur_shp = (t_shape *)vector_get(s, j);
-		if (cur_shp->inter(cur_shp, i))
+		if (cur_shp->ray(cur_shp, r))
 		{
+			ft_putendl("Collision found");
 			return (1);
 		}
 	}
-	// exit (0);
 	return (0);
 }
 
@@ -42,14 +42,15 @@ t_colour	get_colour(t_param *p, t_inter *in, t_ray r, t_vec3 hit_pnt)
 
 	l = (t_light *)vector_get(p->lis, 0);
 	// printf("___________________________\n");
-	// printf("l->dir [%f, %f, %f]\n", l->dir.x, l->dir.y, l->dir.z);
+	printf("l->dir [%f, %f, %f]\n", l->dir.x, l->dir.y, l->dir.z);
 	// printf("intersect = [%f, %f, %f]    normal = [%f, %f, %f]\n", hit_pnt.x, hit_pnt.y, hit_pnt.z, in->normal.x, in->normal.y, in->normal.z);
 	dir_to_light = vec3_nor_cpy(l->dir);
 	dir_to_light = (t_vec3){-dir_to_light.x, -dir_to_light.y, -dir_to_light.z};
 	// printf("dir_to_light [%f, %f, %f]\n", dir_to_light.x, dir_to_light.y, dir_to_light.z);
 	
 	shadow_ray = (t_ray){hit_pnt, dir_to_light, RAY_T_MAX};
-	if (!(cast_ray(p->set, shadow_ray)))
+	printf("shadowray pos = [%f, %f, %f] dir = [%f, %f, %f]\n", shadow_ray.org.x, shadow_ray.org.y, shadow_ray.org.z, shadow_ray.dir.x, shadow_ray.dir.y, shadow_ray.dir.z);
+	if ((cast_ray(p->set, shadow_ray)))
 		light_power = 0;
 	else
 		light_power = (fmax(0, vec3_dot(in->normal, dir_to_light))) * l->intensity;
