@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/21 09:19:59 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/18 08:39:17 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/09/18 09:02:53 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	main(int argc, char **argv)
 			// vector_add(p->set, &cyl);
 			// vector_add(p->set, &sphere0);
 			vector_add(p->set, &sphere1);
-			vector_add(p->set, &sphere2);
+			// vector_add(p->set, &sphere2);
 			
 			lit = light_new((t_vec3){2, -5, -4}, 0.5, (t_colour){255, 255, 255});
 			
