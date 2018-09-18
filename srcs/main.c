@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/21 09:19:59 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/17 13:49:12 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/18 06:22:19 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ int	main(int argc, char **argv)
 	t_param *p;
 	t_shape sphere0;
 	t_shape sphere1;
-	// t_shape sphere2;
-	t_shape plane;
+	t_shape sphere2;
+	// t_shape plane;
 	// t_shape cyl;
 	t_light	lit;
 	// char	*name;
@@ -43,14 +43,14 @@ int	main(int argc, char **argv)
 			sphere0 = sphere_new((t_vec3){0, 100, 0}, 100, (t_colour){0, 255, 0}, 0.001);
 			sphere1 = sphere_new((t_vec3){0, -3, -2}, 1.5, (t_colour){255, 255, 0}, 0.001);
 
-			// sphere2 = sphere_new((t_vec3){0, -1, 2}, 0.3, (t_colour){0, 0, 255}, 0.001);
+			sphere2 = sphere_new((t_vec3){0, 100, 0}, 100, (t_colour){0, 0, 255}, 0.001);
 			// cyl = cyl_new((t_vec3){0, -1, 0}, (t_vec3){1, 0, 1}, (t_colour){0, 0, 255}, 1);
-			plane = plane_new((t_vec3){0, 0, 0}, (t_vec3){0, 1, 0}, (t_colour){255, 0, 0}, 0.001);
-			//vector_add(p->set, &plane);
+			// plane = plane_new((t_vec3){0, 0, 0}, (t_vec3){0, 1, 0}, (t_colour){255, 0, 0}, 0.001);
+			// vector_add(p->set, &plane);
 			// vector_add(p->set, &cyl);
 			vector_add(p->set, &sphere0);
 			vector_add(p->set, &sphere1);
-			// vector_add(p->set, &sphere2);
+			vector_add(p->set, &sphere2);
 			
 			lit = light_new((t_vec3){2, 5, -4}, 0.5, (t_colour){255, 255, 255});
 			
