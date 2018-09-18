@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/21 09:19:59 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/18 09:02:53 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/09/18 09:51:33 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	main(int argc, char **argv)
 	t_shape plane;
 	// t_shape cyl;
 	t_light	lit;
+	t_light	lit2;
 	// char	*name;
 
 	if (argc == 1)
@@ -52,9 +53,11 @@ int	main(int argc, char **argv)
 			vector_add(p->set, &sphere1);
 			// vector_add(p->set, &sphere2);
 			
-			lit = light_new((t_vec3){2, -5, -4}, 0.5, (t_colour){255, 255, 255});
+			lit = light_new((t_vec3){5, -5, -4}, 0.5, (t_colour){255, 255, 255});
+			lit2 = light_new((t_vec3){-5, -5, -4}, 0.1, (t_colour){0, 255, 255});
 			
 			vector_add(p->lis, &lit);
+			vector_add(p->lis, &lit2);
 			// vector_add(p->set, &sphere1);
 			// vector_add(p->set, &sphere2);
 			if (OS)
