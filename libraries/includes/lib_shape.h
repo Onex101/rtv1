@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lib_shape.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/20 10:58:46 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/17 08:19:53 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/09/18 09:14:19 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int			set_inter(t_vector *s, t_inter *i);
 int 		set_ray_inter(t_vector *s, t_ray ray);
 int			plane_inter(t_shape *plane, t_inter *i);
 int			plane_ray(t_shape *plane, t_ray ray);
+int 		cyl_ray(t_shape *s, t_ray ray);
 int			sphere_inter(t_shape *sphere, t_inter *i);
 int			sphere_ray(t_shape *sphere, t_ray r);
 int 		cyl_inter(t_shape *s, t_inter *i);
