@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+         #
+#    By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/08/21 13:06:01 by xrhoda            #+#    #+#              #
-#    Updated: 2018/09/14 14:07:49 by shillebr         ###   ########.fr        #
+#    Updated: 2018/09/18 06:53:00 by xrhoda           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,12 +52,12 @@ LIB_LNK = -L ./libraries -lraries
 
 INC = $(RTV1_INC) $(MLX_INC) $(LIB_INC)
 
-all: $(NAME)
+all: lib $(NAME)
 
 $(NAME): $(LIB) $(OBJ)
 	$(CC) $(CFLAGS) $(INC) -lm -o $@ $^ $(LIB) $(MLX_LNK)
 
-obj:
+obj :
 	mkdir -p $(OBJ_DIR)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
@@ -79,4 +79,4 @@ fclean : clean
 re : fclean all
 
 debug: 
-	@echo $(OBJ_LIST)
+	echo $(OBJ)
