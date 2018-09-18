@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/03 09:12:04 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/18 06:22:17 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/18 07:32:42 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int 	ray_trace(t_param *p)
 		i = -1 ;
 		while (++i < p->img->h)
 		{
-			vec3_init(&scrn_cor, (((2 * i) / (double)p->img->h) - 1), (((-2 * j) / (double)p->img->w) + 1), 0);
+			vec3_init(&scrn_cor, (((2 * i) / (double)p->img->h) - 1), -(((-2 * j) / (double)p->img->w) + 1), 0);
 			ray = make_ray(p->cam, scrn_cor);
 /*
 **	Create a ray

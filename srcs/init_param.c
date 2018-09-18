@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/03 09:11:25 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/14 09:59:41 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/18 07:36:57 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int		init_param(t_param *p)
 	if (!(p->img = new_image(p->mlx, WIDTH, HEIGHT)))
 		return (0);
 	ft_putendl("init param 4");
-	if (!(p->cam = new_cam((t_vec3){0, -3, 10}, (t_vec3){0, -1, 0}, (t_vec3){0, 1, 0}, 25 * M_PI / 180, WIDTH / HEIGHT)))
+	if (!(p->cam = new_cam((t_vec3){0, 1, -5}, (t_vec3){0, 0, 0}, (t_vec3){0, 1, 0}, 25 * M_PI / 180, WIDTH / HEIGHT)))
 		return (0);
 	ft_putendl("init param 5");
 	vector_init(p->set = vector_new());
