@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/12 18:17:21 by shillebr          #+#    #+#             */
-/*   Updated: 2018/09/12 18:57:11 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/09/19 13:56:53 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,15 @@ int		check_objects(int fd, t_vector *set, char *line)
 	return (i); // not sure about this, might not be valid
 }
 
+int		if_obj(char *line)
+{
+	if (ft_strequ(line, "Sphere") || ft_strequ(line, "Plane"))
+		return (1);
+	else if (ft_strequ(line, "Cylinder") || ft_strequ(line, "Cone"))
+		return (1);
+	return (0);
+}
+
 int		read_objects(int fd, t_vector *set)
 {
 	int		i;
@@ -42,9 +51,10 @@ int		read_objects(int fd, t_vector *set)
 	{
 		if ((i = get_next_line(fd, &line)) == 0)
 			break ;
-		if (ft_strequ(line, "Sphere") || ft_strequ(line, "Plane") || ft_strequ(line, "")
-			|| ft_strequ(line, "Cylinder") || ft_strequ(line, "Cone"))
+		if (is_obj(line))
 			check_objects(fd, set, line);
+		else if (ft_strequ(line, ""))
+			continue ;
 		else if (ft_strequ(line, "#"))
 			return (1);
 		else
