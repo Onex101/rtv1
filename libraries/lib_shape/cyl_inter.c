@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/07 10:51:36 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/14 10:51:20 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/19 06:41:52 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,5 +115,43 @@ int cyl_inter(t_shape *s, t_inter *i)
 	//
 	//
 	//hello
+	return (1);
+}
+
+int cyl_ray(t_shape *s, t_ray l_ray)
+{
+	t_vec3 ce;
+	double dis;
+	double t1;
+	double t2;
+/*
+**	Change ray location to be at origin, makes math easier
+*/
+	l_ray.org = matrix_vec_mult(vec3_sub_new(l_ray.org, s->pos), s->imat);
+	l_ray.dir = matrix_vec_mult(l_ray.dir, s->imat);
+	ce.x = ft_sqr(l_ray.dir.x) + ft_sqr(l_ray.dir.y);
+	ce.y = 2 * l_ray.dir.x * l_ray.org.x + 2 * l_ray.dir.y * l_ray.org.y;
+	ce.z = ft_sqr(l_ray.org.x) + ft_sqr(l_ray.org.y) - 1;
+/*
+** discriminant tells whether we intersect or not
+*/
+	dis = (ce.y * ce.y) - (4 * ce.x * ce.z);
+	if (dis < 0)
+		return (0);
+	t1 = (-ce.y - sqrt(dis)) / (2 * ce.x);
+	t2 = (-ce.y + sqrt(dis)) / (2 * ce.x);
+	if (t1 > t2)
+	{
+		double tmp;
+		tmp = t1;
+		t1 = t2;
+		t2 = tmp;
+	}
+	// double y1;
+	// double y2;
+	// y1 = l_ray.org.y + t1 * l_ray.dir.y;
+	// y2 = l_ray.org.y + t2 * l_ray.dir.y;
+	if (t1 > RAY_T_MIN && t1 < l_ray.max)
+		return (0);
 	return (1);
 }
