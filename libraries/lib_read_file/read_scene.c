@@ -6,35 +6,35 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/11 10:15:14 by shillebr          #+#    #+#             */
-/*   Updated: 2018/09/12 18:57:12 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/09/19 19:09:38 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-int		read_class(int fd, t_vector *set, char *line)
+int		read_class(int fd, t_param *p, char *line)
 {
 	int		i;
 	
 	if (ft_strequ(line, "##Objects"))
 	{
-		if (!(read_objects(fd, set)))
+		if (!(read_objects(fd, p->set)))
 			return (0);
 	}
 	else if (ft_strequ(line, "##Camera"))
 	{
-		if (!(read_cam(fd, set)))
+		if (!(read_cam(fd, p->cam)))
 			return (0);
 	}
 	else if (ft_strequ(line, "##Lights"))
 	{
-		if (!(read_light(fd, set)))
+		if (!(read_light(fd, p->lis)))
 			return (0);
 	}
 	return (1); // not sure about this, might not be valid
 }
 
-int		ft_readfile(char *av, t_vector *set)
+int		ft_readfile(char *av, t_param *p)
 {
 	char	*line;
 	int		i;
@@ -52,7 +52,7 @@ int		ft_readfile(char *av, t_vector *set)
 			break ;
 		if (l == 0 && (!(ft_strequ(line, "##Scene"))))
 			return (0);
-		else if (!(read_class(fd, set, line)) && !(ft_strequ(line, "")))
+		else if (!(read_class(fd, p, line)) && !(ft_strequ(line, "")))
 				return (0);
 		ft_strdel(&line);
 		l++;
