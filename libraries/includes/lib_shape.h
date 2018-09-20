@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/20 10:58:46 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/20 06:44:57 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/20 08:53:37 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ int			sphere_ray(t_shape *sphere, t_ray r);
 int			cyl_inter(t_shape *s, t_inter *i);
 int			cyl_ray(t_shape *s, t_ray l_ray);
 int			cone_inter(t_shape *c, t_inter *i);
+int			cone_ray(t_shape *c, t_ray l_ray);
 
 t_vec3		sphere_hit_norm(t_shape *s, t_vec3 hit);
 
