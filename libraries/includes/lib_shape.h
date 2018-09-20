@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/20 10:58:46 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/19 06:42:27 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/20 06:44:57 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ struct	s_shape
 t_shape		plane_new(t_vec3 pos, t_vec3 norm, t_colour col, double	tex);
 // t_shape		sphere_new(t_vec3 pos, double radius, t_colour col);
 t_shape		sphere_new(t_vec3 pos, double radius, t_colour col, double tex);
-t_shape		cyl_new(t_vec3 pos, t_vec3 norm, t_colour col, double rad);
+t_shape		cyl_new(t_vec3 pos, t_vec3 norm, t_colour col, double rad, double tex);
 t_shape		cone_new(t_vec3 pos, t_vec3 axis, double rad, t_colour col);
 
 int			set_inter(t_vector *s, t_inter *i);
