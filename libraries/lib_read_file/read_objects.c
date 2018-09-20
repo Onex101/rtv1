@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/12 18:17:21 by shillebr          #+#    #+#             */
-/*   Updated: 2018/09/19 19:09:33 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/09/20 09:27:40 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,6 @@ int		get_sphere_info(t_shape *sphere, char *line)
 			return (0);
 	else if (ft_strequ(line, "colour["))
 		if (!(get_tvec3(sphere->col, line, 7)))
-			return (0);
-	else if (ft_strequ(line, "texture["))
-		if (!(get_tvec3(sphere->tex, line, 8)))
 			return (0);
 	else if (ft_strequ(line, "texture["))
 		if (!(get_tvec3(sphere->tex, line, 8)))
@@ -48,13 +45,13 @@ int		make_sphere(int fd, t_vector *set)
 			return (0);
 		if (ft_strequ(line, ""))
 			continue ;
-		else if (!(get_sphere_info(&sphere, line)))
-			break ;
 		else if (ft_strequ(line, "}"))
 		{
 			vector_add(set, &sphere);
 			return (1);
 		}
+		else if (!(get_sphere_info(&sphere, line)))
+			break ;
 		else
 			break ;
 		ft_strdel(&line);
