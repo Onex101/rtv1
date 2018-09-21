@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/22 13:12:06 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/18 07:29:05 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/21 07:38:48 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ int sphere_inter(t_shape *s, t_inter *i)
 	//printf("i.t = [%f] t1 = [%f] t2 = [%f]\n", i.t, t1, t2);
 	i->normal = vec3_nor_cpy(vec3_add_new(l_ray.org, vec3_mul_new(l_ray.dir, i->t)));
 	i->shape = s;
+	// ft_putstr("Shpere Normal calc:");
+	// vec3_prnt(i->normal);
 	return (1);
 }
 

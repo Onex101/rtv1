@@ -142,6 +142,7 @@ LIB_VEC_SRCS =	vec3_add.c \
 				vec2_lib.c \
 				vec2_mul.c \
 				vec2_sub.c \
+				vec3_project.c \
 				vec3_prnt.c
 
 LIB_VEC = $(addprefix lib_vec/, $(LIB_VEC_SRCS))
