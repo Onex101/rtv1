@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_advance.c                                       :+:      :+:    :+:   */
+/*   isnum.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/20 08:49:41 by shillebr          #+#    #+#             */
-/*   Updated: 2018/09/20 09:27:42 by shillebr         ###   ########.fr       */
+/*   Created: 2018/09/21 11:33:05 by shillebr          #+#    #+#             */
+/*   Updated: 2018/09/21 11:36:26 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rtv1.h"
+#include "lib_ft.h"
 
-int		ft_advance(char *str, int i)
+int		is_num(char *str)
 {
-	int		j;
-
-	j = i;
-	while (str[j] && '0' <= str[j] && str[j] <= '9')
-		j++;
-	return (j);
+	if ('0' <= *str && *str <= '9')
+		return (1);
+	return (0);
 }

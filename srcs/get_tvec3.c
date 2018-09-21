@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/19 13:53:46 by shillebr          #+#    #+#             */
-/*   Updated: 2018/09/19 19:09:35 by shillebr         ###   ########.fr       */
+/*   Created: 2018/09/21 11:59:10 by shillebr          #+#    #+#             */
+/*   Updated: 2018/09/21 12:14:17 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int		get_tvec3(t_vec3 *v, char *line, int i)
 {
 	int	count;
 
+	count = 0;
 	while (line)
 	{
 		if (is_num(line + i))

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/21 09:19:59 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/20 13:35:50 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/21 14:00:24 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,21 @@ int	main(int argc, char **argv)
 		p = (t_param *)malloc(sizeof(t_param));
 		if (init_param(p))
 		{
+
+			// if (!(ft_rt(argv[1])))
+			// {
+			// 	ft_putendl("Error: Invalid File Type");
+			// 	if (p)
+			// 		exit_program(p);
+			// }
+			// if (!(read_file(argv[1], p)))
+			// {
+			// 	ft_putendl("Error: Invalid File Read");
+			// 	if (p)
+			// 		exit_program(p);
+			// }
+			// printf("Camera: org[%f, %f, %f], target[%f, %f, %f], up[%f, %f, %f], fov[%f], aspect_ratio[%f]\n", p->cam->org.x, p->cam->org.y, p->cam->org.z, p->cam->tar.x, p->cam->tar.y, p->cam->tar.z, p->cam->up.x, p->cam->up.y, p->cam->up.z, p->cam->h, p->cam->w);
+			
 			// name  = argv[0];
 			ft_putendl(argv[0]);
 			sphere0 = sphere_new((t_vec3){0, 1, 2}, 0.5, (t_colour){0, 255, 0}, 0.001);

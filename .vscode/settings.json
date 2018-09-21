@@ -9,6 +9,8 @@
 		"functional": "c",
 		"chrono": "c",
 		"limits": "c",
-		"ratio": "c"
+		"ratio": "c",
+		"read.h": "c",
+		"lib_ft.h": "c"
 	}
 }

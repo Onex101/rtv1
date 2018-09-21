@@ -3,8 +3,8 @@
 ##Camera
 Camera{
 	org[0,0,0];
-	target[0, 0, 0];
-	upguide[0, 0, 0];
+	target[0,0,0];
+	upguide[0,0,0];
 	fov[0];
 	aspect_ratio[0];
 }
@@ -13,16 +13,16 @@ Camera{
 ##Objects
 Sphere{
 	radius[5];
-	pos[0, 1, 2];
-	colour[0, 0, 255];
+	pos[0,1,2];
+	colour[0,0,255];
 	texture[0.001];
 }
 #
 
 ##Lights
 Dir Light{
-	dir[0, 0, 0];
+	dir[0,0,0];
 	intensity[0];
-	colour[0, 0, 0];
+	colour[0,0,0];
 }
 #

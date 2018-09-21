@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_sphere.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/12 18:23:54 by shillebr          #+#    #+#             */
-/*   Updated: 2018/09/20 19:16:52 by marvin           ###   ########.fr       */
+/*   Updated: 2018/09/21 13:25:35 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,25 @@
 int		get_sphere_info(t_shape *sphere, char *line)
 {
 	if (ft_strequ(line, "radius["))
-		if (!(get_double(sphere->radius, line, 7)))
+	{
+		if (!(get_double(&sphere->radius, line, 7)))
 			return (0);
+	}
 	else if (ft_strequ(line, "pos["))
-		if (!(get_tvec3(sphere->pos, line, 4)))
+	{
+		if (!(get_tvec3(&sphere->pos, line, 4)))
 			return (0);
+	}
 	else if (ft_strequ(line, "colour["))
-		if (!(get_tvec3(sphere->col, line, 7)))
+	{
+		if (!(get_tcol(&sphere->col, line, 7)))
 			return (0);
+	}
 	else if (ft_strequ(line, "texture["))
-		if (!(get_double(sphere->tex, line, 8)))
+	{
+		if (!(get_double(&sphere->tex, line, 8)))
 			return (0);
+	}
 	else
 		return (0);
 	return (1);
@@ -48,6 +56,7 @@ int		make_sphere(int fd, t_vector *set)
 		else if (ft_strequ(line, "}"))
 		{
 			vector_add(set, &sphere);
+			printf("New Sphere: pos[%f, %f, %f], radius[%f], colour[%f, %f, %f], tex[%f]\n", sphere.pos.x, sphere.pos.y, sphere.pos.z, sphere.radius, sphere.col.r, sphere.col.g, sphere.col.b, sphere.tex);
 			ft_strdel(&line);
 			return (1);
 		}

@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_cam.c                                         :+:      :+:    :+:   */
+/*   get_double.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/19 08:18:24 by shillebr          #+#    #+#             */
-/*   Updated: 2018/09/19 19:09:36 by shillebr         ###   ########.fr       */
+/*   Created: 2018/09/20 07:27:29 by shillebr          #+#    #+#             */
+/*   Updated: 2018/09/21 11:37:29 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-
-int		read_cam(int fd, t_cam *cam)
+int		get_double(double *d, char *line, int i)
 {
-	char	*line;
-	if (ft_strequ(line, "org["))
+	if (is_num(line + i))
 	{
-		if (!(get_tvec3(cam->org, line, 4)))
-			return (0);
+		*d = ft_atoi(line + i);
+		i = ft_advance(line, i);
 	}
+	else if (line[i] == ' ')
+		i++;
+	else if (line[i] == ']' && line[i + 1] == ';')
+		return (1);
+	else
+		return (0);
+	return (0);
 }

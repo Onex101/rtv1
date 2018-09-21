@@ -25,7 +25,7 @@ int		check_lights(int fd, t_vector *set, char *line)
 	return (i); // not sure about this, might not be valid
 }
 
-int		if_lights(char *line)
+int		is_light(char *line)
 {
 	if (ft_strequ(line, "Dir Light{"))
 		return (1);
