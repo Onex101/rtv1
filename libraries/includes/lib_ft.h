@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lib_ft.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/17 08:25:31 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/29 18:31:59 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/21 11:36:33 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,10 @@ void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 
+double				ft_sqr(double num);
+
 int					get_next_line(const int fd, char **line);
+
+int					is_num(char *str);
 
 #endif

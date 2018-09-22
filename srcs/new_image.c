@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lib_vec_main.c                                     :+:      :+:    :+:   */
+/*   new_image.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xeno <xeno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/18 13:52:59 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/30 17:12:50 by xeno             ###   ########.fr       */
+/*   Created: 2018/09/03 09:07:53 by xrhoda            #+#    #+#             */
+/*   Updated: 2018/09/22 11:10:36 by xeno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_vec.h"
-#include "lib_ft.h"
-#include "vector.h"
-#include <stdio.h>
+#include "rtv1.h"
 
-int main(void)
+t_img	*new_image(void *mlx, int w, int h)
 {
-	t_vec3 v1;
-	t_vec3 v2;
+	t_img *img;
+	int		bpp;
+	int		end;
+	int		size_line;
 
-	v1 = vec3_new(1, 2, 3);
-	v2 = (t_vec3){0, 0, 0};
-	vec3_init(&v2, 1, 2, 3);
-	vec3_mul(&(t_vec3){1, 2, 3}, 2);
-	ft_putendl("Hello");
-	printf("v1.x = [%f] | v2.x = [%f] | v1.y = [%f] | v2.y = [%f] | v1.z = [%f] | v2.z = [%f]\n", v1.x, v2.x, v1.y, v2.y, v1.z, v2.z);
-	return (0);
+	if (!(img = (t_img *)malloc(sizeof(t_img))))
+		return (NULL);
+	if (!(img->add = mlx_new_image(mlx, w, h)))
+		return (NULL);
+	img->buf = (int *)mlx_get_data_addr(img->add, &bpp, &size_line, &end);
+	img->w = w;
+	img->h = h;
+	return (img);
 }

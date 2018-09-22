@@ -1,0 +1,16 @@
+{
+	"files.associations": {
+		"rtv1.h": "c",
+		"__bit_reference": "c",
+		"bitset": "c",
+		"typeinfo": "c",
+		"ios": "c",
+		"__functional_03": "c",
+		"functional": "c",
+		"chrono": "c",
+		"limits": "c",
+		"ratio": "c",
+		"read.h": "c",
+		"lib_ft.h": "c"
+	}
+}

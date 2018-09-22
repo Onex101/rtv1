@@ -3,79 +3,100 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/21 09:19:59 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/29 09:38:51 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/21 14:00:24 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/rtv1.h"
+#include "rtv1.h"
 
-int		init_param(t_param *p)
+int		ft_exit(t_param *p)
 {
-	if (!(p->mlx = mlx_init()))
-		return (-1);
-	if(!(p->win = mlx_new_window(p->mlx, WIDTH, HEIGHT, "rtv1")))
-		return (-1);	
-	if (!(p->img = new_image(p->mlx, WIDTH, HEIGHT)))
-		return (-1);
-	if (!(p->cam = new_cam((t_vec3){-5, 1, 0}, (t_vec3){0, 1, 0}, vec3(), 3.147 / 4, WIDTH / HEIGHT)))
-		return (-1);
-	if (!(p->set))
-		vector_init(p->set);
-}
-
-int ray_trace(t_param *p)
-{
-	int		i;
-	int		j;
-	t_vec3	scrn_cor;
-	t_ray	ray;
-	t_inter	inter;
-
-	j = -1;
-	while(++j < p->img->h)
+	if (p)
 	{
-		i = -1 ;
-		while (++i < p->img->w)
-		{
-			scrn_cor = (t_vec3){(2 * j / p->img->w) - 1, (-2 * i / p->img->h) + 1, 0};
-			ray = make_ray(p->cam, scrn_cor);
-/*
-**	Create a ray
-* /
-			inter_init(&inter, ray);
-/*
-**	Inititalizse intercept
-**	Check if intercept intercects with any of the shapes
-*/
-			if(shape_inter(p->set, inter))
-				p->img->buf[p->img->w * j + i] = 1;
-			else
-				p->img->buf[p->img->w * j + i] = 0;
-		}
+		exit (0);
 	}
+	exit (0);
 	return (0);
 }
 
 int	main(int argc, char **argv)
 {
 	t_param *p;
-	t_shape sphere;
+	t_shape sphere0;
+	t_shape sphere1;
+	t_shape sphere2;
 	t_shape plane;
+	t_shape cyl;
+	t_light	lit;
+	t_light	lit2;
+	t_shape cone;
+	// char	*name;
 
-	if (init_param(p) != -1)
+	if (argc == 1)
 	{
-		sphere = sphere_new((t_vec3){0, 1, 0}, 1);
-		plane = plane_new(vec3(), vec3());
-		vector_add(p->set, &sphere);
-		vector_add(p->set, &plane);
+		p = (t_param *)malloc(sizeof(t_param));
+		if (init_param(p))
+		{
+
+			// if (!(ft_rt(argv[1])))
+			// {
+			// 	ft_putendl("Error: Invalid File Type");
+			// 	if (p)
+			// 		exit_program(p);
+			// }
+			// if (!(read_file(argv[1], p)))
+			// {
+			// 	ft_putendl("Error: Invalid File Read");
+			// 	if (p)
+			// 		exit_program(p);
+			// }
+			// printf("Camera: org[%f, %f, %f], target[%f, %f, %f], up[%f, %f, %f], fov[%f], aspect_ratio[%f]\n", p->cam->org.x, p->cam->org.y, p->cam->org.z, p->cam->tar.x, p->cam->tar.y, p->cam->tar.z, p->cam->up.x, p->cam->up.y, p->cam->up.z, p->cam->h, p->cam->w);
+			
+			// name  = argv[0];
+			ft_putendl(argv[0]);
+			sphere0 = sphere_new((t_vec3){0, 1, 2}, 0.5, (t_colour){0, 255, 0}, 0.001);
+			sphere1 = sphere_new((t_vec3){-2, 0, -5}, 2, (t_colour){255, 255, 0}, 0.001);
+
+			sphere2 = sphere_new((t_vec3){0, 2, -1}, 2, (t_colour){0, 0, 255}, 0.001);
+			cyl = cyl_new((t_vec3){-2, 0, -5}, (t_vec3){0, 1, 0}, (t_colour){255, 255, 0}, 0.5, 0.001);
+			plane = plane_new((t_vec3){0, 0, 0}, (t_vec3){0, 1, 0}, (t_colour){255, 0, 0}, 0.001);
+			cone = cone_new((t_vec3){0, 1, 0}, (t_vec3){0, 0, 0}, 1, (t_colour){255, 255, 0});
+			vector_add(p->set, &plane);
+			vector_add(p->set, &cone);
+			// vector_add(p->set, &cyl);
+			vector_add(p->set, &sphere0);
+			// vector_add(p->set, &sphere1);
+			// vector_add(p->set, &sphere2);
+			
+			lit = light_new((t_vec3){3, -3, -10}, 0.3, (t_colour){255, 255, 255});
+			lit2 = light_new((t_vec3){-5, -5, -4}, 0.3, (t_colour){255, 255, 255});
+			
+			vector_add(p->lis, &lit);
+			vector_add(p->lis, &lit2);
+			// vector_add(p->set, &sphere1);
+			// vector_add(p->set, &sphere2);
+			if (OS)
+				mlx_hook(p->win, 2, 0, key_press, p);
+			else
+				mlx_hook(p->win, 2, 1, key_press, p);
+			mlx_hook(p->win, 17, 0, ft_exit, p);
+			mlx_loop_hook(p->mlx, render, p);
+			mlx_loop(p->mlx);
+		}
+		else
+		{
+			ft_putendl("Error: Failed to Initialize Parameters");
+			if (p)
+				exit_program(p);
+		}
 	}
 	else
 	{
-		ft_putendl("Error: Failed to Initialize Parameters");
-		exit_program(p);
+		ft_putendl("Error: To Many Arguments");
+		return (1);
 	}
 	return (0);
 }

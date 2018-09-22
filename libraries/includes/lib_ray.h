@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lib_ray.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/17 12:08:36 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/29 18:01:58 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/14 13:05:10 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LIB_RAY_H
 # include "lib_vec.h"
 # include "lib_shape.h"
+# include "lib_col.h"
 
 # define RAY_T_MIN 0.0001f
 # define RAY_T_MAX 1.0e30f
@@ -38,6 +39,9 @@ typedef struct	s_inter
 	t_ray		ray;
 	t_shape		*shape;
 	double		t;
+	t_vec3		normal;
+	t_colour	col;
+	double		tex;
 }				t_inter;
 
 t_inter	inter(void);

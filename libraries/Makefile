@@ -70,14 +70,38 @@ LIB_FT_SRCS = ft_memset.c \
 				ft_strclen.c \
 				ft_strcdup.c \
 				ft_chrcount.c \
-				get_next_line.c
+				get_next_line.c \
+				ft_sqr.c \
+				isnum.c
 
 LIB_FT = $(addprefix lib_ft/, $(LIB_FT_SRCS)) 
 
-LIB_MAT_SRCS =	matrix_lib.c \
-				matrix_util.c 
+LIB_MAT_SRCS =	matrix_vec_mult.c \
+				matrix_mult.c \
+				matrix_master.c \
+				matrix_identity.c \
+				matrix_cpy.c \
+				matrix_rotate.c \
+				matrix_scale.c \
+				matrix_translate.c \
+				matrix_print.c \
+				matrix_divide_row.c \
+				matrix_get_row.c \
+				matrix_inverse.c \
+				matrix_sub_row.c \
+				matrix_swap_row.c \
+				matrix_transpose.c \
+				matrix_axis_rot.c
 
 LIB_MAT = $(addprefix lib_mat/, $(LIB_MAT_SRCS)) 
+
+LIB_COLOUR_SRCS =	clamp_colour.c \
+					colour_operations_new.c \
+					colour_operations.c \
+					gamma_correction.c \
+					rgb_to_hex.c
+
+LIB_COLOUR = $(addprefix lib_colour/, $(LIB_COLOUR_SRCS))
 
 LIB_RAY_SRCS =	calc_pnt.c \
 				inter_check.c \
@@ -93,9 +117,14 @@ LIB_RAY = $(addprefix lib_ray/, $(LIB_RAY_SRCS))
 
 LIB_SHAPE_SRCS =	plane_inter.c \
 					plane_new.c \
-					shapes_inter.c \
+					set_inter.c \
 					sphere_inter.c \
-					sphere_new.c
+					sphere_hit_norm.c \
+					sphere_new.c \
+					cyl_inter.c \
+					cyl_new.c \
+					cone_new.c \
+					cone_inter.c
 
 LIB_SHAPE = $(addprefix lib_shape/, $(LIB_SHAPE_SRCS))
 
@@ -112,7 +141,9 @@ LIB_VEC_SRCS =	vec3_add.c \
 				vec2_div.c \
 				vec2_lib.c \
 				vec2_mul.c \
-				vec2_sub.c
+				vec2_sub.c \
+				vec3_project.c \
+				vec3_prnt.c
 
 LIB_VEC = $(addprefix lib_vec/, $(LIB_VEC_SRCS))
 
@@ -123,15 +154,22 @@ LIB_VECLST_SRCS =	vector_add.c \
 					vector_init.c \
 					vector_resize.c \
 					vector_set.c \
-					vector_total.c
-LIB_VECLST = $(addprefix lib_veclst/, $(LIB_VECLST_SRCS)) 
+					vector_total.c \
+					vector_new.c
+LIB_VECLST = $(addprefix lib_veclst/, $(LIB_VECLST_SRCS))
+
+LIB_LIGHT_SRCS =	light_new.c
+
+LIB_LIGHT = $(addprefix lib_light/, $(LIB_LIGHT_SRCS)) 
 
 SRCS =	$(LIB_VEC) \
 		$(LIB_SHAPE) \
 		$(LIB_RAY) \
 		$(LIB_MAT) \
 		$(LIB_VECLST) \
-		$(LIB_FT)
+		$(LIB_COLOUR) \
+		$(LIB_FT) \
+		$(LIB_LIGHT)
 
 OBJ_LIST = $(patsubst %.c, %.o, $(SRCS))
 
