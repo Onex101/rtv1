@@ -45,22 +45,29 @@ int		read_file(char *av, t_param *p)
 	printf("read file: test2\n");
 	i = 1;
 	l = 0;
+	if (!p)
+		return (0);
 	while (i != 0)
 	{
-		printf("read file: test3\n");
+		// printf("read file: test3\n");
 		i = get_next_line(fd, &line);
-		printf("Reading line: %s\n", line);
-		printf("read file: test4\n");
+		// printf("read file: test4\n");
 		if (i == 0)
 			break ;
-		printf("read file: test5\n");
-		if (l == 0 && (!(ft_strequ(line, "##Scene"))))
-			return (0);
-		else if (l > 0 && (!(ft_strequ(line, ""))))
-			continue ;
-		else if (!(read_class(fd, p, line)) && !(ft_strequ(line, "")))
+		printf("Read File: Reading line: %s\n", line);
+		// printf("read file: test5\n");
+		if (ft_strequ(line, "##Scene"))
+		{
+			if (l == 0)
+				continue ;
+			else
 				return (0);
-		printf("read file: test6\n");
+		}
+		else if (l > 0 && line[0] == '\0')
+			continue ;
+		else if (!(read_class(fd, p, line)))
+				return (0);
+		// printf("read file: test6\n");
 		ft_strdel(&line);
 		l++;
 	}

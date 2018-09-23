@@ -30,7 +30,6 @@ FILES = main.c \
 		ft_advance.c \
 		ft_strcheck.c \
 		get_double.c \
-		get_transforms.c \
 		get_tvec3.c \
 		read_camera.c \
 		read_dir_light.c \

@@ -95,7 +95,7 @@ int	main(int argc, char **argv)
 	}
 	else
 	{
-		ft_putendl("Error: To Many Arguments");
+		ft_putendl("Error: Incorrect Number of Arguments");
 		return (1);
 	}
 	return (0);
