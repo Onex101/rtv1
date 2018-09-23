@@ -6,7 +6,7 @@
 #    By: xeno <xeno@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/08/21 13:06:01 by xrhoda            #+#    #+#              #
-#    Updated: 2018/09/22 11:10:34 by xeno             ###   ########.fr        #
+#    Updated: 2018/09/22 11:19:42 by xeno             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,6 @@ FILES = main.c \
 		ft_advance.c \
 		ft_strcheck.c \
 		get_double.c \
-		get_transforms.c \
 		get_tvec3.c \
 		read_camera.c \
 		read_dir_light.c \
