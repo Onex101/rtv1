@@ -11,6 +11,7 @@
 		"limits": "c",
 		"ratio": "c",
 		"read.h": "c",
-		"lib_ft.h": "c"
+		"lib_ft.h": "c",
+		"iterator": "c"
 	}
 }

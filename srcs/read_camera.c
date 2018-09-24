@@ -34,80 +34,49 @@
 // 	return (1);
 // }
 
-// int		read_cam(int fd, t_cam *cam)
 int		get_cam_info(t_cam *c, char *line)
 {
-	printf("get cam info line [%s]\n", line);
 	if (ft_strequ("\torg[\0", line))
 	{
-		ft_putendl("Entered org");
 		if (!(get_tvec3(&c->org, line, 5)))
-		{
-			ft_putendl("org failed");
 			return (0);
-		}
-		ft_putendl("org completed");
-
 	}
-	else if (ft_strequ(line, "\ttar["))
+	else if (ft_strequ("\ttarget[", line))
 	{
-		ft_putendl("Entered tar");
-		if (!(get_tvec3(&c->tar, line, 4)))
-		{
-			ft_putendl("tar failed");
+		if (!(get_tvec3(&c->tar, line, 8)))
 			return (0);
-		}
-		ft_putendl("org completed");
 	}
-	else if (ft_strequ(line, "\tup["))
+	else if (ft_strequ("\tupguide[", line))
 	{
-		ft_putendl("Entered up");
-		if (!(get_tvec3(&c->up, line, 3)))
-		{
-			ft_putendl("up failed");
+		if (!(get_tvec3(&c->up, line, 9)))
 			return (0);
-		}
-		ft_putendl("up completed");
 	}
-	else if (ft_strequ(line, "\tfov["))
+	else if (ft_strequ("\tfov[", line))
 	{
-		ft_putendl("Entered fov");
-		if (!(get_double(&c->h, line, 4)))
-		{
-			ft_putendl("fov failed");
+		if (!(get_double(&c->h, line, 5)))
 			return (0);
-		}
 		else
 			c->h = tan(c->h);
-		ft_putendl("fov completed");
 	}
-	else if (ft_strequ(line, "\taspect_ratio["))
+	else if (ft_strequ("\taspect_ratio[", line))
 	{
-		ft_putendl("Entered aspect ratio");
-		if (!(get_double(&c->w, line, 13)))
-		{
-			ft_putendl("aspect ratio failed");
+		if (!(get_double(&c->w, line, 14)))
 			return (0);
-		}
 		else
 			c->w = c->h * c->w;
-		ft_putendl("aspect ratio completed");
 	}
 	else
-	{
-			ft_putendl("gci immediate failed");
 			return (0);
-	}
 	return (1);
 }
 
 int		is_cam_info(char *line)
 {
-	if (ft_strequ("\torg[\0", line) || ft_strequ(line, "\ttar["))
+	if (ft_strequ("\torg[", line) || ft_strequ("\ttarget[\0", line))
 		return (1);
-	else if (ft_strequ(line, "\tup[") || ft_strequ(line, "\tfov["))
+	else if (ft_strequ("\tupguide[", line) || ft_strequ("\tfov[", line))
 		return (1);
-	else if (ft_strequ(line, "\taspect_ratio["))
+	else if (ft_strequ("\taspect_ratio[", line))
 		return (1);
 	return (0);
 }
@@ -117,22 +86,24 @@ int		get_cam(int fd, t_cam *c)
 	int		i;
 	char	*line;
 
+	printf("get cam test1\n");
 	i = 1;
 	while (i != 0)
 	{
-		printf("get cam reading line: %s\n", line);
+		printf("get cam test2\n");
+		// printf("get cam reading line: %s\n", line);
 		if ((i = get_next_line(fd, &line)) == 0)
 			return (0);
 		if (i != 0)
 			printf("Get Cam Info Read: %s\n", line);
 		if (line[0] == '\0')
 			continue ;
-		else if (ft_strequ(line, "}"))
+		else if (ft_strequ("}\0", line))
 		{
 			ft_strdel(&line);
 			return (1);
 		}
-		else if (!(is_cam_info(line)))
+		else if ((is_cam_info(line)))
 		{
 			printf("is cam inf: %s\n", line);
 			if (!(get_cam_info(c, line)))
@@ -140,6 +111,9 @@ int		get_cam(int fd, t_cam *c)
 				printf("Get Cam Info Failed\n");
 				break ;
 			}
+			else
+				printf("Get Cam Info Success\n");
+
 		}
 		else
 		{
@@ -156,10 +130,10 @@ int		get_cam(int fd, t_cam *c)
 
 int		is_cam(char *line)
 {
-	ft_putendl("Is Camera test1");
+	printf("Is Camera test1\n");
 	if (ft_strequ(line, "Camera{"))
 		return (1);
-	ft_putendl("Is Camera test2");
+	printf("Is Camera test2\n");
 	return (0);
 }
 
@@ -169,28 +143,29 @@ int		read_camera(int fd, t_cam *c)
 	char	*line;
 
 	i = 1;
-	ft_putendl("Reading Camera");
+	printf("Reading Camera\n");
 	while (i != 0)
 	{
-		ft_putendl("Camera test1");
+		printf("Camera test1\n");
 		if ((i = get_next_line(fd, &line)) == 0)
 			return (0);
-		ft_putendl("Camera test2");		
+		printf("Camera test2\n");		
 		if (i == 0)
 			break ;
-		ft_putendl("Camera test3");		
+		printf("Camera test3\n");
 		printf("Reading Cam: Line: %s\n", line);
 		if (is_cam(line))
 		{
+			printf("is cam Success\n");
             if (!(get_cam(fd, c)))
             {
-				ft_putendl("Get Cam Fail");
+				printf("Get Cam Fail\n");
 				return (0);
 			}
-			ft_putendl("Get Cam success");
+			printf("Get Cam success\n");
 
         }
-		else if (ft_strequ(line, ""))
+		else if (ft_strequ(line, "\0"))
 			continue ;
 		else if (ft_strequ(line, "#"))
 			return (1);

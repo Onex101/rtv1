@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/11 10:15:14 by shillebr          #+#    #+#             */
-/*   Updated: 2018/09/21 13:59:40 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/09/24 16:17:56 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int		read_file(char *av, t_param *p)
 			break ;
 		printf("Read File: Reading line: %s\n", line);
 		// printf("read file: test5\n");
-		if (ft_strequ(line, "##Scene"))
+		if (ft_strequ("##Scene", line))
 		{
 			if (l == 0)
 				continue ;
