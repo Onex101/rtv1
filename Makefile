@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: xeno <xeno@student.42.fr>                  +#+  +:+       +#+         #
+#    By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/08/21 13:06:01 by xrhoda            #+#    #+#              #
-#    Updated: 2018/09/22 11:10:34 by xeno             ###   ########.fr        #
+#    Updated: 2018/09/25 07:52:15 by xrhoda           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,7 +67,7 @@ INC = $(RTV1_INC) $(MLX_INC) $(LIB_INC)
 all: lib $(NAME)
 
 $(NAME): $(LIB) $(OBJ)
-	$(CC) $(CFLAGS) $(INC) -lm -o $@ $^ $(LIB) $(MLX_LNK)
+	$(CC) $(CFLAGS) $(INC) -MMD -lm -o $@ $^ $(LIB) $(MLX_LNK)
 
 obj :
 	mkdir -p $(OBJ_DIR)

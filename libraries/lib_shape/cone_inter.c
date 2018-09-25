@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/14 07:53:02 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/24 13:47:00 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/25 07:25:14 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,21 +25,25 @@ t_vec3	cone_normal(t_vec3 hit_pnt, t_shape *c, t_ray r, double t)
 	p = sqrt(vec3_dot(tmp, tmp)) / p;
 	ret = vec3_mul_new(c->norm, p);
 	ret = vec3_nor_cpy(vec3_sub_new(tmp, ret));
-	// printf("Hit = ");
-	// vec3_prnt(hit_pnt);
-	// printf("Ret = ");
-	// vec3_prnt(ret);
-	// return (ret);
-
-	m = vec3_dot(r.dir, c->norm) * t + vec3_dot(vec3_sub_new(r.org, c->pos), c->norm);
-	tmp = vec3_mul_new(vec3_mul_new(c->norm, m), (1 + ft_sqr(c->radius)));
-	tmp = vec3_nor_cpy(vec3_sub_new(vec3_sub_new(hit_pnt, c->pos), tmp));
-	// if (vec3_dot(r.dir, tmp) > 0.0001)
-	// 	vec3_mul(&tmp, -1);
+	m = 10;
+	p = t + m;
+	t_ray s;
+	s  = r;
 	printf("Hit = ");
 	vec3_prnt(hit_pnt);
 	printf("Ret = ");
-	vec3_prnt(tmp);
+	vec3_prnt(ret);
+	return (ret);
+
+	// m = vec3_dot(r.dir, c->norm) * t + vec3_dot(vec3_sub_new(r.org, c->pos), c->norm);
+	// tmp = vec3_mul_new(vec3_mul_new(c->norm, m), (1 + ft_sqr(c->radius)));
+	// tmp = vec3_nor_cpy(vec3_sub_new(vec3_sub_new(hit_pnt, c->pos), tmp));
+	// if (vec3_dot(r.dir, tmp) > 0.0001)
+	// 	vec3_mul(&tmp, -1);
+	// printf("Hit = ");
+	// vec3_prnt(hit_pnt);
+	// printf("Ret = ");
+	// vec3_prnt(tmp);
 	return(tmp);
 
 // 	t_vec		vec_cone_n(t_ray r, t_vec pt, double t, t_obj cone)
@@ -275,20 +279,20 @@ double	cone_discriminant(t_shape *c, t_ray r, t_vec3 *ce)
 {
 	t_vec3 tmp;
 	double angle;
-	// t_vec3 i;
-	// t_vec3 k;
+	t_vec3 i;
+	t_vec3 k;
 
 	angle = 20 * M_PI / 180;
 	tmp = vec3_sub_new(r.org, c->pos);
-	// i = vec3_sub_new(r.dir, vec3_mul_new(c->norm, vec3_dot(r.dir, c->norm)));
-	// ce->x = ft_sqr(cos(angle)) * vec3_dot(i, i) - ft_sqr(sin(angle)) * ft_sqr(vec3_dot(r.dir, c->norm));
-	// k = vec3_sub_new(tmp, vec3_mul_new(c->norm, vec3_dot(tmp, c->norm)));
-	// ce->z = ft_sqr(cos(angle)) * vec3_dot(k, k) - ft_sqr(sin(angle)) * ft_sqr(vec3_dot(tmp, c->norm));
-	// ce->y = 2 * (ft_sqr(cos(angle)) * vec3_dot(i, k) - ft_sqr(sin(angle)) * vec3_dot(r.dir, c->norm) * vec3_dot(tmp, c->norm));
+	i = vec3_sub_new(r.dir, vec3_mul_new(c->norm, vec3_dot(r.dir, c->norm)));
+	ce->x = ft_sqr(cos(angle)) * vec3_dot(i, i) - ft_sqr(sin(angle)) * ft_sqr(vec3_dot(r.dir, c->norm));
+	k = vec3_sub_new(tmp, vec3_mul_new(c->norm, vec3_dot(tmp, c->norm)));
+	ce->z = ft_sqr(cos(angle)) * vec3_dot(k, k) - ft_sqr(sin(angle)) * ft_sqr(vec3_dot(tmp, c->norm));
+	ce->y = 2 * (ft_sqr(cos(angle)) * vec3_dot(i, k) - ft_sqr(sin(angle)) * vec3_dot(r.dir, c->norm) * vec3_dot(tmp, c->norm));
 
-	ce->x = vec3_dot(r.org, r.org) - (1 + ft_sqr(angle)) * ft_sqr(vec3_dot(r.dir, c->norm));
-	ce->y = 2 * (vec3_dot(r.dir, tmp) - (1 + ft_sqr(angle)) * vec3_dot(r.dir, c->norm) * vec3_dot(tmp, c->norm));
-	ce->z = vec3_dot(tmp, tmp) - (1 + ft_sqr(angle) * ft_sqr(vec3_dot(tmp, c->norm)));
+	// ce->x = vec3_dot(r.org, r.org) - (1 + ft_sqr(angle)) * ft_sqr(vec3_dot(r.dir, c->norm));
+	// ce->y = 2 * (vec3_dot(r.dir, tmp) - (1 + ft_sqr(angle)) * vec3_dot(r.dir, c->norm) * vec3_dot(tmp, c->norm));
+	// ce->z = vec3_dot(tmp, tmp) - (1 + ft_sqr(angle) * ft_sqr(vec3_dot(tmp, c->norm)));
 	return (ft_sqr(ce->y) - 4 * ce->x * ce->z);
 }
 
@@ -319,7 +323,7 @@ int		cone_inter(t_shape *c, t_inter *i)
 
 int		cone_ray(t_shape *c, t_ray r)
 {
-		double	dis;
+	double	dis;
 	t_vec3 ce;
 	double t1;
 	double t2;
@@ -329,7 +333,7 @@ int		cone_ray(t_shape *c, t_ray r)
 		return (0);
 	t1 = (-ce.y - sqrt(dis)) / (2 * ce.x);
 	t2 = (-ce.y + sqrt(dis)) / (2 * ce.x);
-	if ((t1 < r.max && t1 > 0) || (t2 < r.max && t2 > 0))
+	if ((t1 < r.max && t1 > RAY_T_MIN) || (t2 < r.max && t2 > RAY_T_MIN))
 		return (1);
 	return (0);
 }
