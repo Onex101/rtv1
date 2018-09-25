@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/20 07:27:29 by shillebr          #+#    #+#             */
-/*   Updated: 2018/09/21 11:37:29 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/09/24 14:20:47 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 int		get_double(double *d, char *line, int i)
 {
+	if (line[i] == ' ')
+		i++;
 	if (is_num(line + i))
 	{
 		*d = ft_atoi(line + i);
 		i = ft_advance(line, i);
 	}
-	else if (line[i] == ' ')
-		i++;
-	else if (line[i] == ']' && line[i + 1] == ';')
+	if (line[i] == ']' && line[i + 1] == ';')
 		return (1);
 	else
 		return (0);
