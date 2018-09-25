@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/21 09:21:31 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/25 10:09:21 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/25 18:40:14 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,14 +91,18 @@ int				ft_rt(char *str);
 
 
 int				key_press(int keycode, t_param *p);
-void			init_cam(t_cam *cam, t_vec3 org, t_vec3 target, t_vec3 up, double fov, double aspect_ratio);
-t_cam			*new_cam(t_vec3 org, t_vec3 target, t_vec3 up, double fov, double aspect_ratio);
+void			init_cam(t_cam *c, t_vec3 o, t_vec3 t, t_vec3 u, double f);
+t_cam			*new_cam(t_vec3 org, t_vec3 target, double fov);
 t_ray			make_ray(t_cam *cam, t_vec3 pnt);
+int 			cast_ray(t_vector *s, t_ray r);
 void			exit_program(t_param *p);
 t_img			*new_image(void *mlx, int w, int h);
 void			destroy_image(t_img *img, void *mlx);
 int				init_param(t_param *p);
 int 			ray_trace(t_param *p);
 int				render(t_param *p);
+
+t_colour		get_colour(t_param *p, t_inter *in, t_ray r, t_vec3 hit_pnt);
+t_colour		calc_light(t_light *l, t_param *p, t_inter *in, t_ray r, t_vec3 hit_pnt);
 
 #endif

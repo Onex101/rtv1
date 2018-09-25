@@ -6,14 +6,14 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/16 18:12:42 by xeno              #+#    #+#             */
-/*   Updated: 2018/09/12 10:54:37 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/25 18:42:29 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAT_LIB_H
-# define MAT_LIB_H
-#include "lib_vec.h"
-#include "lib_ft.h"
+#ifndef LIB_MAT_H
+# define LIB_MAT_H
+# include "lib_vec.h"
+# include "lib_ft.h"
 
 typedef struct	s_mat
 {

@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/16 17:47:45 by xeno              #+#    #+#             */
-/*   Updated: 2018/09/21 09:55:28 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/25 18:14:10 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,6 @@ double	vec3_nor(t_vec3 *v)
 	double l;
 
 	l = vec3_len(*v);
-/*	
-**	if (l == 0)
-**		ft_putendl("DIVISION BY ZERO!!!");
-*/
 	vec3_div(v, l);
 	return (l);
 }
@@ -31,10 +27,10 @@ t_vec3	vec3_nor_cpy(t_vec3 v)
 	t_vec3 cpy;
 	double len;
 
-	cpy = vec3_cpy(v); 
+	cpy = vec3_cpy(v);
 	if (!(len = vec3_nor(&cpy)))
 		return (vec3());
 	if (len == 1)
 		return (v);
-	return(cpy);
+	return (cpy);
 }
