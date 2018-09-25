@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/03 13:19:45 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/20 07:11:59 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/25 11:56:33 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,6 @@ int		render(t_param *p)
 
 	if (!i++)
 		ray_trace(p);
-	mlx_put_image_to_window(p->mlx, p->win, p->img->add, 0, 0);
+	// mlx_put_image_to_window(p->mlx, p->win, p->img->add, 0, 0);
 	return (0);
 }

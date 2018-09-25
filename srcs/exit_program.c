@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/27 13:50:53 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/13 08:03:31 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/25 13:10:39 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,17 @@
 void	exit_program(t_param *p)
 {
 	ft_putendl("ep test 1");
-	if (p->img)
-		destroy_image(p->img, p->mlx);
-	ft_putendl("ep test 2");
 	if (p->win)
-		mlx_destroy_window(p->mlx, p->win);
-	ft_putendl("ep test 3");
-	if (p->mlx)
-		free(p->mlx);
-	ft_putendl("ep test 4");
+		SDL_DestroyWindow(p->win);
+	ft_putendl("ep test 2");
 	if (p->set)
-		vector_delete(p->set, 0);
-	ft_putendl("ep test 5");
+		vector_free(p->set);
+	ft_putendl("ep test 3");
 	if (p->cam)
 		free(p->cam);
+	ft_putendl("ep test 3");
 	if (p->lis)
-		vector_delete(p->lis, 0);
+		vector_free(p->lis);
+	SDL_Quit();
 	exit(0);
 }

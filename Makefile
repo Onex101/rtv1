@@ -6,7 +6,7 @@
 #    By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/08/21 13:06:01 by xrhoda            #+#    #+#              #
-#    Updated: 2018/09/25 07:52:15 by xrhoda           ###   ########.fr        #
+#    Updated: 2018/09/25 12:28:10 by xrhoda           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,7 @@ OBJ_DIR = obj
 OBJ = $(SRCS:%.c=$(OBJ_DIR)/%.o)
 DEP := $(OBJ:%.o=%.d)
 
-MLX_INC = -I /usr/X11/include -g
+MLX_INC = -I /goinfre/xrhoda/.brew/Cellar/sdl2/2.0.8/include/ -g
 
 uname_S := $(shell sh -c 'uname -s 2>/dev/null || echo not')
 
@@ -54,7 +54,7 @@ ifeq ($(uname_S),Linux)
     MLX_LNK = -Wl,--no-as-needed -I /usr/local/include  -lm -lX11 -lXext -L. /usr/local/lib/libmlx_Linux.a
 endif
 ifeq ($(uname_S),Darwin)
-    MLX_LNK	= -L /usr/X11/lib -l mlx -framework OpenGL -framework AppKit
+    MLX_LNK	= -L /goinfre/xrhoda/.brew/Cellar/sdl2/2.0.8/lib -l SDL2
 endif
 
 LIB_DIR = libraries

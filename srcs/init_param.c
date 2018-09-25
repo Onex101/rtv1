@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/03 09:11:25 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/25 10:09:03 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/25 13:15:16 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,21 @@
 
 int		init_param(t_param *p)
 {
-	// ft_putendl("init param 1");
-	if (!(p->mlx = mlx_init()))
+	if (SDL_Init(SDL_INIT_EVERYTHING) < 0)
+	{
+		ft_putendl("SDL Failed to initilise");
 		return (0);
-	// ft_putendl("init param 2");
-	if(!(p->win = mlx_new_window(p->mlx, WIDTH, HEIGHT, "rtv1")))
+	}
+	if (!(p->win = SDL_CreateWindow("RTV1", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WIDTH, HEIGHT, SDL_WINDOW_ALLOW_HIGHDPI)))
+	{
+		printf("Window failed to be initlaized");
 		return (0);
-	// ft_putendl("init param 3");
-	if (!(p->img = new_image(p->mlx, WIDTH, HEIGHT)))
-		return (0);
-	// ft_putendl("init param 4");
-	if (!(p->cam = new_cam((t_vec3){0, 3, 10}, (t_vec3){0, -1, 0}, (t_vec3){0, 1, 0}, 25 * M_PI / 180, WIDTH / HEIGHT)))
-		return (0);
-	// ft_putendl("init param 5");
+	}
+	if (!(p->cam = new_cam((t_vec3){2, 5, 10}, (t_vec3){0, 1, 0}, (t_vec3){0, 1, 0}, 60, WIDTH / HEIGHT)))
+	{
+		ft_putendl("Failed to initialise cam");
+	}
 	vector_init(p->set = vector_new());
-	// ft_putendl("init param 6");
 	vector_init(p->lis = vector_new());
 	return (1);
 }

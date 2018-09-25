@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/21 09:21:31 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/25 10:09:21 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/25 13:00:38 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,11 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# include <mlx.h>
+// # include <mlx.h>
+# include <SDL2/SDL.h>
 # include <math.h>
 # include <fcntl.h>
+#include <stdbool.h> 
 # include "lib_ray.h"
 # include "lib_light.h"
 # include "os.h"
@@ -49,12 +51,10 @@ typedef struct	s_cam
 
 typedef struct	s_param
 {
-	void		*mlx;
-	void		*win;
-	t_img		*img;
-	t_cam		*cam;
-	t_vector	*set;
-	t_vector	*lis;
+	SDL_Window		*win;
+	t_cam			*cam;
+	t_vector		*set;
+	t_vector		*lis;
 }				t_param;
 
 int				ft_advance(char *str, int i);
