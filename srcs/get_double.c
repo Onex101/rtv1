@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render.c                                           :+:      :+:    :+:   */
+/*   get_double.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/03 13:19:45 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/20 07:11:59 by xrhoda           ###   ########.fr       */
+/*   Created: 2018/09/20 07:27:29 by shillebr          #+#    #+#             */
+/*   Updated: 2018/09/24 14:20:47 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-int		render(t_param *p)
+int		get_double(double *d, char *line, int i)
 {
-	static int i;
-
-	if (!i++)
-		ray_trace(p);
-	mlx_put_image_to_window(p->mlx, p->win, p->img->add, 0, 0);
+	if (line[i] == ' ')
+		i++;
+	if (is_num(line + i))
+	{
+		*d = ft_atoi(line + i);
+		i = ft_advance(line, i);
+	}
+	if (line[i] == ']' && line[i + 1] == ';')
+		return (1);
+	else
+		return (0);
 	return (0);
 }

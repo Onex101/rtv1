@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render.c                                           :+:      :+:    :+:   */
+/*   isnum.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/03 13:19:45 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/20 07:11:59 by xrhoda           ###   ########.fr       */
+/*   Created: 2018/09/21 11:33:05 by shillebr          #+#    #+#             */
+/*   Updated: 2018/09/21 11:36:26 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rtv1.h"
+#include "lib_ft.h"
 
-int		render(t_param *p)
+int		is_num(char *str)
 {
-	static int i;
-
-	if (!i++)
-		ray_trace(p);
-	mlx_put_image_to_window(p->mlx, p->win, p->img->add, 0, 0);
+	if ('0' <= *str && *str <= '9')
+		return (1);
 	return (0);
 }

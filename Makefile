@@ -6,7 +6,7 @@
 #    By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/08/21 13:06:01 by xrhoda            #+#    #+#              #
-#    Updated: 2018/09/18 06:53:00 by xrhoda           ###   ########.fr        #
+#    Updated: 2018/09/25 07:52:15 by xrhoda           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,8 +25,20 @@ FILES = main.c \
 		destroy_image.c \
 		new_image.c \
 		ray_trace.c \
-		render.c	\
-		input.c
+		render.c \
+		input.c \
+		ft_advance.c \
+		ft_strcheck.c \
+		get_double.c \
+		get_tvec3.c \
+		read_camera.c \
+		read_dir_light.c \
+		read_lights.c \
+		read_objects.c \
+		read_plane.c \
+		read_scene.c \
+		read_sphere.c \
+		get_colour.c
 SRC_DIR = srcs
 SRCS = $(FILES:$(SRC_DIR)/%=%)
 
@@ -55,7 +67,7 @@ INC = $(RTV1_INC) $(MLX_INC) $(LIB_INC)
 all: lib $(NAME)
 
 $(NAME): $(LIB) $(OBJ)
-	$(CC) $(CFLAGS) $(INC) -lm -o $@ $^ $(LIB) $(MLX_LNK)
+	$(CC) $(CFLAGS) $(INC) -MMD -lm -o $@ $^ $(LIB) $(MLX_LNK)
 
 obj :
 	mkdir -p $(OBJ_DIR)

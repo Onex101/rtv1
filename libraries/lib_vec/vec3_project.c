@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render.c                                           :+:      :+:    :+:   */
+/*   vec3_project.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/03 13:19:45 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/20 07:11:59 by xrhoda           ###   ########.fr       */
+/*   Created: 2018/09/21 11:11:05 by xrhoda            #+#    #+#             */
+/*   Updated: 2018/09/21 11:13:34 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rtv1.h"
+#include "lib_vec.h"
 
-int		render(t_param *p)
+t_vec3	vec3_project(t_vec3 u, t_vec3 v)
 {
-	static int i;
+	t_vec3	proj;
+	double	dot;
 
-	if (!i++)
-		ray_trace(p);
-	mlx_put_image_to_window(p->mlx, p->win, p->img->add, 0, 0);
-	return (0);
+	dot = vec3_dot(u, v) / vec3_dot(v, v);
+	proj = vec3_mul_new(v, dot);
+	return (proj);
 }

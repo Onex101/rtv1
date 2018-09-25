@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_trace.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/03 09:12:04 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/18 09:03:02 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/09/24 12:19:31 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,15 @@ int 	cast_ray(t_vector *s, t_ray r)
 	return (0);
 }
 
-t_colour	get_colour(t_param *p, t_inter *in, t_ray r, t_vec3 hit_pnt)
+t_colour	calc_light(t_light *l, t_param *p, t_inter *in, t_ray r, t_vec3 hit_pnt)
 {
-	t_light		*l;
 	t_vec3		dir_to_light;
 	double		light_power;
 	double		light_reflected;
 	t_colour	clr;
+	t_colour	l_clr;
 	t_ray		shadow_ray;
 
-	l = (t_light *)vector_get(p->lis, 0);
 	dir_to_light = vec3_nor_cpy(l->dir);
 	dir_to_light = (t_vec3){-dir_to_light.x, -dir_to_light.y, -dir_to_light.z};
 	
@@ -50,10 +49,31 @@ t_colour	get_colour(t_param *p, t_inter *in, t_ray r, t_vec3 hit_pnt)
 	else
 		light_power = (fmax(0, vec3_dot(in->normal, dir_to_light))) * l->intensity;
 	light_reflected = in->tex / M_PI;
-	clr = (t_colour){(in->col.r * l->col.r * light_power * light_reflected), (in->col.g * l->col.g * light_power * light_reflected), (in->col.b * l->col.b * light_power * light_reflected)};
+	l_clr = (t_colour){(l->col.r * light_power * light_reflected), (l->col.g * light_power * light_reflected), (l->col.b * light_power * light_reflected)};
+	clr = (t_colour){(in->col.r * l_clr.r), (in->col.g * l_clr.g), (in->col.b * l_clr.b)};
 	return (clr);
 	if (r.max > 0 && hit_pnt.x > 0)
 		return (clr);
+}
+
+t_colour	get_colour(t_param *p, t_inter *in, t_ray r, t_vec3 hit_pnt)
+{
+	t_light		*l;
+	int			i;
+	int			total;
+	t_colour	clr;
+	t_colour	total_clr;
+
+	total = vector_total(p->lis);
+	i = -1;
+	total_clr = (t_colour){0, 0, 0};
+	while (++i < total)
+	{
+		l = (t_light *)vector_get(p->lis, i);
+		clr = calc_light(l, p, in, r, hit_pnt);
+		total_clr = (t_colour){total_clr.r + clr.r, total_clr.g + clr.g, total_clr.b + clr.b};
+	}
+	return (total_clr);
 }
 
 int 	ray_trace(t_param *p)

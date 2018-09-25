@@ -71,7 +71,8 @@ LIB_FT_SRCS = ft_memset.c \
 				ft_strcdup.c \
 				ft_chrcount.c \
 				get_next_line.c \
-				ft_sqr.c
+				ft_sqr.c \
+				isnum.c
 
 LIB_FT = $(addprefix lib_ft/, $(LIB_FT_SRCS)) 
 
@@ -141,6 +142,7 @@ LIB_VEC_SRCS =	vec3_add.c \
 				vec2_lib.c \
 				vec2_mul.c \
 				vec2_sub.c \
+				vec3_project.c \
 				vec3_prnt.c
 
 LIB_VEC = $(addprefix lib_vec/, $(LIB_VEC_SRCS))

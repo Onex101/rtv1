@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/12 18:31:06 by shillebr          #+#    #+#             */
-/*   Updated: 2018/09/12 18:57:17 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/09/21 11:32:20 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int		ft_strcheck(const char *haystack, const char *needle)
 	s = 0;
 	ret = (char *)haystack;
 	if (needle[i] == '\0')
-		return ((char *)haystack);
+		return (1);
 	while (ret[i])
 	{
 		s = 0;

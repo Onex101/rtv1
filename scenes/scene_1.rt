@@ -1,13 +1,28 @@
 ##Scene
 
+##Camera
+Camera{
+	org[0,0,0];
+	target[0,0,0];
+	upguide[0,0,0];
+	fov[0];
+	aspect_ratio[0];
+}
+#
+
 ##Objects
-Sphere
-{
+Sphere{
 	radius[5];
-	pos[0, 1, 2];
-	colour[0, 0, 255];
-	texture[0];
-	rot[0, 0, 0];
-	scale[0];
+	pos[0,1,2];
+	colour[0,0,255];
+	texture[0.001];
+}
+#
+
+##Lights
+Dir Light{
+	dir[0,0,0];
+	intensity[0];
+	colour[0,0,0];
 }
 #
