@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/14 07:53:02 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/25 07:25:14 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/25 17:03:58 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,16 @@ t_vec3	cone_normal(t_vec3 hit_pnt, t_shape *c, t_ray r, double t)
 	p = sqrt(vec3_dot(tmp, tmp)) / p;
 	ret = vec3_mul_new(c->norm, p);
 	ret = vec3_nor_cpy(vec3_sub_new(tmp, ret));
+	if (vec3_dot(r.dir, ret) > 0.0001)
+	 	vec3_mul(&tmp, -1);
 	m = 10;
 	p = t + m;
 	t_ray s;
 	s  = r;
-	printf("Hit = ");
-	vec3_prnt(hit_pnt);
-	printf("Ret = ");
-	vec3_prnt(ret);
+	// printf("Hit = ");
+	// vec3_prnt(hit_pnt);
+	// printf("Ret = ");
+	// vec3_prnt(ret);
 	return (ret);
 
 	// m = vec3_dot(r.dir, c->norm) * t + vec3_dot(vec3_sub_new(r.org, c->pos), c->norm);

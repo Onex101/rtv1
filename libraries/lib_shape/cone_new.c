@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/14 07:50:53 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/25 06:41:26 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/25 16:35:32 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ t_shape		cone_new(t_vec3 pos, t_vec3 axis, double rad, t_colour col)
 	cone.inter = cone_inter;
 	cone.ray = cone_ray;
 	cone.col = col;
+	cone.tex = 0.001;
 	angle = acos(vec3_dot((t_vec3){0, 1, 0}, axis) / vec3_len(axis));
 	cone.imat = matrix_axis_rot(vec3_crs(axis, (t_vec3){0, 1, 0}), -angle);
 	cone.mat = matrix_inverse(&cone.imat);
