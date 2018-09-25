@@ -6,7 +6,7 @@
 #    By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/08/21 13:06:01 by xrhoda            #+#    #+#              #
-#    Updated: 2018/09/25 12:28:10 by xrhoda           ###   ########.fr        #
+#    Updated: 2018/09/25 15:18:33 by xrhoda           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,9 @@ FILES = main.c \
 		read_plane.c \
 		read_scene.c \
 		read_sphere.c \
-		get_colour.c
+		get_colour.c \
+		colour_to_int.c \
+		put_pixel.c
 SRC_DIR = srcs
 SRCS = $(FILES:$(SRC_DIR)/%=%)
 

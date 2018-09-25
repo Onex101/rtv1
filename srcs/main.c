@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/21 09:19:59 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/25 12:53:48 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/25 16:33:21 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,14 @@ int	main(int argc, char **argv)
 {
 	t_param *p;
 	SDL_Event win_event;
-	// t_shape sphere0;
+	t_shape sphere0;
 	// // t_shape sphere1;
 	// // t_shape sphere2;
-	// t_shape plane;
+	t_shape plane;
 	// t_shape cyl;
-	// t_light	lit;
-	// t_light	lit2;
-	// t_shape cone;
+	t_light	lit;
+	t_light	lit2;
+	t_shape cone;
 	char	*name;
 
 	name = argv[0];
@@ -64,27 +64,25 @@ int	main(int argc, char **argv)
 			
 			// // name  = argv[0];
 			// ft_putendl(argv[0]);
-			// sphere0 = sphere_new((t_vec3){2, 1, 4}, 0.5, (t_colour){0, 255, 0}, 0.001);
+			sphere0 = sphere_new((t_vec3){0, 1, 0}, 0.5, (t_colour){0, 255, 0}, 0.001);
 			// // sphere1 = sphere_new((t_vec3){-2, 0, -5}, 2, (t_colour){255, 255, 0}, 0.001);
 
 			// // sphere2 = sphere_new((t_vec3){0, 2, -1}, 2, (t_colour){0, 0, 255}, 0.001);
 			// cyl = cyl_new((t_vec3){-2, 0, -5}, (t_vec3){0, 1, 0}, (t_colour){255, 255, 0}, 0.5, 0.001);
-			// plane = plane_new((t_vec3){0, 0, 0}, (t_vec3){0, 1, 0}, (t_colour){255, 0, 0}, 0.001);
-			// cone = cone_new((t_vec3){0, 1, 0}, (t_vec3){0, 1, 0}, 1, (t_colour){255, 255, 0});
-			// vector_add(p->set, &plane);
-			// vector_add(p->set, &cone);
+			plane = plane_new((t_vec3){0, 0, 0}, (t_vec3){0, 1, 0}, (t_colour){255, 0, 0}, 0.001);
+			cone = cone_new((t_vec3){0, 1, 0}, (t_vec3){0, 1, 0}, 1, (t_colour){255, 255, 0});
+			vector_add(p->set, &plane);
+			vector_add(p->set, &cone);
 			// // vector_add(p->set, &cyl);
-			// vector_add(p->set, &sphere0);
+			vector_add(p->set, &sphere0);
 			// // vector_add(p->set, &sphere1);
 			// // vector_add(p->set, &sphere2);
 			
-			// lit = light_new((t_vec3){3, -3, -10}, 0.3, (t_colour){255, 255, 255});
-			// lit2 = light_new((t_vec3){-5, -5, -4}, 0.3, (t_colour){255, 255, 255});
+			lit = light_new((t_vec3){3, -3, -10}, 0.2, (t_colour){255, 255, 255});
+			lit2 = light_new((t_vec3){-5, -5, -4}, 0.2, (t_colour){255, 255, 255});
 			
-			// vector_add(p->lis, &lit);
-			// vector_add(p->lis, &lit2);
-			// vector_add(p->set, &sphere1);
-			// vector_add(p->set, &sphere2);
+			vector_add(p->lis, &lit);
+			vector_add(p->lis, &lit2);
 			// if (OS)
 			// 	mlx_hook(p->win, 2, 0, key_press, p);
 			// else
@@ -92,6 +90,7 @@ int	main(int argc, char **argv)
 			// mlx_hook(p->win, 17, 0, ft_exit, p);
 			// mlx_loop_hook(p->mlx, render, p);
 			// mlx_loop(p->mlx);
+			render(p);
 			while (true)
 			{
 				if (SDL_PollEvent(&win_event))

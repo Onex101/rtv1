@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/03 09:12:04 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/25 11:55:15 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/25 15:41:20 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,15 +84,15 @@ int 	ray_trace(t_param *p)
 	t_ray	ray;
 	t_inter	inter;
 	t_vec3 hit_pnt;
-	unsigned long	col;
+	// unsigned long	col;
 
 	j = -1;
-	while(++j < p->img->w)
+	while(++j < WIDTH)
 	{
 		i = -1 ;
-		while (++i < p->img->h)
+		while (++i < HEIGHT)
 		{
-			vec3_init(&scrn_cor, (((2 * i) / (double)p->img->h) - 1), -(((-2 * j) / (double)p->img->w) + 1), 0);
+			vec3_init(&scrn_cor, (((2 * i) / (double)HEIGHT) - 1), -(((-2 * j) / (double)WIDTH) + 1), 0);
 			ray = make_ray(p->cam, scrn_cor);
 /*
 **	Create a ray
@@ -109,9 +109,10 @@ int 	ray_trace(t_param *p)
 				//lighting
 				inter.col = get_colour(p, &inter, ray, hit_pnt);
 				//
-				gamma_correct(&(inter.col), 1, 2.2);
-				clamp(&(inter.col), 255, 0);
-				col = rgb_to_hex(inter.col.r, inter.col.g, inter.col.b);
+				gamma_correct(&(inter.col), 0.3, 1.5);
+				clamp(&(inter.col), 1, 0);
+				put_pixel(i, j, inter.col, p);
+				// col = rgb_to_hex(inter.col.r, inter.col.g, inter.col.b);
 				// p->img->buf[p->img->w * j + i] = mlx_get_color_value(p->mlx, col);
 			}
 			else

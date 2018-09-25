@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/21 09:21:31 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/25 13:00:38 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/25 15:19:20 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ typedef struct	s_cam
 typedef struct	s_param
 {
 	SDL_Window		*win;
+	SDL_Surface		*srf;
 	t_cam			*cam;
 	t_vector		*set;
 	t_vector		*lis;
@@ -65,6 +66,8 @@ void			assign_vec3(t_vec3 *v, char *line, int i, int count);
 int				get_tvec3(t_vec3 *v, char *line, int i);
 void			assign_col(t_colour *v, char *line, int i, int count);
 int				get_tcol(t_colour *v, char *line, int i);
+Uint32			colour_to_int(t_colour col);
+void			put_pixel(int x, int y, t_colour pixel, t_param *p);
 
 int				get_dir_light_info(t_light *lit, char *line);
 int				make_dir_light(int fd, t_vector *set);

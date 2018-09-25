@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/03 09:11:25 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/25 13:15:16 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/25 15:28:01 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,15 @@ int		init_param(t_param *p)
 		printf("Window failed to be initlaized");
 		return (0);
 	}
-	if (!(p->cam = new_cam((t_vec3){2, 5, 10}, (t_vec3){0, 1, 0}, (t_vec3){0, 1, 0}, 60, WIDTH / HEIGHT)))
+	if (!(p->srf = SDL_GetWindowSurface(p->win)))
+	{
+		ft_putendl("SDL Failed to create Surface");
+		return (0);
+	}
+	if (!(p->cam = new_cam((t_vec3){2, 2, 10}, (t_vec3){0, 1, 0}, (t_vec3){0, 1, 0}, 60, WIDTH / HEIGHT)))
 	{
 		ft_putendl("Failed to initialise cam");
+		return (0);
 	}
 	vector_init(p->set = vector_new());
 	vector_init(p->lis = vector_new());

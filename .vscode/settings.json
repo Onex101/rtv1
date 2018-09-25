@@ -13,5 +13,6 @@
 		"read.h": "c",
 		"lib_ft.h": "c",
 		"iterator": "c"
-	}
+	},
+	"C_Cpp.intelliSenseEngineFallback": "Disabled"
 }
