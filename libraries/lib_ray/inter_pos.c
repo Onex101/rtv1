@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/20 10:04:12 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/20 10:16:58 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/26 10:41:10 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 t_vec2	inter_pos(t_inter i, double t)
 {
-	return(calc_pnt(i.ray, t));
+	return (calc_pnt(i.ray, t));
 }
