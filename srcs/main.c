@@ -26,6 +26,7 @@ int	main(int argc, char **argv)
 {
 	t_param *p;
 	// t_shape sphere0;
+
 	// t_shape sphere1;
 	// t_shape sphere2;
 	// t_shape sphere3;
@@ -62,10 +63,12 @@ int	main(int argc, char **argv)
 			}
 			printf("Camera: org[%f, %f, %f], target[%f, %f, %f], up[%f, %f, %f], fov[%f], aspect_ratio[%f]\n", p->cam->org.x, p->cam->org.y, p->cam->org.z, p->cam->tar.x, p->cam->tar.y, p->cam->tar.z, p->cam->up.x, p->cam->up.y, p->cam->up.z, p->cam->h, p->cam->w);
 			
+			
+			
 			// // name  = argv[0];
 			// ft_putendl(argv[0]);
 
-			// // sphere0 = sphere_new((t_vec3){0, 3, 5}, 0.2, (t_colour){255, 0, 0}, 0.001);
+			// sphere0 = sphere_new((t_vec3){0, 3, 5}, 0.2, (t_colour){255, 0, 0}, 0.001);
 
 			// sphere1 = sphere_new((t_vec3){2, 2, -4}, 0.5, (t_colour){0, 255, 0}, 0.001);
 			// sphere2 = sphere_new((t_vec3){2, 2, 4}, 0.5, (t_colour){0, 255, 0}, 0.001);
@@ -86,7 +89,9 @@ int	main(int argc, char **argv)
 			// // vector_add(p->set, &cone2);
 			// // vector_add(p->set, &cone3);
 			// // vector_add(p->set, &cyl);
+
 			// vector_add(p->set, &sphere0);
+			
 			// // vector_add(p->set, &sphere1);
 			// // vector_add(p->set, &sphere2);
 			// // vector_add(p->set, &sphere3);
@@ -105,6 +110,21 @@ int	main(int argc, char **argv)
 			// // vector_add(p->lis, &lit4);
 			// // vector_add(p->set, &sphere1);
 			// // vector_add(p->set, &sphere2);
+
+			t_shape		*s;
+			int			i;
+			int			total;
+
+			total = vector_total(p->set);
+			printf("set total after read= [%d]\n", vector_total(p->set));
+			i = -1;
+			while (++i < total)
+			{
+				s = (t_shape *)vector_get(p->set, i);
+				printf("s[%d] pos[%f, %f, %f]\n", i, s->pos.x, s->pos.y, s->pos.z);
+				printf("s[%d] radius[%f]\n", i, s->radius);
+			}
+
 			printf("test mlx\n");
 			if (OS)
 				mlx_hook(p->win, 2, 0, key_press, p);

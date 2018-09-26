@@ -16,10 +16,10 @@ int		render(t_param *p)
 {
 	static int i;
 
-	printf("test render1\n");
+	// printf("test render1\n");
 	if (!i++)
 		ray_trace(p);
-	printf("test render2\n");
+	// printf("test render2\n");
 	mlx_put_image_to_window(p->mlx, p->win, p->img->add, 0, 0);
 	return (0);
 }

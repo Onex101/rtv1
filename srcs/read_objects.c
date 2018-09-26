@@ -12,19 +12,19 @@
 
 #include "rtv1.h"
 
-int		check_objects(int fd, t_vector *set, char *line)
+int		check_objects(int fd, t_vector **set, char *line)
 {
 	int		i;
 
 	if (ft_strequ(line, "Sphere{"))
 		i = make_sphere(fd, set);//t_vector stores all the shapes, verctor add
 	else if (ft_strequ(line, "Plane{"))
-		i = make_plane(fd, set);
+		i = make_plane(fd, *set);
 	// else if (ft_strequ(line, "Cylinder{"))
 	// 	i = make_cylinder(fd, set);
 	// else if (ft_strequ(line, "Cone{"))
 	// 	i = make_cone(fd, set);
-	else if (ft_strequ(line, ""))
+	else if (ft_strequ(line, "\0"))
 		i = 1;
 	else
 		i = 0;	
@@ -40,7 +40,7 @@ int		is_obj(char *line)
 	return (0);
 }
 
-int		read_objects(int fd, t_vector *set)
+int		read_objects(int fd, t_vector **set)
 {
 	int		i;
 	char	*line;
@@ -53,10 +53,13 @@ int		read_objects(int fd, t_vector *set)
 			break ;
 		if (is_obj(line))
 			check_objects(fd, set, line);
-		else if (ft_strequ(line, ""))
+		else if (ft_strequ(line, "\0"))
 			continue ;
 		else if (ft_strequ(line, "#"))
+		{
+			printf("Read objects successful\n");
 			return (1);
+		}
 		else
 		{
 			ft_strdel(&line);

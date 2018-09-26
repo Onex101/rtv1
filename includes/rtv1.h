@@ -79,14 +79,14 @@ int				get_plane_info(t_shape *plane, char *line);
 int				make_plane(int fd, t_vector *set);
 
 int				get_sphere_info(t_shape *sphere, char *line);
-int				make_sphere(int fd, t_vector *set);
+int				make_sphere(int fd, t_vector **set);
 
-int				check_objects(int fd, t_vector *set, char *line);
+int				check_objects(int fd, t_vector **set, char *line);
 int				is_obj(char *line);
-int				read_objects(int fd, t_vector *set);
+int				read_objects(int fd, t_vector **set);
 
-int				read_class(int fd, t_param *p, char *line);
-int				read_file(char *av, t_param *p);
+int				read_class(int fd, t_param **p, char *line);
+int				read_file(char *av, t_param **p);
 int				ft_rt(char *str);
 
 

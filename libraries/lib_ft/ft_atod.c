@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "lib_ft.h"
+#include <stdio.h>
 
 double	ft_atod(char *str)
 {
@@ -27,12 +28,12 @@ double	ft_atod(char *str)
 		end = 0;
 		if (splt[1])
 		{
-			len = ft_strlen(splt[1]) - 1;
+			len = ft_strlen(splt[1]) - 3;
 			while (len >= 0)
 				end = end / 10 + (splt[1][len--] - 48);
 			end /= 10;
 		}
-		if (start > 0)
+		if (start >= 0)
 			start += end;
 		else
 			start -= end;

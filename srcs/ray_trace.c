@@ -35,35 +35,35 @@ int 	ray_trace(t_param *p)
 	unsigned long	col;
 
 	j = -1;
-	printf("test ray trace 1\n");
+	// printf("test ray trace 1\n");
 	while (++j < p->img->w)
 	{
 		i = -1;
-		printf("test ray trace 2\n");
+		// printf("test ray trace 2\n");
 		while (++i < p->img->h)
 		{
 			vec3_init(&scrn_cor, (((2 * i) / (double)p->img->h) - 1),
 								-(((-2 * j) / (double)p->img->w) + 1), 0);
-			printf("test ray trace 3\n");
+			// printf("test ray trace 3\n");
 			ray = make_ray(p->cam, scrn_cor);
-			printf("test ray trace 4\n");
+			// printf("test ray trace 4\n");
 			inter_init(&inter, ray);
-			printf("test ray trace 5\n");
+			// printf("test ray trace 5\n");
 			if (set_inter(p->set, &inter))
 			{
-				printf("test ray trace 6\n");
+				// printf("test ray trace 6\n");
 				col = grab_col(ray, inter, p);
-				printf("test ray trace 7\n");
+				// printf("test ray trace 7\n");
 				p->img->buf[p->img->w * j + i] =
 					mlx_get_color_value(p->mlx, col);
-				printf("test ray trace 8\n");
+				// printf("test ray trace 8\n");
 			}
 			else
 				p->img->buf[p->img->w * j + i] =
 					mlx_get_color_value(p->mlx, 0x000000);
-			printf("test ray trace 9\n");
+			// printf("test ray trace 9\n");
 		}
 	}
-	printf("test ray trace 10\n");
+	// printf("test ray trace 10\n");
 	return (0);
 }

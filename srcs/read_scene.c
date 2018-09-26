@@ -12,27 +12,27 @@
 
 #include "rtv1.h"
 
-int		read_class(int fd, t_param *p, char *line)
+int		read_class(int fd, t_param **p, char *line)
 {
 	if (ft_strequ(line, "##Objects"))
 	{
-		if (!(read_objects(fd, p->set)))
+		if (!(read_objects(fd, &(*p)->set)))
 			return (0);
 	}
 	else if (ft_strequ(line, "##Camera"))
 	{
-		if (!(read_camera(fd, p->cam)))
+		if (!(read_camera(fd, (*p)->cam)))
 			return (0);
 	}
 	else if (ft_strequ(line, "##Lights"))
 	{
-		if (!(read_lights(fd, p->lis)))
+		if (!(read_lights(fd, (*p)->lis)))
 			return (0);
 	}
 	return (1); // not sure about this, might not be valid
 }
 
-int		read_file(char *av, t_param *p)
+int		read_file(char *av, t_param **p)
 {
 	char	*line;
 	int		i;

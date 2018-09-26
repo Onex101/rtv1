@@ -27,7 +27,7 @@ int		get_sphere_info(t_shape *sphere, char *line)
 	return (1);
 }
 
-int		make_sphere(int fd, t_vector *set)
+int		make_sphere(int fd, t_vector **set)
 {
 	int		i;
 	t_shape sphere;
@@ -39,13 +39,21 @@ int		make_sphere(int fd, t_vector *set)
 	{
 		if ((i = get_next_line(fd, &line)) == 0)
 			return (0);
+		printf("make sphere: line : [%s]\n", line);
 		if (ft_strequ(line, "\0"))
 			continue ;
 		else if (ft_strequ("}", line))
 		{
-			vector_add(set, &sphere);
+			printf("make sphere close found\n");
+			int	t = vector_total(*set);
+			printf("set total = [%d]\n", t);
+			vector_add(*set, &sphere);
 			printf("Sphere: pos[%f, %f, %f], radius[%f], texture[%f], col[%f, %f, %f]\n", sphere.pos.x, sphere.pos.y, sphere.pos.z, sphere.radius, sphere.tex, sphere.col.r, sphere.col.g, sphere.col.b);
 			ft_strdel(&line);
+			t = vector_total(*set);
+			printf("set total = [%d]\n", t);
+			t_shape *sh = (t_shape *)vector_get(*set, t - 1);
+			printf("sh: pos[%f, %f, %f], radius[%f], texture[%f], col[%f, %f, %f]\n", sh->pos.x, sh->pos.y, sh->pos.z, sh->radius, sh->tex, sh->col.r, sh->col.g, sh->col.b);
 			return (1);
 		}
 		else if (get_sphere_info(&sphere, line))

@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "lib_ray.h"
+#include <stdio.h>
 
 void	inter_init(t_inter *i, t_ray r)
 {
@@ -23,5 +24,6 @@ void	inter_init(t_inter *i, t_ray r)
 
 t_inter	inter(void)
 {
+	printf("inter test1\n");
 	return ((t_inter){ray(), NULL, RAY_T_MAX, vec3(), (t_colour){0, 0, 0}, 0});
 }

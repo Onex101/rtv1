@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "lib_ray.h"
+#include <stdio.h>
 
 void	ray_init(t_ray *r, t_vec3 org, t_vec3 dir, double max)
 {
@@ -23,8 +24,10 @@ t_ray	ray(void)
 {
 	t_ray r;
 
+	printf("ray test 1\n");
 	r.org = (t_vec3){0, 0, 0};
 	r.dir = (t_vec3){0, 0, 0};
 	r.max = RAY_T_MAX;
+	printf("ray test 2\n");
 	return (r);
 }
