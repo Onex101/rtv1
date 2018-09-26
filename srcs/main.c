@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/21 09:19:59 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/25 17:16:14 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/26 06:28:26 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,15 @@ int	main(int argc, char **argv)
 	t_shape sphere0;
 	t_shape sphere1;
 	t_shape sphere2;
+	t_shape sphere3;
 	t_shape plane;
-	// t_shape cyl;
+	t_shape cyl;
 	t_light	lit;
 	t_light	lit2;
-	t_shape cone;
+	t_shape cone0;
+	t_shape cone1;
+	t_shape cone2;
+	t_shape cone3;
 	// char	*name;
 
 	if (argc == 1)
@@ -57,25 +61,34 @@ int	main(int argc, char **argv)
 			
 			// name  = argv[0];
 			ft_putendl(argv[0]);
-			sphere0 = sphere_new((t_vec3){2, 1, 4}, 0.5, (t_colour){0, 255, 0}, 0.001);
-			sphere1 = sphere_new((t_vec3){0, 1, -1}, 0.5, (t_colour){255, 255, 0}, 0.001);
-
-			sphere2 = sphere_new((t_vec3){0, 5, -1}, 3, (t_colour){0, 0, 255}, 0.001);
-			// cyl = cyl_new((t_vec3){-2, 0, -5}, (t_vec3){0, 1, 0}, (t_colour){255, 255, 0}, 0.5, 0.001);
+			sphere0 = sphere_new((t_vec3){-2, 2, -4}, 0.5, (t_colour){255, 255, 0}, 0.001);
+			sphere1 = sphere_new((t_vec3){2, 2, -4}, 0.5, (t_colour){255, 255, 0}, 0.001);
+			sphere2 = sphere_new((t_vec3){2, 2, 4}, 0.5, (t_colour){0, 0, 255}, 0.001);
+			sphere3 = sphere_new((t_vec3){-2, 2, 4}, 0.5, (t_colour){0, 0, 255}, 0.001);
+			cyl = cyl_new((t_vec3){0, 0, 0}, (t_vec3){0, 1, 0}, (t_colour){0, 255, 0}, 0.5, 0.001);
 			plane = plane_new((t_vec3){0, 0, 0}, (t_vec3){0, 1, 0}, (t_colour){255, 0, 0}, 0.001);
-			cone = cone_new((t_vec3){0, 1, 0}, (t_vec3){0, 1, 0}, 1, (t_colour){255, 255, 0});
+			cone0 = cone_new((t_vec3){-2, 2, -4}, (t_vec3){0, 1, 0}, 1, (t_colour){255, 255, 0});
+			cone1 = cone_new((t_vec3){2, 2, -4}, (t_vec3){0, 1, 0}, 1, (t_colour){255, 255, 0});
+			cone2 = cone_new((t_vec3){2, 2, 4}, (t_vec3){0, 1, 0}, 1, (t_colour){255, 255, 0});
+			cone3 = cone_new((t_vec3){-2, 2, 4}, (t_vec3){0, 1, 0}, 1, (t_colour){255, 255, 0});
 			vector_add(p->set, &plane);
-			vector_add(p->set, &cone);
-			// vector_add(p->set, &cyl);
+			vector_add(p->set, &cone0);
+			vector_add(p->set, &cone1);
+			vector_add(p->set, &cone2);
+			vector_add(p->set, &cone3);
+			vector_add(p->set, &cyl);
 			vector_add(p->set, &sphere0);
+			vector_add(p->set, &sphere1);
+			vector_add(p->set, &sphere2);
+			vector_add(p->set, &sphere3);
 			// vector_add(p->set, &sphere1);
 			// vector_add(p->set, &sphere2);
 			
-			lit = light_new((t_vec3){0, -0.1, -2}, 0.6, (t_colour){255, 255, 255});
-			lit2 = light_new((t_vec3){0, -7, -3}, 0.3, (t_colour){255, 255, 255});
+			lit = light_new((t_vec3){-1, -1, -1}, 0.3, (t_colour){255, 255, 255});
+			lit2 = light_new((t_vec3){1, -1, -1}, 0.3, (t_colour){255, 255, 255});
 			
 			vector_add(p->lis, &lit);
-			// vector_add(p->lis, &lit2);
+			vector_add(p->lis, &lit2);
 			// vector_add(p->set, &sphere1);
 			// vector_add(p->set, &sphere2);
 			if (OS)
