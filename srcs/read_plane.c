@@ -14,24 +14,24 @@
 
 int		get_plane_info(t_shape *plane, char *line)
 {
-	if (ft_strequ(line, "pos["))
+	if (ft_strequ(line, "\tpos["))
 	{
-		if (!(get_tvec3(&plane->pos, line, 4)))
+		if (!(get_tvec3(&plane->pos, line, 5)))
 			return (0);
 	}
-	else if (ft_strequ(line, "norm["))
+	else if (ft_strequ(line, "\tnorm["))
 	{
-		if (!(get_tvec3(&plane->norm, line, 5)))
+		if (!(get_tvec3(&plane->norm, line, 6)))
 			return (0);
 	}
-	else if (ft_strequ(line, "colour["))
+	else if (ft_strequ(line, "\tcolour["))
 	{
-		if (!(get_tcol(&plane->col, line, 7)))
+		if (!(get_tcol(&plane->col, line, 8)))
 			return (0);
 	}
-	else if (ft_strequ(line, "texture["))
+	else if (ft_strequ(line, "\ttexture["))
 	{
-		if (!(get_double(&plane->tex, line, 8)))
+		if (!(get_double(&plane->tex, line, 9)))
 			return (0);
 	}
 	else
@@ -51,7 +51,7 @@ int		make_plane(int fd, t_vector *set)
 	{
 		if ((i = get_next_line(fd, &line)) == 0)
 			return (0);
-		if (ft_strequ(line, ""))
+		if (ft_strequ(line, "\0"))
 			continue ;
 		else if (ft_strequ(line, "}"))
 		{
@@ -60,8 +60,10 @@ int		make_plane(int fd, t_vector *set)
 			ft_strdel(&line);
 			return (1);
 		}
-		else if (!(get_plane_info(&plane, line)))
-			break ;
+		else if (get_plane_info(&plane, line))
+		{
+				printf("get_plane_success\n");;
+		}
 		else
 			break ;
 		ft_strdel(&line);

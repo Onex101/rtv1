@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/11 10:15:14 by shillebr          #+#    #+#             */
-/*   Updated: 2018/09/24 16:17:56 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/09/26 08:14:19 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,13 @@ int		read_class(int fd, t_param *p, char *line)
 	}
 	else if (ft_strequ(line, "##Camera"))
 	{
+		printf("Found Camera\n");
 		if (!(read_camera(fd, p->cam)))
+		{
+			printf("Camera Failed\n");
 			return (0);
+		}
+		printf("Camera Succsess\n");
 	}
 	else if (ft_strequ(line, "##Lights"))
 	{
@@ -58,15 +63,16 @@ int		read_file(char *av, t_param *p)
 		// printf("read file: test5\n");
 		if (ft_strequ("##Scene", line))
 		{
-			if (l == 0)
-				continue ;
-			else
+			if (l != 0)
 				return (0);
 		}
 		else if (l > 0 && line[0] == '\0')
+		{
+			ft_strdel(&line);
 			continue ;
+		}
 		else if (!(read_class(fd, p, line)))
-				return (0);
+			return (0);
 		// printf("read file: test6\n");
 		ft_strdel(&line);
 		l++;
