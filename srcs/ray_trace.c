@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/03 09:12:04 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/25 15:41:20 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/26 07:53:16 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,7 @@ int 	ray_trace(t_param *p)
 				// p->img->buf[p->img->w * j + i] = mlx_get_color_value(p->mlx, col);
 			}
 			else
+				put_pixel(i, j, (t_colour){0 ,0 ,0}, p);
 				// p->img->buf[p->img->w * j + i] = mlx_get_color_value(p->mlx, 0x000000);
 				continue;
 		}
