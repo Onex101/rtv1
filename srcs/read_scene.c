@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/11 10:15:14 by shillebr          #+#    #+#             */
-/*   Updated: 2018/09/26 08:14:19 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/09/26 14:12:59 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,8 @@ int		read_class(int fd, t_param *p, char *line)
 	}
 	else if (ft_strequ(line, "##Camera"))
 	{
-		printf("Found Camera\n");
 		if (!(read_camera(fd, p->cam)))
-		{
-			printf("Camera Failed\n");
 			return (0);
-		}
-		printf("Camera Succsess\n");
 	}
 	else if (ft_strequ(line, "##Lights"))
 	{
@@ -44,23 +39,17 @@ int		read_file(char *av, t_param *p)
 	int		l;
 	int		fd;
 
-	printf("read file: test1\n");
 	if ((fd = open(av, O_RDONLY)) == -1)
 		return (0);
-	printf("read file: test2\n");
 	i = 1;
 	l = 0;
 	if (!p)
 		return (0);
 	while (i != 0)
 	{
-		// printf("read file: test3\n");
 		i = get_next_line(fd, &line);
-		// printf("read file: test4\n");
 		if (i == 0)
 			break ;
-		printf("Read File: Reading line: %s\n", line);
-		// printf("read file: test5\n");
 		if (ft_strequ("##Scene", line))
 		{
 			if (l != 0)
@@ -73,7 +62,6 @@ int		read_file(char *av, t_param *p)
 		}
 		else if (!(read_class(fd, p, line)))
 			return (0);
-		// printf("read file: test6\n");
 		ft_strdel(&line);
 		l++;
 	}

@@ -14,19 +14,19 @@
 
 int		get_dir_light_info(t_light *lit, char *line)
 {
-	if (ft_strequ(line, "dir["))
+	if (ft_strequ("\tdir[", line))
 	{
-		if (!(get_tvec3(&lit->dir, line, 4)))
+		if (!(get_tvec3(&lit->dir, line, 5)))
 			return (0);
 	}
-	else if (ft_strequ(line, "intensity["))
+	else if (ft_strequ("\tintensity[", line))
 	{
-		if (!(get_double(&lit->intensity, line, 10)))
+		if (!(get_double(&lit->intensity, line, 11)))
 			return (0);
 	}
-    else if (ft_strequ(line, "colour["))
+    else if (ft_strequ("\tcolour[", line))
 	{
-		if (!(get_tcol(&lit->col, line, 7)))
+		if (!(get_tcol(&lit->col, line, 8)))
 			return (0);
 	}
 	else
@@ -55,8 +55,10 @@ int		make_dir_light(int fd, t_vector *set)
 			ft_strdel(&line);
 			return (1);
 		}
-		else if (!(get_dir_light_info(&lit, line)))
-			break ;
+		else if (get_dir_light_info(&lit, line))
+		{
+			printf("get_dir_light_info success\n");
+		}
 		else
 			break ;
 		ft_strdel(&line);

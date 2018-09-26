@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/21 11:59:10 by shillebr          #+#    #+#             */
-/*   Updated: 2018/09/21 12:14:17 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/09/26 13:58:30 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 void	assign_vec3(t_vec3 *v, char *line, int i, int count)
 {
 	if (count == 0)
-		v->x = ft_atoi(line + i);
+		v->x = ft_atod(line + i);
 	else if (count == 1)
-		v->y = ft_atoi(line + i);
+		v->y = ft_atod(line + i);
 	else if (count == 2)
-		v->z = ft_atoi(line + i);
+		v->z = ft_atod(line + i);
 }
 
 int		get_tvec3(t_vec3 *v, char *line, int i)
