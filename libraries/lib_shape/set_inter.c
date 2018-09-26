@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_inter.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/20 13:08:37 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/14 13:10:13 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/09/26 10:22:26 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int	set_inter(t_vector *s, t_inter *i)
 {
-	int check;
-	int j;
-	int total;
-	t_shape *cur_shp;
+	int		check;
+	int		j;
+	int		total;
+	t_shape	*cur_shp;
 
 	total = vector_total(s);
 	check = 0;
@@ -35,11 +35,11 @@ int	set_inter(t_vector *s, t_inter *i)
 	return (check);
 }
 
-int set_ray_inter(t_vector *s, t_ray ray)
+int	set_ray_inter(t_vector *s, t_ray ray)
 {
-	int j;
-	int total;
-	t_shape *cur_shp;
+	int		j;
+	int		total;
+	t_shape	*cur_shp;
 
 	total = vector_total(s);
 	j = -1;

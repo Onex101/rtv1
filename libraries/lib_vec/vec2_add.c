@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/16 17:43:47 by xeno              #+#    #+#             */
-/*   Updated: 2018/08/18 13:14:09 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/26 10:34:30 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,5 @@ t_vec2	vec2_add_new(t_vec2 v1, t_vec2 v2)
 
 	cpy = vec2_cpy(v1);
 	vec2_add(&cpy, v2);
-	return (cpy);	
+	return (cpy);
 }

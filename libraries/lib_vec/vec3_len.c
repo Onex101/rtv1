@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/16 17:46:12 by xeno              #+#    #+#             */
-/*   Updated: 2018/09/03 17:38:31 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/26 10:32:57 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,5 @@ double	vec3_len_sqr(t_vec3 v)
 
 double	vec3_len(t_vec3 v)
 {
-	return(sqrt(vec3_len_sqr(v)));
+	return (sqrt(vec3_len_sqr(v)));
 }

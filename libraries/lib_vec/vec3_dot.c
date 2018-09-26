@@ -3,20 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   vec3_dot.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xeno <xeno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/16 17:48:43 by xeno              #+#    #+#             */
-/*   Updated: 2018/08/30 17:46:55 by xeno             ###   ########.fr       */
+/*   Updated: 2018/09/26 10:33:17 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/*
-**	Angle between vectors
-*/
 
 #include "lib_vec.h"
 
 double	vec3_dot(t_vec3 v1, t_vec3 v2)
 {
-	return(v1.x * v2.x + v1.y * v2.y + v1.z * v2.z);
+	return (v1.x * v2.x + v1.y * v2.y + v1.z * v2.z);
 }
