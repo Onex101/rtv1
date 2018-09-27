@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/12 18:17:21 by shillebr          #+#    #+#             */
-/*   Updated: 2018/09/27 11:17:33 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/09/27 12:44:23 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int		check_objects(int fd, t_vector **set, char *line)
 	int		i;
 
 	if (ft_strequ(line, "Sphere{"))
-		i = make_sphere(fd, set);//t_vector stores all the shapes, verctor add
+		i = make_sphere(fd, set);
 	else if (ft_strequ(line, "Plane{"))
 		i = make_plane(fd, set);
 	else if (ft_strequ(line, "Cylinder{"))
@@ -28,7 +28,7 @@ int		check_objects(int fd, t_vector **set, char *line)
 		i = 1;
 	else
 		i = 0;	
-	return (i); // not sure about this, might not be valid
+	return (i);
 }
 
 int		is_obj(char *line)
@@ -51,16 +51,12 @@ int		read_objects(int fd, t_vector **set)
 	{
 		if ((i = get_next_line(fd, &line)) == 0)
 			break ;
-		printf("Object line [%s]\n", line);
 		if (is_obj(line))
 			check_objects(fd, set, line);
 		else if (ft_strequ(line, "\0"))
 			continue ;
 		else if (ft_strequ(line, "#"))
-		{
-			printf("Read objects successful\n");
 			return (1);
-		}
 		else
 		{
 			ft_strdel(&line);

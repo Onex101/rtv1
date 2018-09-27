@@ -1,0 +1,106 @@
+##Scene
+
+##Camera
+Camera{
+	org[0,3,-10];
+	target[0,1,0];
+	upguide[0,-1,0];
+}
+#
+
+##Objects
+Sphere{
+	radius[0.2];
+	pos[0,3,5];
+	colour[255,0,0];
+	texture[0.001];
+}
+Sphere{
+	radius[0.5];
+	pos[2,2,-4];
+	colour[0,255,0];
+	texture[0.001];
+}
+Sphere{
+	radius[0.5];
+	pos[2,2,4];
+	colour[0,255,0];
+	texture[0.001];
+}
+Sphere{
+	radius[0.5];
+	pos[-2,2,4];
+	colour[0,255,0];
+	texture[0.001];
+}
+Plane{
+	pos[0,0,0];
+	norm[0,1,0];
+	colour[125,255,0];
+	texture[0.001];
+}
+Plane{
+	pos[0,5,20];
+	norm[0,0,0.5];
+	colour[125,0,255];
+	texture[0.001];
+}
+Cone{
+	pos[0,3,5];
+	radius[1];
+	axis[0.7,0.5,0];
+	colour[255,255,0];
+	texture[0.001];
+}
+Cone{
+	pos[0,3,5];
+	radius[1];
+	axis[-0.7,0.5,0];
+	colour[255,255,0];
+	texture[0.001];
+}
+Cone{
+	pos[2,2,4];
+	radius[1];
+	axis[0,1,0];
+	colour[255,255,0];
+	texture[0.001];
+}
+Cone{
+	pos[-2,2,4];
+	radius[1];
+	axis[0,1,0];
+	colour[255,255,0];
+	texture[0.001];
+}
+Cylinder{
+	pos[0,0,0];
+	radius[1];
+	axis[0,1,0];
+	colour[255,255,0];
+	texture[0.005];
+}
+#
+
+##Lights
+Dir Light{
+	dir[-1,-1,-1];
+	intensity[1];
+	colour[255,255,255];
+}
+Dir Light{
+	dir[0,-5,5];
+	intensity[0.5];
+	colour[255,255,255];
+}
+Dir Light{
+	dir[1,-1,1];
+	intensity[0.3];
+	colour[255,255,255];
+}
+Dir Light{
+	dir[-1,-1,1];
+	intensity[1];
+	colour[255,255,255];
+}
+#

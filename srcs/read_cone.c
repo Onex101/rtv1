@@ -6,16 +6,25 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 10:35:22 by shillebr          #+#    #+#             */
-/*   Updated: 2018/09/27 11:00:11 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/09/27 11:59:03 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
+void	cone_axis(t_shape *cone, t_vec3 axis)
+{
+	double	angle;
+
+	cone->norm = vec3_nor_cpy(axis);
+	angle = acos(vec3_dot((t_vec3){0, 1, 0}, axis) / vec3_len(axis));
+	cone->imat = matrix_axis_rot(vec3_crs(axis, (t_vec3){0, 1, 0}), -angle);
+	cone->mat = matrix_inverse(&cone->imat);
+}
+
 int		get_cone_info(t_shape *cone, char *line)
 {
 	t_vec3	axis;
-	double	angle;
 
 	if (ft_strequ("\tradius[", line))
 		return (!(get_double(&cone->radius, line, 8))) ? (0) : (1);
@@ -23,18 +32,9 @@ int		get_cone_info(t_shape *cone, char *line)
 		return (!(get_tvec3(&cone->pos, line, 5))) ? (0) : (1);
 	else if (ft_strequ("\taxis[", line))
 	{
-		printf("Axis found\n");
 		if (!(get_tvec3(&axis, line, 6)))
-		{
-			printf("Axis failed\n");
 			return (0);
-		}
-		printf("Axis success 1\n");
-		cone->norm = vec3_nor_cpy(axis);
-		angle = acos(vec3_dot((t_vec3){0, 1, 0}, axis) / vec3_len(axis));
-		cone->imat = matrix_axis_rot(vec3_crs(axis, (t_vec3){0, 1, 0}), -angle);
-		cone->mat = matrix_inverse(&cone->imat);
-		printf("Axis success 2\n");
+		cone_axis(cone, axis);
 	}
 	else if (ft_strequ("\tcolour[", line))
 		return (!(get_tcol(&cone->col, line, 8))) ? (0) : (1);
@@ -45,35 +45,46 @@ int		get_cone_info(t_shape *cone, char *line)
 	return (1);
 }
 
+int		cone_line(char *line, t_vector **set, t_shape *cone)
+{
+	int		r;
+
+	if (ft_strequ(line, "\0"))
+			r = 2;
+	else if (ft_strequ("}", line))
+	{
+		vector_add(*set, cone);
+		ft_strdel(&line);
+		r = 1;
+	}
+	else if (get_cone_info(cone, line))
+		r = 2;
+	else
+		r = 0;
+	ft_strdel(&line);
+	return (r);
+}
+
 int		make_cone(int fd, t_vector **set)
 {
 	int		i;
+	int		r;
 	t_shape *cone;
 	char	*line;
 
-	printf("Make Cone\n");
 	i = 1;
 	cone = cone_new((t_vec3){0, 0, 0}, (t_vec3){0, 0, 0}, 0, (t_colour){0, 0, 0}, 0);
 	while (i != 0)
 	{
 		if ((i = get_next_line(fd, &line)) == 0)
 			return (0);
-		printf("Cone line [%s]\n", line);
-		if (ft_strequ(line, "\0"))
-			continue ;
-		else if (ft_strequ("}", line))
-		{
-			vector_add(*set, cone);
-			ft_strdel(&line);
+		r = cone_line(line, set, cone);
+		if (r == 1)
 			return (1);
-		}
-		else if (get_cone_info(cone, line))
-		{
-			printf("get_cone_info success\n");
-		}
+		else if (r == 2)
+			continue ;
 		else
-			break ;
-		ft_strdel(&line);
+			return (0);
 	}
 	ft_strdel(&line);
 	return (0);

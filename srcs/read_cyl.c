@@ -6,16 +6,25 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 11:04:06 by shillebr          #+#    #+#             */
-/*   Updated: 2018/09/27 11:34:18 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/09/27 11:52:47 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
+void	cyl_axis(t_shape *cyl, t_vec3 axis)
+{
+	double	angle;
+
+	cyl->norm = vec3_nor_cpy(axis);
+	angle = acos(vec3_dot((t_vec3){0, 1, 0}, axis) / vec3_len(axis));
+	cyl->imat = matrix_axis_rot(vec3_crs(axis, (t_vec3){0, 1, 0}), -angle);
+	cyl->mat = matrix_inverse(&cyl->imat);
+}
+
 int		get_cyl_info(t_shape *cyl, char *line)
 {
 	t_vec3	axis;
-	double	angle;
 
 	if (ft_strequ("\tradius[", line))
 		return (!(get_double(&cyl->radius, line, 8))) ? (0) : (1);
@@ -25,10 +34,7 @@ int		get_cyl_info(t_shape *cyl, char *line)
 	{
 		if (!(get_tvec3(&axis, line, 6)))
 			return (0);
-		cyl->norm = vec3_nor_cpy(axis);
-		angle = acos(vec3_dot((t_vec3){0, 1, 0}, axis) / vec3_len(axis));
-		cyl->imat = matrix_axis_rot(vec3_crs(axis, (t_vec3){0, 1, 0}), -angle);
-		cyl->mat = matrix_inverse(&cyl->imat);
+		cyl_axis(cyl, axis);
 	}
 	else if (ft_strequ("\tcolour[", line))
 		return (!(get_tcol(&cyl->col, line, 8))) ? (0) : (1);
@@ -39,33 +45,30 @@ int		get_cyl_info(t_shape *cyl, char *line)
 	return (1);
 }
 
-// int		cyl_line(int fd, t_vector **set, int i, t_shape *cyl)
-// {
-// 	char	*line;
-// 	int		r;
+int		cyl_line(char *line, t_vector **set, t_shape *cyl)
+{
+	int		r;
 
-// 	if ((i = get_next_line(fd, &line)) == 0)
-// 			return (0);
-// 	if (ft_strequ(line, "\0"))
-// 			r = 2;
-// 	else if (ft_strequ("}", line))
-// 	{
-// 		vector_add(*set, cyl);
-// 		ft_strdel(&line);
-// 		return (1);
-// 	}
-// 	else if (get_cyl_info(cyl, line))
-// 	{
-// 		printf("get_cyl_info success\n");
-// 	}
-// 	else
-// 		return (0);
-// 	ft_strdel(&line);
-// }
+	if (ft_strequ(line, "\0"))
+			r = 2;
+	else if (ft_strequ("}", line))
+	{
+		vector_add(*set, cyl);
+		ft_strdel(&line);
+		r = 1;
+	}
+	else if (get_cyl_info(cyl, line))
+		r = 2;
+	else
+		r = 0;
+	ft_strdel(&line);
+	return (r);
+}
 
 int		make_cyl(int fd, t_vector **set)
 {
 	int		i;
+	int		r;
 	t_shape *cyl;
 	char	*line;
 
@@ -75,21 +78,13 @@ int		make_cyl(int fd, t_vector **set)
 	{
 		if ((i = get_next_line(fd, &line)) == 0)
 			return (0);
-		if (ft_strequ(line, "\0"))
-			continue ;
-		else if (ft_strequ("}", line))
-		{
-			vector_add(*set, cyl);
-			ft_strdel(&line);
+		r = cyl_line(line, set, cyl);
+		if (r == 1)
 			return (1);
-		}
-		else if (get_cyl_info(cyl, line))
-		{
-			printf("get_cyl_info success\n");
-		}
+		else if (r == 2)
+			continue ;
 		else
-			break ;
-		ft_strdel(&line);
+			return (0);
 	}
 	return (0);
 }
