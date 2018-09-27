@@ -3,31 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   ray_trace.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/03 09:12:04 by xrhoda            #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2018/09/26 07:53:16 by xrhoda           ###   ########.fr       */
-=======
-/*   Updated: 2018/09/26 14:32:26 by shillebr         ###   ########.fr       */
->>>>>>> master
+/*   Updated: 2018/09/27 11:32:30 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 #include <stdio.h>
 
-static	unsigned	long	grab_col(t_ray r, t_inter i, t_param *p)
-{
-	unsigned long col;
-	t_vec3 hit;
+// static	unsigned	long	grab_col(t_ray r, t_inter i, t_param *p)
+// {
+// 	unsigned long col;
+// 	t_vec3 hit;
 
-	hit = vec3_add_new(i.ray.org,
-				vec3_mul_new(i.ray.dir, i.t));
-	i.col = get_colour(p, &i, r, hit);
-	col = rgb_to_hex(i.col.r, i.col.g, i.col.b);
-	return (col);
-}
+// 	hit = vec3_add_new(i.ray.org,
+// 				vec3_mul_new(i.ray.dir, i.t));
+// 	i.col = get_colour(p, &i, r, hit);
+// 	col = rgb_to_hex(i.col.r, i.col.g, i.col.b);
+// 	return (col);
+// }
 
 int 	ray_trace(t_param *p)
 {

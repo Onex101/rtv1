@@ -42,7 +42,7 @@ int		get_plane_info(t_shape *plane, char *line)
 int		make_plane(int fd, t_vector *set)
 {
 	int		i;
-	t_shape plane;
+	t_shape *plane;
 	char	*line;
 
 	i = 1;
@@ -55,12 +55,12 @@ int		make_plane(int fd, t_vector *set)
 			continue ;
 		else if (ft_strequ(line, "}"))
 		{
-			vector_add(set, &plane);
-			printf("New Plane: pos[%f, %f, %f], norm[%f, %f, %f], colour[%f, %f, %f], tex[%f]\n", plane.pos.x, plane.pos.y, plane.pos.z, plane.norm.x, plane.norm.y, plane.norm.z, plane.col.r, plane.col.g, plane.col.b, plane.tex);
+			vector_add(set, plane);
+			// printf("New Plane: pos[%f, %f, %f], norm[%f, %f, %f], colour[%f, %f, %f], tex[%f]\n", plane.pos.x, plane.pos.y, plane.pos.z, plane.norm.x, plane.norm.y, plane.norm.z, plane.col.r, plane.col.g, plane.col.b, plane.tex);
 			ft_strdel(&line);
 			return (1);
 		}
-		else if (get_plane_info(&plane, line))
+		else if (get_plane_info(plane, line))
 		{
 				printf("get_plane_success\n");;
 		}
