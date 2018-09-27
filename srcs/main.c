@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/21 09:19:59 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/27 07:26:06 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/09/27 11:00:02 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,14 +125,21 @@ int	main(int argc, char **argv)
 				printf("s[%d] radius[%f]\n", i, s->radius);
 			}
 
-			printf("test mlx\n");
+			// printf("test mlx1\n");
+			ft_putendl("test mlx1");
 			if (OS)
 				mlx_hook(p->win, 2, 0, key_press, p);
 			else
 				mlx_hook(p->win, 2, 1, key_press, p);
+			// printf("test mlx2\n");
+			ft_putendl("test mlx2");
 			mlx_hook(p->win, 17, 0, ft_exit, p);
 			mlx_loop_hook(p->mlx, render, p);
+			// printf("test mlx3\n");
+			ft_putendl("test mlx3");
 			mlx_loop(p->mlx);
+			ft_putendl("test mlx4");
+			// printf("test mlx4\n");
 		}
 		else
 		{
