@@ -59,7 +59,7 @@ int		is_cam_info(char *line)
 	return (0);
 }
 
-int		get_cam(int fd, t_cam *c)
+int		get_cam(int fd, t_cam **c)
 {
 	int		i;
 	char	*line;
@@ -80,7 +80,7 @@ int		get_cam(int fd, t_cam *c)
 		}
 		else if ((is_cam_info(line)))
 		{
-			if (!(get_cam_info(c, line)))
+			if (!(get_cam_info(*c, line)))
 				break ;
 		}
 		else
@@ -99,7 +99,7 @@ int		is_cam(char *line)
 	return (0);
 }
 
-int		read_camera(int fd, t_cam *c)
+int		read_camera(int fd, t_cam **c)
 {
 	int		i;
 	char	*line;

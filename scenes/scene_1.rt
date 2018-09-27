@@ -10,16 +10,16 @@ Camera{
 
 ##Objects
 Sphere{
-	radius[0.2];
+	radius[0.8];
 	pos[0,3,5];
 	colour[255,0,0];
-	texture[0.001];
+	texture[0.0005];
 }
 #
 
 ##Lights
 Dir Light{
-	dir[-1,-1,-1];
+	dir[-1,-5,5];
 	intensity[1];
 	colour[255,255,255];
 }

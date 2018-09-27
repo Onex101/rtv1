@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit_program.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/27 13:50:53 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/25 18:41:30 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/27 08:50:15 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ void	exit_program(t_param *p)
 		free(p->mlx);
 	ft_putendl("ep test 4");
 	if (p->set)
-		vector_delete(p->set, 0);
+		vector_free(p->set);
 	ft_putendl("ep test 5");
 	if (p->cam)
 		free(p->cam);
 	if (p->lis)
-		vector_delete(p->lis, 0);
+		vector_free(p->lis);
 	exit(0);
 }

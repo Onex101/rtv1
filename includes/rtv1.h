@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rtv1.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/21 09:21:31 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/26 10:24:27 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/27 08:53:34 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,9 @@ typedef struct	s_param
 	t_vector	*lis;
 }				t_param;
 
+void			exit_program(t_param *p);
+int				key_press(int keycode, t_param *p);
+
 int				ft_advance(char *str, int i);
 int				ft_strcheck(const char *haystack, const char *needle);
 
@@ -67,13 +70,13 @@ void			assign_col(t_colour *v, char *line, int i, int count);
 int				get_tcol(t_colour *v, char *line, int i);
 
 int				get_dir_light_info(t_light *lit, char *line);
-int				make_dir_light(int fd, t_vector *set);
+int				make_dir_light(int fd, t_vector **set);
 
-int				check_lights(int fd, t_vector *set, char *line);
+int				check_lights(int fd, t_vector **set, char *line);
 int				is_lights(char *line);
-int				read_lights(int fd, t_vector *set);
+int				read_lights(int fd, t_vector **set);
 
-int				read_camera(int fd, t_cam *cam);
+int				read_camera(int fd, t_cam **cam);
 
 int				get_plane_info(t_shape *plane, char *line);
 int				make_plane(int fd, t_vector *set);

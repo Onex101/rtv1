@@ -34,10 +34,10 @@ int		get_dir_light_info(t_light *lit, char *line)
 	return (1);
 }
 
-int		make_dir_light(int fd, t_vector *set)
+int		make_dir_light(int fd, t_vector **set)
 {
 	int		i;
-	t_light lit;
+	t_light *lit;
 	char	*line;
 
 	i = 1;
@@ -50,12 +50,12 @@ int		make_dir_light(int fd, t_vector *set)
 			continue ;
 		else if (ft_strequ(line, "}"))
 		{
-			vector_add(set, &lit);
-			printf("New light: dir[%f, %f, %f], intensity[%f], colour[%f, %f, %f]\n", lit.dir.x, lit.dir.y, lit.dir.z, lit.intensity, lit.col.r, lit.col.g, lit.col.b);
+			vector_add(*set, lit);
+			printf("New light: dir[%f, %f, %f], intensity[%f], colour[%f, %f, %f]\n", lit->dir.x, lit->dir.y, lit->dir.z, lit->intensity, lit->col.r, lit->col.g, lit->col.b);
 			ft_strdel(&line);
 			return (1);
 		}
-		else if (get_dir_light_info(&lit, line))
+		else if (get_dir_light_info(lit, line))
 		{
 			printf("get_dir_light_info success\n");
 		}

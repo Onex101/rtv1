@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   new_cam.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/27 10:14:42 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/25 18:40:29 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/27 08:58:24 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ t_cam	*new_cam(t_vec3 org, t_vec3 target, double fov)
 {
 	t_cam *cam;
 
-	cam = (t_cam *)malloc(sizeof(t_cam));
+	if (!(cam = (t_cam *)malloc(sizeof(t_cam))))
+		return (NULL);
 	cam->org = org;
 	cam->forward = vec3_sub_new(target, cam->org);
 	vec3_nor(&(cam->forward));

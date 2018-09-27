@@ -12,7 +12,7 @@
 
 #include "rtv1.h"
 
-int		check_lights(int fd, t_vector *set, char *line)
+int		check_lights(int fd, t_vector **set, char *line)
 {
 	int		i;
 
@@ -32,7 +32,7 @@ int		is_light(char *line)
 	return (0);
 }
 
-int		read_lights(int fd, t_vector *set)
+int		read_lights(int fd, t_vector **set)
 {
 	int		i;
 	char	*line;
