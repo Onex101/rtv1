@@ -54,6 +54,13 @@ typedef struct	s_param
 	t_vector	*lis;
 }				t_param;
 
+int		get_radius(t_shape *shp, char *line, int i);
+int     get_pos(t_shape *shp, char *line, int i);
+int     get_cols(t_shape *shp, char *line, int i);
+int		get_texture(t_shape *shp, char *line, int i);
+int     get_norm(t_shape *shp, char *line, int i);
+int     get_axis(t_shape *shp, char *line, int i);
+
 void			exit_program(t_param *p);
 int				key_press(int keycode, t_param *p);
 int				ft_advance(char *str, int i);
