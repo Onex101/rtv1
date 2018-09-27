@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rtv1.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/21 09:21:31 by xrhoda            #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2018/09/27 19:32:31 by shillebr         ###   ########.fr       */
-=======
-/*   Updated: 2018/09/27 19:32:19 by xrhoda           ###   ########.fr       */
->>>>>>> 976a99de8b490d947325728f115ecf51e8007dda
+/*   Updated: 2018/09/27 19:35:13 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +82,8 @@ int				make_sphere(int fd, t_vector *set);
 int				check_objects(int fd, t_vector *set, char *line);
 int				is_obj(char *line);
 int				read_objects(int fd, t_vector *set);
-int				read_class(int fd, t_param **p, char *line);
-int				read_file(char *av, t_param **p);
+int				read_class(int fd, t_param *p, char *line);
+int				read_file(char *av, t_param *p);
 int				ft_rt(char *str);
 int				key_press(int keycode, t_param *p);
 void			init_cam(t_cam *c, t_vec3 o, t_vec3 t, double f);

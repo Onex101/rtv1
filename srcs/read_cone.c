@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_cone.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 10:35:22 by shillebr          #+#    #+#             */
-/*   Updated: 2018/09/27 19:32:20 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/27 19:35:51 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int		cone_line(char *line, t_vector *set, t_shape *cone)
 		r = 2;
 	else if (ft_strequ("}", line))
 	{
-		vector_add(*set, cone);
+		vector_add(set, cone);
 		ft_strdel(&line);
 		r = 1;
 	}
