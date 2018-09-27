@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/22 08:06:56 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/18 07:07:01 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/26 09:48:27 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,12 @@ int		plane_inter(t_shape *plane, t_inter *i)
 	double dot;
 	double t;
 
-	//ft_putendl("INTER This shape is a plane");
-	dot  = vec3_dot(i->ray.dir, plane->norm);
+	dot = vec3_dot(i->ray.dir, plane->norm);
 	if (dot == 0)
 		return (0);
-	//printf("i->ray.org.x = [%f], i->ray.org.y = [%f], i->ray.org.z = [%f]\n", i->ray.org.x, i->ray.org.y, i->ray.org.z);
 	t = vec3_dot(vec3_sub_new(plane->pos, i->ray.org), plane->norm) / dot;
-	//printf("t = [%f]\n", t);
 	if (t <= RAY_T_MIN || t >= i->t)
 		return (0);
-	//ft_putendl("INtercept plane");
 	i->t = t;
 	i->normal = plane->norm;
 	i->shape = plane;
@@ -39,7 +35,6 @@ int		plane_ray(t_shape *plane, t_ray ray)
 	double dot;
 	double t;
 
-	//ft_putendl("RAY This shape is a plane");
 	dot = vec3_dot(ray.dir, plane->norm);
 	if (dot == 0)
 		return (0);

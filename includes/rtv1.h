@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/21 09:21:31 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/25 15:19:20 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/27 11:26:29 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,9 @@ typedef struct	s_param
 	t_vector		*lis;
 }				t_param;
 
+void			exit_program(t_param *p);
+int				key_press(int keycode, t_param *p);
+
 int				ft_advance(char *str, int i);
 int				ft_strcheck(const char *haystack, const char *needle);
 
@@ -70,38 +73,43 @@ Uint32			colour_to_int(t_colour col);
 void			put_pixel(int x, int y, t_colour pixel, t_param *p);
 
 int				get_dir_light_info(t_light *lit, char *line);
-int				make_dir_light(int fd, t_vector *set);
+int				make_dir_light(int fd, t_vector **set);
 
-int				check_lights(int fd, t_vector *set, char *line);
+int				check_lights(int fd, t_vector **set, char *line);
 int				is_lights(char *line);
-int				read_lights(int fd, t_vector *set);
+int				read_lights(int fd, t_vector **set);
 
-int				read_camera(int fd, t_cam *cam);
+int				read_camera(int fd, t_cam **cam);
 
 int				get_plane_info(t_shape *plane, char *line);
 int				make_plane(int fd, t_vector *set);
 
 int				get_sphere_info(t_shape *sphere, char *line);
-int				make_sphere(int fd, t_vector *set);
+int				make_sphere(int fd, t_vector **set);
 
-int				check_objects(int fd, t_vector *set, char *line);
+int				check_objects(int fd, t_vector **set, char *line);
 int				is_obj(char *line);
-int				read_objects(int fd, t_vector *set);
+int				read_objects(int fd, t_vector **set);
 
-int				read_class(int fd, t_param *p, char *line);
-int				read_file(char *av, t_param *p);
+int				read_class(int fd, t_param **p, char *line);
+int				read_file(char *av, t_param **p);
 int				ft_rt(char *str);
 
 
 int				key_press(int keycode, t_param *p);
-void			init_cam(t_cam *cam, t_vec3 org, t_vec3 target, t_vec3 up, double fov, double aspect_ratio);
-t_cam			*new_cam(t_vec3 org, t_vec3 target, t_vec3 up, double fov, double aspect_ratio);
+void			init_cam(t_cam *c, t_vec3 o, t_vec3 t, double f);
+t_cam			*new_cam(t_vec3 org, t_vec3 target, double fov);
 t_ray			make_ray(t_cam *cam, t_vec3 pnt);
+int				cast_ray(t_vector *s, t_ray r);
 void			exit_program(t_param *p);
 t_img			*new_image(void *mlx, int w, int h);
 void			destroy_image(t_img *img, void *mlx);
 int				init_param(t_param *p);
-int 			ray_trace(t_param *p);
+int				ray_trace(t_param *p);
 int				render(t_param *p);
+
+t_colour		get_colour(t_param *p, t_inter *in, t_ray r, t_vec3 hit_pnt);
+t_colour		calc_light(t_light *l, t_param *p,
+							t_inter *in, t_ray r, t_vec3 hit_pnt);
 
 #endif

@@ -6,42 +6,34 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/22 13:12:06 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/21 07:38:48 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/25 17:59:35 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_shape.h"
 #include <stdio.h>
 
-int sphere_inter(t_shape *s, t_inter *i)
+static	double	sphere_disriminant(t_vec3 *ce, t_ray r, double rad)
 {
-	t_ray l_ray;
-	t_vec3 ce;
-	double dis;
-	double t1;
-	double t2;
+	ce->x = vec3_len_sqr(r.dir);
+	ce->y = 2 * vec3_dot(r.dir, r.org);
+	ce->z = vec3_len_sqr(r.org) - (rad * rad);
+	return ((ce->y * ce->y) - (4 * ce->x * ce->z));
+}
 
-	//ft_putendl("INTER This shape is a sphere");
+int				sphere_inter(t_shape *s, t_inter *i)
+{
+	t_ray	l_ray;
+	t_vec3	ce;
+	double	dis;
+	double	t1;
+	double	t2;
+
 	l_ray = ray_cpy(i->ray);
-/*
-**	Change ray location to be at origin, makes math easier
-*/
 	vec3_sub(&l_ray.org, s->pos);
-	ce.x = vec3_len_sqr(l_ray.dir);
-	ce.y = 2 * vec3_dot(l_ray.dir, l_ray.org);
-	ce.z = vec3_len_sqr(l_ray.org) - (s->radius * s->radius);
-/*
-** discriminant tells whether we intersect or not
-*/
-	dis = (ce.y * ce.y) - (4 * ce.x * ce.z);
+	dis = sphere_disriminant(&ce, l_ray, s->radius);
 	if (dis < 0)
-	{
-		//printf("ray.dir.x = [%f] | ray.dir.y= [%f] | ray.dir.z = [%f]\n", l_ray.dir.x, l_ray.dir.y, l_ray.dir.z);
-		//printf("Ray doesn't intercept\n");
 		return (0);
-	}
-	//printf("INTERCEPT WITH SPHERE\n");
-	//printf("ray.dir.x = [%f] | ray.dir.y= [%f] | ray.dir.z = [%f]\n", l_ray.dir.x, l_ray.dir.y, l_ray.dir.z);
 	t1 = (-ce.y - sqrt(dis)) / (2 * ce.x);
 	t2 = (-ce.y + sqrt(dis)) / (2 * ce.x);
 	if (t1 > RAY_T_MIN && t1 < i->t)
@@ -50,33 +42,28 @@ int sphere_inter(t_shape *s, t_inter *i)
 		i->t = t2;
 	else
 		return (0);
-	//printf("i.t = [%f] t1 = [%f] t2 = [%f]\n", i.t, t1, t2);
-	i->normal = vec3_nor_cpy(vec3_add_new(l_ray.org, vec3_mul_new(l_ray.dir, i->t)));
+	i->normal = vec3_nor_cpy(
+				vec3_add_new(l_ray.org,
+				vec3_mul_new(l_ray.dir, i->t)));
 	i->shape = s;
-	// ft_putstr("Shpere Normal calc:");
-	// vec3_prnt(i->normal);
 	return (1);
 }
 
-int sphere_ray(t_shape *s, t_ray r)
+int				sphere_ray(t_shape *s, t_ray r)
 {
-	t_ray l_ray;
-	t_vec3 ce;
-	double dis;
-	double t1;
-	double t2;
+	t_ray	l_ray;
+	t_vec3	ce;
+	double	dis;
+	double	t1;
+	double	t2;
 
-	//ft_putendl("RAY This shape is a sphere");
 	l_ray = ray_cpy(r);
 	vec3_sub(&l_ray.org, s->pos);
-	ce.x = vec3_len_sqr(l_ray.dir);
-	ce.y = 2 * vec3_dot(l_ray.dir, l_ray.org);
-	ce.z = vec3_len_sqr(l_ray.org) - (s->radius * s->radius);
-	dis = (ce.y * ce.y) - (4 * ce.x * ce.z);
+	dis = sphere_disriminant(&ce, l_ray, s->radius);
 	if (dis < 0)
 		return (0);
 	t1 = (-ce.y - sqrt(dis)) / (2 * ce.x);
-	t2 = (-ce.y + sqrt(dis)) / (2 * ce.x); 
+	t2 = (-ce.y + sqrt(dis)) / (2 * ce.x);
 	if (t1 > RAY_T_MIN && t1 < r.max)
 		return (1);
 	else if (t2 > RAY_T_MIN && t2 < r.max)

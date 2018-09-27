@@ -1,38 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec3_lib.c                                         :+:      :+:    :+:   */
+/*   cast_ray.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/27 06:26:00 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/25 18:14:18 by xrhoda           ###   ########.fr       */
+/*   Created: 2018/09/25 17:35:20 by xrhoda            #+#    #+#             */
+/*   Updated: 2018/09/25 17:35:45 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_vec.h"
+#include "rtv1.h"
 
-t_vec3	vec3_new(double x, double y, double z)
+int 	cast_ray(t_vector *s, t_ray r)
 {
-	t_vec3 v;
+	int		j;
+	t_shape	*cur_shp;
 
-	vec3_init(&v, x, y, z);
-	return (v);
-}
-
-void	vec3_init(t_vec3 *v, double x, double y, double z)
-{
-	v->x = x;
-	v->y = y;
-	v->z = z;
-}
-
-t_vec3	vec3(void)
-{
-	return ((t_vec3){0, 0, 0});
-}
-
-t_vec3	vec3_cpy(const t_vec3 v)
-{
-	return (vec3_new(v.x, v.y, v.z));
+	j = -1;
+	while (++j < s->total)
+	{
+		cur_shp = (t_shape *)vector_get(s, j);
+		if (cur_shp->ray(cur_shp, r))
+			return (1);
+	}
+	return (0);
 }

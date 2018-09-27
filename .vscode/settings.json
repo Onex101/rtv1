@@ -12,7 +12,18 @@
 		"ratio": "c",
 		"read.h": "c",
 		"lib_ft.h": "c",
+<<<<<<< HEAD
 		"iterator": "c"
 	},
 	"C_Cpp.intelliSenseEngineFallback": "Disabled"
+=======
+		"iterator": "c",
+		"__functional_base": "c",
+		"istream": "c",
+		"locale": "c",
+		"memory": "c",
+		"tuple": "c",
+		"utility": "c"
+	}
+>>>>>>> master
 }

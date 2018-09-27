@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/27 13:50:53 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/25 14:49:02 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/27 11:26:42 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	exit_program(t_param *p)
 	ft_putendl("ep test 2");
 	if (p->set)
 		vector_free(p->set);
-	ft_putendl("ep test 3");
+	ft_putendl("ep test 5");
 	if (p->cam)
 		free(p->cam);
 	ft_putendl("ep test 3");

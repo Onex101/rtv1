@@ -1,36 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec3_nor.c                                         :+:      :+:    :+:   */
+/*   ft_atod.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/16 17:47:45 by xeno              #+#    #+#             */
-/*   Updated: 2018/09/25 18:14:10 by xrhoda           ###   ########.fr       */
+/*   Created: 2018/09/26 12:46:01 by xrhoda            #+#    #+#             */
+/*   Updated: 2018/09/26 13:47:33 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_vec.h"
 #include "lib_ft.h"
+#include <stdio.h>
 
-double	vec3_nor(t_vec3 *v)
+double	ft_atod(char *str)
 {
-	double l;
+	char	**splt;
+	double	start;
+	double	end;
+	int		len;
 
-	l = vec3_len(*v);
-	vec3_div(v, l);
-	return (l);
-}
-
-t_vec3	vec3_nor_cpy(t_vec3 v)
-{
-	t_vec3 cpy;
-	double len;
-
-	cpy = vec3_cpy(v);
-	if (!(len = vec3_nor(&cpy)))
-		return (vec3());
-	if (len == 1)
-		return (v);
-	return (cpy);
+	start = 0;
+	if (str)
+	{
+		splt = ft_strsplit(str, '.');
+		start = (double)ft_atoi(splt[0]);
+		end = 0;
+		if (splt[1])
+		{
+			len = ft_strlen(splt[1]) - 3;
+			while (len >= 0)
+				end = end / 10 + (splt[1][len--] - 48);
+			end /= 10;
+		}
+		if (start >= 0)
+			start += end;
+		else
+			start -= end;
+	}
+	return (start);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lib_ft.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/17 08:25:31 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/21 11:36:33 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/09/26 13:37:34 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,5 +102,6 @@ double				ft_sqr(double num);
 int					get_next_line(const int fd, char **line);
 
 int					is_num(char *str);
+double				ft_atod(char *str);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/03 13:19:45 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/25 15:22:59 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/27 11:24:14 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int		render(t_param *p)
 {
 	static int i;
 
+	printf("test render1\n");
 	if (!i++)
 		ray_trace(p);
 	SDL_UpdateWindowSurface(p->win);

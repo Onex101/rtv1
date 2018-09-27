@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/21 11:33:05 by shillebr          #+#    #+#             */
-/*   Updated: 2018/09/21 11:36:26 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/09/26 13:54:33 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,12 @@
 
 int		is_num(char *str)
 {
-	if ('0' <= *str && *str <= '9')
+	int		i;
+
+	i = 0;
+	if (str[i] == '+' || str[i] == '-')
+		i++;
+	if ('0' <= str[i] && str[i] <= '9')
 		return (1);
 	return (0);
 }

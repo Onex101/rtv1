@@ -6,17 +6,18 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/03 12:15:44 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/03 12:19:13 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/27 09:01:53 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vector.h"
 
-t_vector *vector_new(void)
+t_vector	*vector_new(void)
 {
 	t_vector *v;
 
-	v = (t_vector *)malloc(sizeof(t_vector));
+	if (!(v = (t_vector *)malloc(sizeof(t_vector))))
+		return (NULL);
 	vector_init(v);
-	return(v);
+	return (v);
 }

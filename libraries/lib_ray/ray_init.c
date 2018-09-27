@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ray_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xeno <xeno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/19 11:26:05 by xeno              #+#    #+#             */
-/*   Updated: 2018/08/21 17:57:38 by xeno             ###   ########.fr       */
+/*   Updated: 2018/09/26 10:42:03 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_ray.h"
+#include <stdio.h>
 
 void	ray_init(t_ray *r, t_vec3 org, t_vec3 dir, double max)
 {
@@ -23,8 +24,10 @@ t_ray	ray(void)
 {
 	t_ray r;
 
-	r.org = (t_vec3){0, 0 ,0}; /*vec3()*/
-	r.dir = (t_vec3){0, 0 ,0}; /*vec3()*/
+	printf("ray test 1\n");
+	r.org = (t_vec3){0, 0, 0};
+	r.dir = (t_vec3){0, 0, 0};
 	r.max = RAY_T_MAX;
+	printf("ray test 2\n");
 	return (r);
 }

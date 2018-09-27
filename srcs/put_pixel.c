@@ -6,13 +6,11 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/03 13:59:29 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/25 15:32:18 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/27 11:03:50 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
-
-
 
 static void	check_endian(Uint8 *p, Uint32 pixel)
 {

@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/20 09:54:46 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/29 18:01:23 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/26 10:41:06 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,5 @@ t_inter	inter_new(t_ray r)
 	t_inter i;
 
 	inter_init(&i, r);
-	return(i);
+	return (i);
 }

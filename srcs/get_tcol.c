@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_tvec3.c                                        :+:      :+:    :+:   */
+/*   get_tcol.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/21 11:59:10 by shillebr          #+#    #+#             */
-/*   Updated: 2018/09/26 13:58:30 by shillebr         ###   ########.fr       */
+/*   Created: 2018/09/21 12:14:30 by shillebr          #+#    #+#             */
+/*   Updated: 2018/09/25 17:44:01 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-void	assign_vec3(t_vec3 *v, char *line, int i, int count)
+void	assign_col(t_colour *v, char *line, int i, int count)
 {
 	if (count == 0)
-		v->x = ft_atod(line + i);
+		v->r = ft_atoi(line + i);
 	else if (count == 1)
-		v->y = ft_atod(line + i);
+		v->g = ft_atoi(line + i);
 	else if (count == 2)
-		v->z = ft_atod(line + i);
+		v->b = ft_atoi(line + i);
 }
 
-int		get_tvec3(t_vec3 *v, char *line, int i)
+int		get_tcol(t_colour *v, char *line, int i)
 {
 	int	count;
 
@@ -32,7 +32,7 @@ int		get_tvec3(t_vec3 *v, char *line, int i)
 		if (is_num(line + i))
 		{
 			if (count < 3)
-				assign_vec3(v, line, i, count);
+				assign_col(v, line, i, count);
 			else
 				return (0);
 			count++;

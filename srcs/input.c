@@ -6,22 +6,22 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/14 13:54:00 by shillebr          #+#    #+#             */
-/*   Updated: 2018/09/14 14:03:05 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/09/27 08:52:50 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-void	mac_key_press(int keycode)
+void	mac_key_press(int keycode, t_param *p)
 {
 	if (keycode == 53)
-		exit (0);
+		exit_program(p);
 }
 
-void	linux_key_press(int keycode)
+void	linux_key_press(int keycode, t_param *p)
 {
 	if (keycode == 65307)
-		exit (0);
+		exit_program(p);
 }
 
 int		key_press(int keycode, t_param *p)
@@ -29,8 +29,8 @@ int		key_press(int keycode, t_param *p)
 	if (!p)
 		return (0);
 	if (OS)
-		mac_key_press(keycode);
+		mac_key_press(keycode, p);
 	else
-		linux_key_press(keycode);
+		linux_key_press(keycode, p);
 	return (1);
 }

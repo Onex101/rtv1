@@ -3,47 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   get_colour.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/21 12:14:30 by shillebr          #+#    #+#             */
-/*   Updated: 2018/09/21 12:15:31 by shillebr         ###   ########.fr       */
+/*   Created: 2018/09/25 17:43:27 by xrhoda            #+#    #+#             */
+/*   Updated: 2018/09/25 18:14:30 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-void	assign_col(t_colour *v, char *line, int i, int count)
+t_colour	get_colour(t_param *p, t_inter *in, t_ray r, t_vec3 hit_pnt)
 {
-	if (count == 0)
-		v->r = ft_atoi(line + i);
-	else if (count == 1)
-		v->g = ft_atoi(line + i);
-	else if (count == 2)
-		v->b = ft_atoi(line + i);
-}
+	t_light		*l;
+	int			i;
+	int			total;
+	t_colour	clr;
+	t_colour	total_clr;
 
-int		get_tcol(t_colour *v, char *line, int i)
-{
-	int	count;
-
-	count = 0;
-	while (line)
+	total = vector_total(p->lis);
+	i = -1;
+	total_clr = (t_colour){0, 0, 0};
+	while (++i < total)
 	{
-		if (is_num(line + i))
-		{
-			if (count < 3)
-				assign_col(v, line, i, count);
-			else
-				return (0);
-			count++;
-			i = ft_advance(line, i);
-		}
-		else if (line[i] == ',' || line[i] == ' ')
-			i++;
-		else if (line[i] == ']' && line[i + 1] == ';' && count == 3)
-			return (1);
-		else
-			return (0);
+		l = (t_light *)vector_get(p->lis, i);
+		clr = calc_light(l, p, in, r, hit_pnt);
+		total_clr = (t_colour){total_clr.r + clr.r,
+								total_clr.g + clr.g,
+								total_clr.b + clr.b};
 	}
-	return (0);
+	gamma_correct(&(total_clr), 1, 2.2);
+	clamp(&(total_clr), 255, 0);
+	return (total_clr);
 }

@@ -3,77 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   ray_trace.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/03 09:12:04 by xrhoda            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2018/09/26 07:53:16 by xrhoda           ###   ########.fr       */
+=======
+/*   Updated: 2018/09/26 14:32:26 by shillebr         ###   ########.fr       */
+>>>>>>> master
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 #include <stdio.h>
 
-int 	cast_ray(t_vector *s, t_ray r)
+static	unsigned	long	grab_col(t_ray r, t_inter i, t_param *p)
 {
-	int		j;
-	t_shape	*cur_shp;
+	unsigned long col;
+	t_vec3 hit;
 
-	j = -1;
-	while (++j < s->total)
-	{
-		cur_shp = (t_shape *)vector_get(s, j);
-		if (cur_shp->ray(cur_shp, r))
-		{
-			//ft_putendl("Collision found");
-			return (1);
-		}
-	}
-	return (0);
-}
-
-t_colour	calc_light(t_light *l, t_param *p, t_inter *in, t_ray r, t_vec3 hit_pnt)
-{
-	t_vec3		dir_to_light;
-	double		light_power;
-	double		light_reflected;
-	t_colour	clr;
-	t_colour	l_clr;
-	t_ray		shadow_ray;
-
-	dir_to_light = vec3_nor_cpy(l->dir);
-	dir_to_light = (t_vec3){-dir_to_light.x, -dir_to_light.y, -dir_to_light.z};
-	
-	shadow_ray = (t_ray){hit_pnt, dir_to_light, RAY_T_MAX};
-	if ((cast_ray(p->set, shadow_ray)))
-		light_power = 0;
-	else
-		light_power = (fmax(0, vec3_dot(in->normal, dir_to_light))) * l->intensity;
-	light_reflected = in->tex / M_PI;
-	l_clr = (t_colour){(l->col.r * light_power * light_reflected), (l->col.g * light_power * light_reflected), (l->col.b * light_power * light_reflected)};
-	clr = (t_colour){(in->col.r * l_clr.r), (in->col.g * l_clr.g), (in->col.b * l_clr.b)};
-	return (clr);
-	if (r.max > 0 && hit_pnt.x > 0)
-		return (clr);
-}
-
-t_colour	get_colour(t_param *p, t_inter *in, t_ray r, t_vec3 hit_pnt)
-{
-	t_light		*l;
-	int			i;
-	int			total;
-	t_colour	clr;
-	t_colour	total_clr;
-
-	total = vector_total(p->lis);
-	i = -1;
-	total_clr = (t_colour){0, 0, 0};
-	while (++i < total)
-	{
-		l = (t_light *)vector_get(p->lis, i);
-		clr = calc_light(l, p, in, r, hit_pnt);
-		total_clr = (t_colour){total_clr.r + clr.r, total_clr.g + clr.g, total_clr.b + clr.b};
-	}
-	return (total_clr);
+	hit = vec3_add_new(i.ray.org,
+				vec3_mul_new(i.ray.dir, i.t));
+	i.col = get_colour(p, &i, r, hit);
+	col = rgb_to_hex(i.col.r, i.col.g, i.col.b);
+	return (col);
 }
 
 int 	ray_trace(t_param *p)
@@ -94,14 +47,9 @@ int 	ray_trace(t_param *p)
 		{
 			vec3_init(&scrn_cor, (((2 * i) / (double)HEIGHT) - 1), -(((-2 * j) / (double)WIDTH) + 1), 0);
 			ray = make_ray(p->cam, scrn_cor);
-/*
-**	Create a ray
-*/
+			// printf("test ray trace 4\n");
 			inter_init(&inter, ray);
-/*
-**	Inititalizse intercept
-**	Check if intercept intercects with any of the shapes
-*/			
+			// printf("test ray trace 5\n");
 			if (set_inter(p->set, &inter))
 			{
 				hit_pnt = vec3_add_new(inter.ray.org, vec3_mul_new(inter.ray.dir, inter.t));
@@ -121,6 +69,6 @@ int 	ray_trace(t_param *p)
 				continue;
 		}
 	}
-	// exit (0);
+	// printf("test ray trace 10\n");
 	return (0);
 }
