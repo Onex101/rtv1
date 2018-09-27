@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/06 07:27:36 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/27 08:03:23 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/27 08:58:24 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ t_shape	*cyl_new(t_vec3 pos, t_vec3 axis, t_colour col, double tex)
 	t_mat mat;
 	double angle;
 
-	cyl = (t_shape *)malloc(sizeof(t_shape));
+	if (!(cyl = (t_shape *)malloc(sizeof(t_shape))))
+		return (NULL);
 	matrix_identity(&mat);
 	cyl->norm = vec3_nor_cpy(axis);
 	cyl->pos = pos;
