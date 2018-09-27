@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/21 09:21:31 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/27 16:30:16 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/09/27 19:32:31 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,13 +64,13 @@ int				get_tvec3(t_vec3 *v, char *line, int i);
 void			assign_col(t_colour *v, char *line, int i, int count);
 int				get_tcol(t_colour *v, char *line, int i);
 int				get_dir_light_info(t_light *lit, char *line);
-int				make_dir_light(int fd, t_vector **set);
-int				check_lights(int fd, t_vector **set, char *line);
+int				make_dir_light(int fd, t_vector *set);
+int				check_lights(int fd, t_vector *set, char *line);
 int				is_lights(char *line);
-int				read_lights(int fd, t_vector **set);
+int				read_lights(int fd, t_vector *set);
 int				get_cam_info(t_cam *c, char *line);
 int				is_cam_info(char *line);
-int				read_camera(int fd, t_cam **cam);
+int				read_camera(int fd, t_cam *cam);
 int				get_cyl_info(t_shape *cyl, char *line);
 int				make_cyl(int fd, t_vector **set);
 int				get_cone_info(t_shape *cone, char *line);
@@ -81,9 +81,9 @@ int				get_sphere_info(t_shape *sphere, char *line);
 int				make_sphere(int fd, t_vector **set);
 int				check_objects(int fd, t_vector **set, char *line);
 int				is_obj(char *line);
-int				read_objects(int fd, t_vector **set);
-int				read_class(int fd, t_param **p, char *line);
-int				read_file(char *av, t_param **p);
+int				read_objects(int fd, t_vector *set);
+int				read_class(int fd, t_param *p, char *line);
+int				read_file(char *av, t_param *p);
 int				ft_rt(char *str);
 int				key_press(int keycode, t_param *p);
 void			init_cam(t_cam *c, t_vec3 o, t_vec3 t, double f);

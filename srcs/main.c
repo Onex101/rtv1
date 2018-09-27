@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/21 09:19:59 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/27 15:51:38 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/09/27 19:33:20 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,17 @@ int		ft_exit(t_param *p)
 	return (0);
 }
 
-void	arg_check(char *str, t_param **p)
+void	arg_check(char *str, t_param *p)
 {
 	if (!(ft_rt(str)))
 	{
 		ft_putendl("Error: Invalid File Type");
-		exit_program(*p);
+		exit_program(p);
 	}
 	if (!(read_file(str, p)))
 	{
 		ft_putendl("Error: Invalid File Read");
-		exit_program(*p);
+		exit_program(p);
 	}
 }
 
@@ -52,7 +52,7 @@ int		main(int argc, char **argv)
 		p = (t_param *)malloc(sizeof(t_param));
 		if (init_param(p))
 		{
-			arg_check(argv[1], &p);
+			arg_check(argv[1], p);
 			start_mlx(p);
 		}
 		else

@@ -6,13 +6,13 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 13:59:18 by shillebr          #+#    #+#             */
-/*   Updated: 2018/09/27 14:00:26 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/09/27 19:32:14 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-int		check_lights(int fd, t_vector **set, char *line)
+int		check_lights(int fd, t_vector *set, char *line)
 {
 	int		i;
 
@@ -32,7 +32,7 @@ int		is_light(char *line)
 	return (0);
 }
 
-int		read_lights(int fd, t_vector **set)
+int		read_lights(int fd, t_vector *set)
 {
 	int		i;
 	char	*line;

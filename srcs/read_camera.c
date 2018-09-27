@@ -6,13 +6,13 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 14:13:22 by shillebr          #+#    #+#             */
-/*   Updated: 2018/09/27 14:56:02 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/09/27 19:31:50 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-int		cam_line(char *line, t_cam **c)
+int		cam_line(char *line, t_cam *c)
 {
 	int		r;
 
@@ -22,7 +22,7 @@ int		cam_line(char *line, t_cam **c)
 		r = 1;
 	else if ((is_cam_info(line)))
 	{
-		if (!(get_cam_info(*c, line)))
+		if (!(get_cam_info(c, line)))
 			r = 0;
 		else
 			r = 2;
@@ -33,7 +33,7 @@ int		cam_line(char *line, t_cam **c)
 	return (r);
 }
 
-int		get_cam(int fd, t_cam **c)
+int		get_cam(int fd, t_cam *c)
 {
 	int		i;
 	int		r;
@@ -63,7 +63,7 @@ int		is_cam(char *line)
 	return (0);
 }
 
-int		read_camera(int fd, t_cam **c)
+int		read_camera(int fd, t_cam *c)
 {
 	int		i;
 	char	*line;

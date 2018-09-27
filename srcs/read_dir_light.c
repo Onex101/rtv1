@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 13:45:47 by shillebr          #+#    #+#             */
-/*   Updated: 2018/09/27 13:47:00 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/09/27 19:32:49 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int		get_dir_light_info(t_light *lit, char *line)
 	return (1);
 }
 
-int		dir_light_line(char *line, t_vector **set, t_light *lit)
+int		dir_light_line(char *line, t_vector *set, t_light *lit)
 {
 	int		r;
 
@@ -42,7 +42,7 @@ int		dir_light_line(char *line, t_vector **set, t_light *lit)
 		r = 2;
 	else if (ft_strequ("}", line))
 	{
-		vector_add(*set, lit);
+		vector_add(set, lit);
 		ft_strdel(&line);
 		r = 1;
 	}
@@ -54,7 +54,7 @@ int		dir_light_line(char *line, t_vector **set, t_light *lit)
 	return (r);
 }
 
-int		make_dir_light(int fd, t_vector **set)
+int		make_dir_light(int fd, t_vector *set)
 {
 	int		i;
 	int		r;
