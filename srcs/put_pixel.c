@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/03 13:59:29 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/27 11:03:50 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/27 13:39:46 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ static void	check_endian(Uint8 *p, Uint32 pixel)
 	}
 }
 
-void		put_ipixel(int x, int y, Uint32 pixel, t_param *p)
+void		put_ipixel(int x, int y, Uint32 pixel)
 {
 	int		bpp;
 	Uint8	*i;
 
-	bpp = p->srf->format->BytesPerPixel;
-	i = (Uint8 *)p->srf->pixels + y * p->srf->pitch + x * bpp;
+	bpp = srf->format->BytesPerPixel;
+	i = (Uint8 *)srf->pixels + y * srf->pitch + x * bpp;
 	if (bpp == 1)
 		*i = pixel;
 	else if (bpp == 2)
@@ -47,7 +47,7 @@ void		put_ipixel(int x, int y, Uint32 pixel, t_param *p)
 		*(Uint32 *)i = pixel;
 }
 
-void		put_pixel(int x, int y, t_colour pixel, t_param *p)
+void		put_pixel(int x, int y, t_colour pixel)
 {
-	put_ipixel(x, y, colour_to_int(pixel), p);
+	put_ipixel(x, y, colour_to_int(pixel));
 }

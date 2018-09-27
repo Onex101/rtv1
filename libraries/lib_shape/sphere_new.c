@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/22 12:00:48 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/27 08:04:36 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/27 14:01:39 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ t_shape	*sphere_new(t_vec3 pos, double radius, t_colour col, double tex)
 	s->norm = vec3();
 	s->inter = sphere_inter;
 	s->ray = sphere_ray;
-	s->hit_nor = sphere_hit_norm;
 	s->col = col;
 	s->tex = tex;
 	matrix_identity(&(s->mat));

@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/03 09:11:25 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/27 11:31:40 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/27 16:32:53 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,14 @@ int		init_param(t_param *p)
 		ft_putendl("SDL Failed to initilise");
 		return (0);
 	}
-	if (!(p->win = SDL_CreateWindow("RTV1", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WIDTH, HEIGHT, SDL_WINDOW_ALLOW_HIGHDPI)))
+	win = NULL;
+	if (!(win = SDL_CreateWindow("RTV1", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WIDTH, HEIGHT, SDL_WINDOW_ALLOW_HIGHDPI)))
 	{
-		printf("Window failed to be initlaized");
+		printf("SDL Window failed to be initlaized");
 		return (0);
 	}
-	if (!(p->srf = SDL_GetWindowSurface(p->win)))
+	srf = NULL;
+	if (!(srf = SDL_GetWindowSurface(win)))
 	{
 		ft_putendl("SDL Failed to create Surface");
 		return (0);
@@ -34,7 +36,9 @@ int		init_param(t_param *p)
 		ft_putendl("Failed to initialise cam");
 		return (0);
 	}
-	vector_init(p->set = vector_new());
-	vector_init(p->lis = vector_new());
+	if (!(p->set = vector_new()))
+		return (0);
+	if (!(p->lis = vector_new()))
+		return (0);
 	return (1);
 }

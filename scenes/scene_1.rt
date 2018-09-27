@@ -2,7 +2,7 @@
 
 ##Camera
 Camera{
-	org[0,3,-10];
+	org[0,4,20];
 	target[0,1,0];
 	upguide[0,-1,0];
 }
@@ -11,35 +11,35 @@ Camera{
 ##Objects
 Sphere{
 	radius[0.8];
-	pos[0,3,5];
+	pos[0,1,0];
 	colour[255,0,0];
-	texture[0.0005];
+	texture[0.0001];
 }
 Plane{
 	pos[0,0,0];
 	norm[0,1,0];
 	colour[0,255,0];
-	texture[0.0005];
+	texture[0.0001];
 }
 Cone{
 	pos[0,3,5];
 	radius[1];
-	axis[0.7,0.5,0];
+	axis[0,1,0];
 	colour[255,255,0];
-	texture[0.0005];
+	texture[0.0001];
 }
 Cylinder{
-	pos[1,0,0];
+	pos[-5,1,0];
 	radius[1];
 	axis[0,1,0];
 	colour[255,0,255];
-	texture[0.0005];
+	texture[0.0001];
 }
 #
 
 ##Lights
 Dir Light{
-	dir[-1,-5,5];
+	dir[-1,-5,-5];
 	intensity[1];
 	colour[255,255,255];
 }

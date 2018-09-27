@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/20 10:58:46 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/27 11:38:00 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/27 14:00:38 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ struct	s_shape
 	double		height;
 	intercept	inter;
 	rayc		ray;
-	normal		hit_nor;
 	t_colour	col;
 	double		tex;
 	t_mat		mat;

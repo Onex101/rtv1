@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/27 06:26:00 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/25 18:53:03 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/27 19:02:51 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 typedef struct	s_vector
 {
 	void		**items;
-	double		capacity;
-	double		total;
+	int			capacity;
+	int			total;
 }				t_vector;
 
 void			vector_init(t_vector *v);
