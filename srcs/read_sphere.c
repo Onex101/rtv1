@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/12 18:23:54 by shillebr          #+#    #+#             */
-/*   Updated: 2018/09/26 14:30:55 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/09/27 07:55:45 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int		get_sphere_info(t_shape *sphere, char *line)
 int		make_sphere(int fd, t_vector **set)
 {
 	int		i;
-	t_shape sphere;
+	t_shape *sphere;
 	char	*line;
 
 	i = 1;
@@ -47,8 +47,9 @@ int		make_sphere(int fd, t_vector **set)
 			printf("make sphere close found\n");
 			int	t = vector_total(*set);
 			printf("set total = [%d]\n", t);
-			vector_add(*set, &sphere);
-			printf("Sphere: pos[%f, %f, %f], radius[%f], texture[%f], col[%f, %f, %f]\n", sphere.pos.x, sphere.pos.y, sphere.pos.z, sphere.radius, sphere.tex, sphere.col.r, sphere.col.g, sphere.col.b);
+			vector_add(*set, sphere);
+			// printf("Sphere: pos[%f, %f, %f], radius[%f], texture[%f], col[%f, %f, %f]\n", sphere.pos.x, sphere.pos.y, sphere.pos.z, sphere.radius, sphere.tex, sphere.col.r, sphere.col.g, sphere.col.b);
+			printf("Sphere: pos[%f, %f, %f], radius[%f], texture[%f], col[%f, %f, %f]\n", sphere->pos.x, sphere->pos.y, sphere->pos.z, sphere->radius, sphere->tex, sphere->col.r, sphere->col.g, sphere->col.b);
 			ft_strdel(&line);
 			t = vector_total(*set);
 			printf("set total = [%d]\n", t);
@@ -56,7 +57,7 @@ int		make_sphere(int fd, t_vector **set)
 			printf("sh: pos[%f, %f, %f], radius[%f], texture[%f], col[%f, %f, %f]\n", sh->pos.x, sh->pos.y, sh->pos.z, sh->radius, sh->tex, sh->col.r, sh->col.g, sh->col.b);
 			return (1);
 		}
-		else if (get_sphere_info(&sphere, line))
+		else if (get_sphere_info(sphere, line))
 		{
 			printf("get_sphere_info success\n");
 		}

@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/21 09:19:59 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/26 14:32:24 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/09/27 07:26:06 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	main(int argc, char **argv)
 				if (p)
 					exit_program(p);
 			}
-			if (!(read_file(argv[1], p)))
+			if (!(read_file(argv[1], &p)))
 			{
 				ft_putendl("Error: Invalid File Read");
 				if (p)
