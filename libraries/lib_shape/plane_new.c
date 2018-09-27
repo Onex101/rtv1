@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/22 08:01:27 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/27 08:04:24 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/27 08:58:44 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ t_shape		*plane_new(t_vec3 pos, t_vec3 norm, t_colour col, double tex)
 {
 	t_shape *plane;
 
-	plane = (t_shape *)malloc(sizeof(t_shape));
+	if (!(plane = (t_shape *)malloc(sizeof(t_shape))))
+		return (NULL);
 	plane->inter = plane_inter;
 	plane->pos = pos;
 	plane->radius = 0;

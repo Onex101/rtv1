@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/14 07:50:53 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/27 08:02:00 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/27 08:58:02 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ t_shape		*cone_new(t_vec3 pos, t_vec3 axis, double rad, t_colour col)
 	t_shape *cone;
 	double angle;
 
-	cone = (t_shape *)malloc(sizeof(t_shape));
+	if(!(cone = (t_shape *)malloc(sizeof(t_shape))))
+		return (NULL);
 	cone->pos = pos;
 	cone->norm = vec3_nor_cpy(axis);
 	cone->radius = rad;
