@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/11 10:15:14 by shillebr          #+#    #+#             */
-/*   Updated: 2018/09/27 20:15:57 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/09/27 20:24:17 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ int		file_line(int l, int fd, t_param *p, char *line)
 		r = 2;
 	else if (!(read_class(fd, p, line)))
 		r = 0;
+	else if (ft_strequ("#\0", line))
+		r = 1;
 	else
 		r = 0;
 	ft_strdel(&line);
