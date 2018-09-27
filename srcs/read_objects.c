@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_objects.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/12 18:17:21 by shillebr          #+#    #+#             */
-/*   Updated: 2018/09/27 19:32:35 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/27 20:16:39 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,10 @@ int		read_objects(int fd, t_vector *set)
 		if ((i = get_next_line(fd, &line)) == 0)
 			break ;
 		if (is_obj(line))
-			check_objects(fd, set, line);
+		{
+			if (!(check_objects(fd, set, line)))
+				return (0);
+		}
 		else if (ft_strequ(line, "\0"))
 			continue ;
 		else if (ft_strequ(line, "#"))

@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/11 10:15:14 by shillebr          #+#    #+#             */
-/*   Updated: 2018/09/27 19:29:06 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/09/27 20:15:57 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ int		read_file(char *av, t_param *p)
 	int		l;
 	int		fd;
 
+	r = 0;
 	if ((fd = open(av, O_RDONLY)) == -1)
 		return (0);
 	i = 1;
@@ -74,7 +75,7 @@ int		read_file(char *av, t_param *p)
 		r = file_line(l, fd, p, line);
 		l++;
 	}
-	return (1);
+	return (r);
 }
 
 int		ft_rt(char *str)
