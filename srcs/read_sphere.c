@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/12 18:23:54 by shillebr          #+#    #+#             */
-/*   Updated: 2018/09/27 12:07:44 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/09/27 14:10:35 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int		sphere_line(char *line, t_vector **set, t_shape *sphere)
 	int		r;
 
 	if (ft_strequ(line, "\0"))
-			r = 2;
+		r = 2;
 	else if (ft_strequ("}", line))
 	{
 		vector_add(*set, sphere);

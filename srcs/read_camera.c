@@ -3,65 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   read_camera.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/20 18:15:22 by marvin            #+#    #+#             */
-/*   Updated: 2018/09/20 18:15:22 by marvin           ###   ########.fr       */
+/*   Created: 2018/09/27 14:13:22 by shillebr          #+#    #+#             */
+/*   Updated: 2018/09/27 14:56:02 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-int		get_cam_info(t_cam *c, char *line)
+int		cam_line(char *line, t_cam **c)
 {
-	if (ft_strequ("\torg[\0", line))
+	int		r;
+
+	if (line[0] == '\0')
+		r = 2;
+	else if (ft_strequ("}\0", line))
+		r = 1;
+	else if ((is_cam_info(line)))
 	{
-		if (!(get_tvec3(&c->org, line, 5)))
-			return (0);
-	}
-	else if (ft_strequ("\ttarget[", line))
-	{
-		if (!(get_tvec3(&c->tar, line, 8)))
-			return (0);
-	}
-	else if (ft_strequ("\tupguide[", line))
-	{
-		if (!(get_tvec3(&c->up, line, 9)))
-			return (0);
-	}
-	else if (ft_strequ("\tfov[", line))
-	{
-		if (!(get_double(&c->h, line, 5)))
-			return (0);
+		if (!(get_cam_info(*c, line)))
+			r = 0;
 		else
-			c->h = tan(c->h);
-	}
-	else if (ft_strequ("\taspect_ratio[", line))
-	{
-		if (!(get_double(&c->w, line, 14)))
-			return (0);
-		else
-			c->w = c->h * c->w;
+			r = 2;
 	}
 	else
-			return (0);
-	return (1);
-}
-
-int		is_cam_info(char *line)
-{
-	if (ft_strequ("\torg[", line) || ft_strequ("\ttarget[\0", line))
-		return (1);
-	else if (ft_strequ("\tupguide[", line) || ft_strequ("\tfov[", line))
-		return (1);
-	else if (ft_strequ("\taspect_ratio[", line))
-		return (1);
-	return (0);
+		r = 0;
+	ft_strdel(&line);
+	return (r);
 }
 
 int		get_cam(int fd, t_cam **c)
 {
 	int		i;
+	int		r;
 	char	*line;
 
 	i = 1;
@@ -69,25 +44,14 @@ int		get_cam(int fd, t_cam **c)
 	{
 		if ((i = get_next_line(fd, &line)) == 0)
 			return (0);
-		if (i == 0)
-			break ;
-		if (line[0] == '\0')
-			continue ;
-		else if (ft_strequ("}\0", line))
-		{
-			ft_strdel(&line);
+		r = cam_line(line, c);
+		if (r == 1)
 			return (1);
-		}
-		else if ((is_cam_info(line)))
-		{
-			if (!(get_cam_info(*c, line)))
-				break ;
-		}
+		else if (r == 2)
+			continue ;
 		else
-			break ;
-		ft_strdel(&line);
+			return (0);
 	}
-	ft_strclr(line);
 	ft_strdel(&line);
 	return (0);
 }
@@ -109,13 +73,11 @@ int		read_camera(int fd, t_cam **c)
 	{
 		if ((i = get_next_line(fd, &line)) == 0)
 			return (0);
-		if (i == 0)
-			break ;
 		if (is_cam(line))
 		{
-            if (!(get_cam(fd, c)))
+			if (!(get_cam(fd, c)))
 				return (0);
-        }
+		}
 		else if (ft_strequ(line, "\0"))
 			continue ;
 		else if (ft_strequ(line, "#"))
@@ -127,5 +89,5 @@ int		read_camera(int fd, t_cam **c)
 		}
 		ft_strdel(&line);
 	}
-	return (1); // not sure about this, might not be valid
+	return (1);
 }

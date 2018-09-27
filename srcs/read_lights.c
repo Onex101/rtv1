@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_lights.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/20 18:00:03 by marvin            #+#    #+#             */
-/*   Updated: 2018/09/20 18:00:03 by marvin           ###   ########.fr       */
+/*   Created: 2018/09/27 13:59:18 by shillebr          #+#    #+#             */
+/*   Updated: 2018/09/27 14:00:26 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ int		check_lights(int fd, t_vector **set, char *line)
 	int		i;
 
 	if (ft_strequ(line, "Dir Light{"))
-		i = make_dir_light(fd, set);//t_vector stores all the shapes, verctor add
+		i = make_dir_light(fd, set);
 	else if (ft_strequ(line, ""))
 		i = 1;
 	else
-		i = 0;	
-	return (i); // not sure about this, might not be valid
+		i = 0;
+	return (i);
 }
 
 int		is_light(char *line)
@@ -56,5 +56,5 @@ int		read_lights(int fd, t_vector **set)
 		}
 		ft_strdel(&line);
 	}
-	return (1); // not sure about this, might not be valid
+	return (1);
 }

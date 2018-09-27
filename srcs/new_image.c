@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   new_image.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/03 09:07:53 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/25 17:30:30 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/27 15:10:23 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_img	*new_image(void *mlx, int w, int h)
 {
-	t_img *img;
+	t_img	*img;
 	int		bpp;
 	int		end;
 	int		size_line;

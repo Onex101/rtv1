@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_plane.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/20 17:44:31 by marvin            #+#    #+#             */
-/*   Updated: 2018/09/20 17:44:31 by marvin           ###   ########.fr       */
+/*   Created: 2018/09/27 14:01:41 by shillebr          #+#    #+#             */
+/*   Updated: 2018/09/27 14:02:30 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int		plane_line(char *line, t_vector **set, t_shape *plane)
 	int		r;
 
 	if (ft_strequ(line, "\0"))
-			r = 2;
+		r = 2;
 	else if (ft_strequ("}", line))
 	{
 		vector_add(*set, plane);
@@ -55,7 +55,8 @@ int		make_plane(int fd, t_vector **set)
 	char	*line;
 
 	i = 1;
-	plane = plane_new((t_vec3){0, 0, 0}, (t_vec3){0, 0, 0}, (t_colour){0, 0, 0}, 0);
+	plane = plane_new((t_vec3){0, 0, 0}, (t_vec3){0, 0, 0},
+						(t_colour){0, 0, 0}, 0);
 	while (i != 0)
 	{
 		if ((i = get_next_line(fd, &line)) == 0)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sphere_new.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/22 12:00:48 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/27 08:04:36 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/27 15:55:13 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,5 @@ t_shape	*sphere_new(t_vec3 pos, double radius, t_colour col, double tex)
 	s->tex = tex;
 	matrix_identity(&(s->mat));
 	s->imat = matrix_inverse(&(s->mat));
-	return (s); 
+	return (s);
 }

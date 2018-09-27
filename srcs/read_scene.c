@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/11 10:15:14 by shillebr          #+#    #+#             */
-/*   Updated: 2018/09/27 08:26:44 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/09/27 14:09:37 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,35 @@ int		read_class(int fd, t_param **p, char *line)
 		if (!(read_lights(fd, &(*p)->lis)))
 			return (0);
 	}
-	return (1); // not sure about this, might not be valid
+	return (1);
+}
+
+int		file_line(int l, int fd, t_param **p, char *line)
+{
+	int		r;
+
+	if (ft_strequ("##Scene", line))
+	{
+		if (l != 0)
+			r = 0;
+		else
+			r = 2;
+	}
+	else if (l > 0 && line[0] == '\0')
+		r = 2;
+	else if (!(read_class(fd, p, line)))
+		r = 0;
+	else
+		r = 0;
+	ft_strdel(&line);
+	return (r);
 }
 
 int		read_file(char *av, t_param **p)
 {
 	char	*line;
 	int		i;
+	int		r;
 	int		l;
 	int		fd;
 
@@ -47,22 +69,9 @@ int		read_file(char *av, t_param **p)
 		return (0);
 	while (i != 0)
 	{
-		i = get_next_line(fd, &line);
-		if (i == 0)
+		if ((i = get_next_line(fd, &line)) == 0)
 			break ;
-		if (ft_strequ("##Scene", line))
-		{
-			if (l != 0)
-				return (0);
-		}
-		else if (l > 0 && line[0] == '\0')
-		{
-			ft_strdel(&line);
-			continue ;
-		}
-		else if (!(read_class(fd, p, line)))
-			return (0);
-		ft_strdel(&line);
+		r = file_line(l, fd, p, line);
 		l++;
 	}
 	return (1);

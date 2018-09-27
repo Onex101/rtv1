@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/12 18:17:21 by shillebr          #+#    #+#             */
-/*   Updated: 2018/09/27 12:44:23 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/09/27 15:13:30 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int		check_objects(int fd, t_vector **set, char *line)
 	else if (ft_strequ(line, "\0"))
 		i = 1;
 	else
-		i = 0;	
+		i = 0;
 	return (i);
 }
 

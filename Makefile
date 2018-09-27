@@ -6,7 +6,7 @@
 #    By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/08/21 13:06:01 by xrhoda            #+#    #+#              #
-#    Updated: 2018/09/27 11:16:40 by shillebr         ###   ########.fr        #
+#    Updated: 2018/09/27 15:13:29 by shillebr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ FILES = main.c \
 		ft_strcheck.c \
 		get_double.c \
 		get_tvec3.c \
+		cam_info.c \
 		read_camera.c \
 		read_dir_light.c \
 		read_lights.c \

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_colour.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/25 17:43:27 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/25 18:14:30 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/27 15:40:54 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-t_colour	get_colour(t_param *p, t_inter *in, t_ray r, t_vec3 hit_pnt)
+t_colour	get_colour(t_param *p, t_inter *in, t_ray r)
 {
 	t_light		*l;
 	int			i;
@@ -26,7 +26,7 @@ t_colour	get_colour(t_param *p, t_inter *in, t_ray r, t_vec3 hit_pnt)
 	while (++i < total)
 	{
 		l = (t_light *)vector_get(p->lis, i);
-		clr = calc_light(l, p, in, r, hit_pnt);
+		clr = calc_light(l, p, in, r);
 		total_clr = (t_colour){total_clr.r + clr.r,
 								total_clr.g + clr.g,
 								total_clr.b + clr.b};

@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/27 13:50:53 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/27 08:50:15 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/09/27 15:44:51 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	exit_program(t_param *p)
 {
+	if (!p)
+		exit(0);
 	ft_putendl("ep test 1");
 	if (p->img)
 		destroy_image(p->img, p->mlx);
