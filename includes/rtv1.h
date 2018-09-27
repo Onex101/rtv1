@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/21 09:21:31 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/27 08:53:34 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/09/27 11:17:14 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,14 @@ int				read_lights(int fd, t_vector **set);
 
 int				read_camera(int fd, t_cam **cam);
 
+int				get_cyl_info(t_shape *cyl, char *line);
+int				make_cyl(int fd, t_vector **set);
+
+int				get_cone_info(t_shape *cone, char *line);
+int				make_cone(int fd, t_vector **set);
+
 int				get_plane_info(t_shape *plane, char *line);
-int				make_plane(int fd, t_vector *set);
+int				make_plane(int fd, t_vector **set);
 
 int				get_sphere_info(t_shape *sphere, char *line);
 int				make_sphere(int fd, t_vector **set);

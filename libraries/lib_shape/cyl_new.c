@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   cyl_new.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/06 07:27:36 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/27 08:58:24 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/27 11:15:56 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_shape.h"
 
-t_shape	*cyl_new(t_vec3 pos, t_vec3 axis, t_colour col, double tex)
+t_shape	*cyl_new(t_vec3 pos, t_vec3 axis, double radius, t_colour col, double tex)
 {
 	t_shape *cyl;
 	t_mat mat;
@@ -23,7 +23,7 @@ t_shape	*cyl_new(t_vec3 pos, t_vec3 axis, t_colour col, double tex)
 	matrix_identity(&mat);
 	cyl->norm = vec3_nor_cpy(axis);
 	cyl->pos = pos;
-	cyl->radius = 1;
+	cyl->radius = radius;
 	cyl->height = 1;
 	cyl->inter = cyl_inter;
 	cyl->ray = cyl_ray;

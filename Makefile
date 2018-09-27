@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+         #
+#    By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/08/21 13:06:01 by xrhoda            #+#    #+#              #
-#    Updated: 2018/09/25 17:48:27 by xrhoda           ###   ########.fr        #
+#    Updated: 2018/09/27 11:16:40 by shillebr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,8 @@ FILES = main.c \
 		read_lights.c \
 		read_objects.c \
 		read_plane.c \
+		read_cone.c \
+		read_cyl.c \
 		read_scene.c \
 		read_sphere.c \
 		get_colour.c \
