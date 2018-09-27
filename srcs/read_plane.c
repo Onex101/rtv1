@@ -14,55 +14,42 @@
 
 int		get_plane_info(t_shape *plane, char *line)
 {
-	if (ft_strequ(line, "\tpos["))
-	{
-		if (!(get_tvec3(&plane->pos, line, 5)))
-			return (0);
-	}
-	else if (ft_strequ(line, "\tnorm["))
-	{
-		if (!(get_tvec3(&plane->norm, line, 6)))
-			return (0);
-	}
-	else if (ft_strequ(line, "\tcolour["))
-	{
-		if (!(get_tcol(&plane->col, line, 8)))
-			return (0);
-	}
-	else if (ft_strequ(line, "\ttexture["))
-	{
-		if (!(get_double(&plane->tex, line, 9)))
-			return (0);
-	}
+	if (ft_strequ("\tnorm[", line))
+		return (!(get_tvec3(&plane->norm, line, 6))) ? (0) : (1);
+	else if (ft_strequ("\tpos[", line))
+		return (!(get_tvec3(&plane->pos, line, 5))) ? (0) : (1);
+	else if (ft_strequ("\tcolour[", line))
+		return (!(get_tcol(&plane->col, line, 8))) ? (0) : (1);
+	else if (ft_strequ("\ttexture[", line))
+		return (!(get_double(&plane->tex, line, 9))) ? (0) : (1);
 	else
 		return (0);
 	return (1);
 }
 
-int		make_plane(int fd, t_vector *set)
+int		make_plane(int fd, t_vector **set)
 {
 	int		i;
 	t_shape *plane;
 	char	*line;
 
 	i = 1;
-	plane = plane_new((t_vec3){0, 0, 0}, (t_vec3){0, 1, 0}, (t_colour){0, 0, 0}, 0);
+	plane = plane_new((t_vec3){0, 0, 0}, (t_vec3){0, 0, 0}, (t_colour){0, 0, 0}, 0);
 	while (i != 0)
 	{
 		if ((i = get_next_line(fd, &line)) == 0)
 			return (0);
 		if (ft_strequ(line, "\0"))
 			continue ;
-		else if (ft_strequ(line, "}"))
+		else if (ft_strequ("}", line))
 		{
-			vector_add(set, plane);
-			// printf("New Plane: pos[%f, %f, %f], norm[%f, %f, %f], colour[%f, %f, %f], tex[%f]\n", plane.pos.x, plane.pos.y, plane.pos.z, plane.norm.x, plane.norm.y, plane.norm.z, plane.col.r, plane.col.g, plane.col.b, plane.tex);
+			vector_add(*set, plane);
 			ft_strdel(&line);
 			return (1);
 		}
 		else if (get_plane_info(plane, line))
 		{
-				printf("get_plane_success\n");;
+			printf("get_plane_info success\n");
 		}
 		else
 			break ;

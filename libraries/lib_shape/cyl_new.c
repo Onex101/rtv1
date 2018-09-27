@@ -6,13 +6,13 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/06 07:27:36 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/27 11:25:11 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/27 11:38:05 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_shape.h"
 
-t_shape	*cyl_new(t_vec3 pos, t_vec3 axis, t_colour col, double tex)
+t_shape	*cyl_new(t_vec3 pos, t_vec3 axis, double radius, t_colour col, double tex)
 {
 	t_shape *cyl;
 	t_mat mat;
@@ -23,7 +23,7 @@ t_shape	*cyl_new(t_vec3 pos, t_vec3 axis, t_colour col, double tex)
 	matrix_identity(&mat);
 	cyl->norm = vec3_nor_cpy(axis);
 	cyl->pos = pos;
-	cyl->radius = 1;
+	cyl->radius = radius;
 	cyl->height = 1;
 	cyl->inter = cyl_inter;
 	cyl->ray = cyl_ray;
