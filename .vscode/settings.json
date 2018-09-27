@@ -18,6 +18,9 @@
 		"locale": "c",
 		"memory": "c",
 		"tuple": "c",
-		"utility": "c"
+		"utility": "c",
+		"__split_buffer": "c",
+		"string": "c",
+		"vector": "c"
 	}
 }

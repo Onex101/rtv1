@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/17 08:35:02 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/27 15:53:20 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/09/27 18:57:36 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	vector_resize(t_vector *v, int capacity)
 {
 	void **items;
 
-	if (!(items = (void **)malloc(sizeof(void *) * capacity)))
+	if (!(items = (void **)ft_memalloc(sizeof(void *) * capacity)))
 		return ;
 	ft_memcpy(items, v->items, sizeof(void *) * v->capacity);
 	free((v->items));
