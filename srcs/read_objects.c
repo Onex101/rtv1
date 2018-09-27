@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   read_objects.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/12 18:17:21 by shillebr          #+#    #+#             */
-/*   Updated: 2018/09/27 15:13:30 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/09/27 19:32:35 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-int		check_objects(int fd, t_vector **set, char *line)
+int		check_objects(int fd, t_vector *set, char *line)
 {
 	int		i;
 
@@ -40,7 +40,7 @@ int		is_obj(char *line)
 	return (0);
 }
 
-int		read_objects(int fd, t_vector **set)
+int		read_objects(int fd, t_vector *set)
 {
 	int		i;
 	char	*line;

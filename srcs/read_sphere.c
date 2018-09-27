@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_sphere.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/12 18:23:54 by shillebr          #+#    #+#             */
-/*   Updated: 2018/09/27 14:10:35 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/09/27 19:29:39 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int		get_sphere_info(t_shape *sphere, char *line)
 	return (1);
 }
 
-int		sphere_line(char *line, t_vector **set, t_shape *sphere)
+int		sphere_line(char *line, t_vector *set, t_shape *sphere)
 {
 	int		r;
 
@@ -35,7 +35,7 @@ int		sphere_line(char *line, t_vector **set, t_shape *sphere)
 		r = 2;
 	else if (ft_strequ("}", line))
 	{
-		vector_add(*set, sphere);
+		vector_add(set, sphere);
 		ft_strdel(&line);
 		r = 1;
 	}
@@ -47,7 +47,7 @@ int		sphere_line(char *line, t_vector **set, t_shape *sphere)
 	return (r);
 }
 
-int		make_sphere(int fd, t_vector **set)
+int		make_sphere(int fd, t_vector *set)
 {
 	int		i;
 	int		r;

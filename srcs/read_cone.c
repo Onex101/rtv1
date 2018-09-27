@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_cone.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 10:35:22 by shillebr          #+#    #+#             */
-/*   Updated: 2018/09/27 16:01:57 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/09/27 19:32:20 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int		get_cone_info(t_shape *cone, char *line)
 	return (1);
 }
 
-int		cone_line(char *line, t_vector **set, t_shape *cone)
+int		cone_line(char *line, t_vector *set, t_shape *cone)
 {
 	int		r;
 
@@ -65,7 +65,7 @@ int		cone_line(char *line, t_vector **set, t_shape *cone)
 	return (r);
 }
 
-int		make_cone(int fd, t_vector **set)
+int		make_cone(int fd, t_vector *set)
 {
 	int		i;
 	int		r;
