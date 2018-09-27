@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 10:35:22 by shillebr          #+#    #+#             */
-/*   Updated: 2018/09/27 14:12:36 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/09/27 16:01:57 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int		make_cone(int fd, t_vector **set)
 
 	i = 1;
 	cone = cone_new((t_vec3){0, 0, 0}, (t_vec3){0, 0, 0},
-					0, (t_colour){0, 0, 0}, 0);
+					0, (t_colour){0, 0, 0});
 	while (i != 0)
 	{
 		if ((i = get_next_line(fd, &line)) == 0)

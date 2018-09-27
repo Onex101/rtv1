@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/13 07:41:00 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/27 08:23:16 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/09/27 17:03:48 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,6 @@ typedef struct	s_light
 	double		intensity;
 }				t_light;
 
-t_light		*light_new(t_vec3 pos, double radius, t_colour col);
+t_light			*light_new(t_vec3 pos, double radius, t_colour col);
 
 #endif

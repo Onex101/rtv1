@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 11:04:06 by shillebr          #+#    #+#             */
-/*   Updated: 2018/09/27 13:41:31 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/09/27 16:03:37 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int		make_cyl(int fd, t_vector **set)
 
 	i = 1;
 	cyl = cyl_new((t_vec3){0, 0, 0}, (t_vec3){0, 0, 0}, 0,
-			(t_colour){0, 0, 0}, 0);
+			(t_colour){0, 0, 0});
 	while (i != 0)
 	{
 		if ((i = get_next_line(fd, &line)) == 0)

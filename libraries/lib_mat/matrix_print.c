@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   matrix_print.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/11 10:52:52 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/11 11:06:03 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/27 16:15:39 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ void	matrix_print(t_mat *m)
 	if (m)
 	{
 		i = -1;
-		while(++i < 4)
+		while (++i < 4)
 		{
 			j = -1;
-			while(++j < 4)
-				printf("[%f] ", m->mat[i][j]);
-			printf("\n");
-		} 
+			while (++j < 4)
+				ft_putnbr(m->mat[i][j]);
+			ft_putstr("\n");
+		}
 	}
 }

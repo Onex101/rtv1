@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/21 07:00:38 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/26 14:10:31 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/09/27 16:17:21 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ int	ft_strequ(char const *s1, char const *s2)
 	int		i;
 	int		l;
 
-	
 	if (s1 && s2)
 	{
 		l = ft_strlen(s1);
