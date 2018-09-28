@@ -15,13 +15,13 @@
 int		get_sphere_info(t_shape *sphere, char *line)
 {
 	if (ft_strequ("\tradius[", line))
-		return (!(get_double(&sphere->radius, line, 8))) ? (0) : (1);
+		return (!(get_radius(sphere, line, 8))) ? (0) : (1);
 	else if (ft_strequ("\tpos[", line))
-		return (!(get_tvec3(&sphere->pos, line, 5))) ? (0) : (1);
+		return (!(get_pos(sphere, line, 5))) ? (0) : (1);
 	else if (ft_strequ("\tcolour[", line))
-		return (!(get_tcol(&sphere->col, line, 8))) ? (0) : (1);
+		return (!(get_cols(sphere, line, 8))) ? (0) : (1);
 	else if (ft_strequ("\ttexture[", line))
-		return (!(get_double(&sphere->tex, line, 9))) ? (0) : (1);
+		return (!(get_texture(sphere, line, 9))) ? (0) : (1);
 	else
 		return (0);
 	return (1);

@@ -12,34 +12,28 @@
 
 #include "rtv1.h"
 
-void	cone_axis(t_shape *cone, t_vec3 axis)
-{
-	double	angle;
+// void	cone_axis(t_shape *cone, t_vec3 axis)
+// {
+// 	double	angle;
 
-	cone->norm = vec3_nor_cpy(axis);
-	angle = acos(vec3_dot((t_vec3){0, 1, 0}, axis) / vec3_len(axis));
-	cone->imat = matrix_axis_rot(vec3_crs(axis, (t_vec3){0, 1, 0}), -angle);
-	cone->mat = matrix_inverse(&cone->imat);
-}
+// 	cone->norm = vec3_nor_cpy(axis);
+// 	angle = acos(vec3_dot((t_vec3){0, 1, 0}, axis) / vec3_len(axis));
+// 	cone->imat = matrix_axis_rot(vec3_crs(axis, (t_vec3){0, 1, 0}), -angle);
+// 	cone->mat = matrix_inverse(&cone->imat);
+// }
 
 int		get_cone_info(t_shape *cone, char *line)
 {
-	t_vec3	axis;
-
 	if (ft_strequ("\tradius[", line))
-		return (!(get_double(&cone->radius, line, 8))) ? (0) : (1);
+		return (!(get_radius(cone, line, 8))) ? (0) : (1);
 	else if (ft_strequ("\tpos[", line))
-		return (!(get_tvec3(&cone->pos, line, 5))) ? (0) : (1);
+		return (!(get_pos(cone, line, 5))) ? (0) : (1);
 	else if (ft_strequ("\taxis[", line))
-	{
-		if (!(get_tvec3(&axis, line, 6)))
-			return (0);
-		cone_axis(cone, axis);
-	}
+		return (!(get_axis(cone, line, 6))) ? (0) : (1);
 	else if (ft_strequ("\tcolour[", line))
-		return (!(get_tcol(&cone->col, line, 8))) ? (0) : (1);
+		return (!(get_cols(cone, line, 8))) ? (0) : (1);
 	else if (ft_strequ("\ttexture[", line))
-		return (!(get_double(&cone->tex, line, 9))) ? (0) : (1);
+		return (!(get_texture(cone, line, 9))) ? (0) : (1);
 	else
 		return (0);
 	return (1);

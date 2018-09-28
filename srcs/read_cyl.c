@@ -12,34 +12,28 @@
 
 #include "rtv1.h"
 
-void	cyl_axis(t_shape *cyl, t_vec3 axis)
-{
-	double	angle;
+// void	cyl_axis(t_shape *cyl, t_vec3 axis)
+// {
+// 	double	angle;
 
-	cyl->norm = vec3_nor_cpy(axis);
-	angle = acos(vec3_dot((t_vec3){0, 1, 0}, axis) / vec3_len(axis));
-	cyl->imat = matrix_axis_rot(vec3_crs(axis, (t_vec3){0, 1, 0}), -angle);
-	cyl->mat = matrix_inverse(&cyl->imat);
-}
+// 	cyl->norm = vec3_nor_cpy(axis);
+// 	angle = acos(vec3_dot((t_vec3){0, 1, 0}, axis) / vec3_len(axis));
+// 	cyl->imat = matrix_axis_rot(vec3_crs(axis, (t_vec3){0, 1, 0}), -angle);
+// 	cyl->mat = matrix_inverse(&cyl->imat);
+// }
 
 int		get_cyl_info(t_shape *cyl, char *line)
 {
-	t_vec3	axis;
-
 	if (ft_strequ("\tradius[", line))
-		return (!(get_double(&cyl->radius, line, 8))) ? (0) : (1);
+		return (!(get_radius(cyl, line, 8))) ? (0) : (1);
 	else if (ft_strequ("\tpos[", line))
-		return (!(get_tvec3(&cyl->pos, line, 5))) ? (0) : (1);
+		return (!(get_pos(cyl, line, 5))) ? (0) : (1);
 	else if (ft_strequ("\taxis[", line))
-	{
-		if (!(get_tvec3(&axis, line, 6)))
-			return (0);
-		cyl_axis(cyl, axis);
-	}
+		return (!(get_axis(cyl, line, 6))) ? (0) : (1);
 	else if (ft_strequ("\tcolour[", line))
 		return (!(get_tcol(&cyl->col, line, 8))) ? (0) : (1);
 	else if (ft_strequ("\ttexture[", line))
-		return (!(get_double(&cyl->tex, line, 9))) ? (0) : (1);
+		return (!(get_texture(cyl, line, 9))) ? (0) : (1);
 	else
 		return (0);
 	return (1);

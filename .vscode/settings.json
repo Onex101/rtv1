@@ -21,6 +21,7 @@
 		"utility": "c",
 		"__split_buffer": "c",
 		"string": "c",
-		"vector": "c"
+		"vector": "c",
+		"cmath": "c"
 	}
 }

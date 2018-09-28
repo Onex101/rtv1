@@ -44,7 +44,8 @@ FILES = main.c \
 		get_colour.c \
 		get_tcol.c \
 		calc_light.c \
-		cast_ray.c
+		cast_ray.c \
+		get_radius.c
 SRC_DIR = srcs
 SRCS = $(FILES:$(SRC_DIR)/%=%)
 
