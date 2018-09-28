@@ -6,12 +6,11 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/21 08:00:55 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/28 13:25:26 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/28 13:29:23 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_ft.h"
-
 
 static size_t	count_splits(char const *s, char c)
 {
@@ -53,7 +52,7 @@ char			**ft_strsplit(char const *s, char c)
 		return (NULL);
 	i = 0;
 	if (!(splits = (char**)ft_memalloc(sizeof(splits) *
-												(count_splits(s, c) + 1))))
+							(count_splits(s, c) + 1))))
 		return (NULL);
 	while (*s == c)
 		s++;
@@ -70,22 +69,6 @@ char			**ft_strsplit(char const *s, char c)
 	}
 	return (splits);
 }
-// char	**ft_strsplit(char const *s, char c)
-// {
-// 	int		size;
-// 	char	**ret;
-
-// 	if (!s)
-// 		return (NULL);
-// 	size = ft_strcount(s, c);
-// 	ret = (char **)ft_memalloc(sizeof(char *) * size + 1);
-// 	if (!ret)
-// 		return (NULL);
-// 	ret = ft_poparr(ret, s, c, size);
-// 	if (!ret)
-// 		return (NULL);
-// 	return (ret);
-// }
 
 // char	**ft_makearr(char **r, char const *s, char c, int size)
 // {
