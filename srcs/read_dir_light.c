@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 13:45:47 by shillebr          #+#    #+#             */
-/*   Updated: 2018/09/27 19:32:49 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/09/28 07:55:37 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,17 @@ int		get_dir_light_info(t_light *lit, char *line)
 {
 	if (ft_strequ("\tdir[", line))
 	{
-		if (!(get_tvec3(&lit->dir, line, 5)))
+		if (!(get_dir(lit, line, 5)))
 			return (0);
 	}
 	else if (ft_strequ("\tintensity[", line))
 	{
-		if (!(get_double(&lit->intensity, line, 11)))
+		if (!(get_intensity(lit, line, 11)))
 			return (0);
 	}
 	else if (ft_strequ("\tcolour[", line))
 	{
-		if (!(get_tcol(&lit->col, line, 8)))
+		if (!(get_l_cols(lit, line, 8)))
 			return (0);
 	}
 	else
