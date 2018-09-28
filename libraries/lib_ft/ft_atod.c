@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 12:46:01 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/28 07:20:21 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/28 11:37:13 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,15 @@ double	ft_atod(char *str)
 	double	start;
 	double	end;
 	int		len;
+	int		neg;
 
 	start = 0;
+	neg = 1;
 	if (str)
 	{
 		splt = ft_strsplit(str, '.');
+		if (splt[0][0] == '-')
+			neg = -1;
 		start = (double)ft_atoi(splt[0]);
 		free(splt[0]);
 		end = 0;
@@ -35,7 +39,7 @@ double	ft_atod(char *str)
 			end /= 10;
 		}
 		if (start >= 0)
-			start += end;
+			start = (start + end) * neg;
 		else
 			start -= end;
 		free(splt[1]);
