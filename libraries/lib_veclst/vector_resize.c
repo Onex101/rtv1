@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector_resize.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/17 08:35:02 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/27 18:57:36 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/09/27 20:32:16 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,9 @@ void	vector_resize(t_vector *v, int capacity)
 {
 	void **items;
 
-	if (!(items = (void **)ft_memalloc(sizeof(void *) * capacity)))
-		return ;
+	items = ft_memalloc(sizeof(void *) * capacity);
 	ft_memcpy(items, v->items, sizeof(void *) * v->capacity);
-	free((v->items));
-	if (items)
-	{
-		v->items = items;
-		v->capacity = capacity;
-	}
+	ft_memdel((void **)(&v->items));
+	v->items = items;
+	v->capacity = capacity;
 }
