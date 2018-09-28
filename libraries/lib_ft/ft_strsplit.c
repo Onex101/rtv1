@@ -3,31 +3,89 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xrhoda <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/21 08:00:55 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/05/22 13:19:21 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/09/28 13:25:26 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_ft.h"
 
-char	**ft_strsplit(char const *s, char c)
+
+static size_t	count_splits(char const *s, char c)
 {
-	int		size;
-	char	**ret;
+	size_t	i;
+
+	i = 0;
+	while (*s == c)
+		s++;
+	while (*s)
+	{
+		while (*s && *s != c)
+			s++;
+		while (*s == c)
+			s++;
+		i++;
+	}
+	return (i);
+}
+
+static size_t	split_len(char const *s, char c)
+{
+	size_t	len;
+
+	len = 0;
+	while (*s == c)
+		s++;
+	while (*s && *s++ != c)
+		len++;
+	return (len);
+}
+
+char			**ft_strsplit(char const *s, char c)
+{
+	size_t	i;
+	size_t	len;
+	char	**splits;
 
 	if (!s)
 		return (NULL);
-	size = ft_strcount(s, c);
-	ret = (char **)ft_memalloc(sizeof(char *) * size + 1);
-	if (!ret)
+	i = 0;
+	if (!(splits = (char**)ft_memalloc(sizeof(splits) *
+												(count_splits(s, c) + 1))))
 		return (NULL);
-	ret = ft_poparr(ret, s, c, size);
-	if (!ret)
-		return (NULL);
-	return (ret);
+	while (*s == c)
+		s++;
+	while (*s)
+	{
+		len = split_len(s, c);
+		if (!(splits[i] = ft_strnew(len)))
+			return (NULL);
+		ft_strncpy(splits[i++], s, len);
+		while (*s && *s != c)
+			s++;
+		while (*s == c)
+			s++;
+	}
+	return (splits);
 }
+// char	**ft_strsplit(char const *s, char c)
+// {
+// 	int		size;
+// 	char	**ret;
+
+// 	if (!s)
+// 		return (NULL);
+// 	size = ft_strcount(s, c);
+// 	ret = (char **)ft_memalloc(sizeof(char *) * size + 1);
+// 	if (!ret)
+// 		return (NULL);
+// 	ret = ft_poparr(ret, s, c, size);
+// 	if (!ret)
+// 		return (NULL);
+// 	return (ret);
+// }
 
 // char	**ft_makearr(char **r, char const *s, char c, int size)
 // {

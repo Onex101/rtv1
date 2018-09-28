@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit_program.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/27 13:50:53 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/09/27 15:44:51 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/09/28 13:15:13 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	exit_program(t_param *p)
 {
+	int i;
+
 	if (!p)
 		exit(0);
 	ft_putendl("ep test 1");
@@ -26,6 +28,14 @@ void	exit_program(t_param *p)
 	if (p->mlx)
 		free(p->mlx);
 	ft_putendl("ep test 4");
+	i = -1;
+	ft_putendl("ep test 1");
+	while (++i < p->set->total)
+		free(vector_get(p->set, i));
+	i = -1;
+	ft_putendl("ep test 2");
+	while (++i < p->lis->total)
+		free(vector_get(p->lis, i));
 	if (p->set)
 		vector_free(p->set);
 	ft_putendl("ep test 5");
